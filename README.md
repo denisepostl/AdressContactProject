@@ -32,6 +32,6 @@ Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. 
 
 ### Query SqLite
 
-Das Query <strong>adress_table.sql</strong> für die Erstellung der Tabellen befindet sich unter: database
+Das Query <strong>adress_table.sql</strong> für die Erstellung der Tabellen befindet sich unter: [here](database/adress_table.sql)
 Dieses Query kann ausgeführt werden und anschließend werden die Tabellen in der Datenbank <strong>adress.db</strong> erstellt. 
 

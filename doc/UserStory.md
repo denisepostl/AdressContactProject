@@ -132,7 +132,7 @@ Als Entwickler benötige ich eine Auswahl vom Benutzer. Danach kann ich den Kont
 Benutzer
 
 **Input**  <br>
-Es wird einen Button "Kategorie" geben, wo er Benutzer dann die Kategorie hinzufügen kann.
+Es wird einen Button "Kategorie" geben, wo der Benutzer dann die Kategorie hinzufügen kann.
 Bestehende Kontakte können ausgewählt werden und anschließend auch kategorisiert werden. - Dieses Feature wird dann in Kontakt-ändern eingebaut werden.
 Auswahl der entsprechenden Kategorie durch den Benutzer bei einem spezifischen Kontakt.
 

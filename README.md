@@ -24,7 +24,7 @@ Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. 
 
 ### Datenmodell (Stand: 12.01.2023)
 
-![Datenmodell](https://github.com/denisepostl/adress_project/blob/main/datamodel/datamodel.png)
+![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/datamodel/datamodel.png)
 
 ### Beim Ausführen des Programms soll folgender Screen erscheinen: (Stand: 12.01.2023)
 

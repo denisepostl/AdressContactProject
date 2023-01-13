@@ -33,7 +33,7 @@ Benutzer
 
 **Input**  <br>
 Eingabe von Vor-und Nachnamen und anschließende Auswahl vom Kontakt durch den Benutzer.
-Vor- und Nachname kann in ein Textfeld eingegeben werden. Danach wird ein Kontakt od. mehrere wenn gleiche Namen vorhanden sind und der Benutzer kann
+Vor- und Nachname kann in ein Textfeld eingegeben werden. Danach wird ein Kontakt od. mehrere wenn gleiche Namen vorhanden ausgegeben und und der Benutzer kann
 seinen Kontakt dann auswählen.
 
 **Internal State change**  <br>

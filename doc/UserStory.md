@@ -1,5 +1,5 @@
 # User story Kontakt hinzufügen
-Als Benutzer möchte ich einen neuen Kontakt in das System hinzufügen können.
+Als Benutzer möchte ich einen neuen Kontakt in das System hinzufügen können. Ein Bild von einem Kontakt möchte ich auch hinzufügen.
 Als Entwickler brauche ich folgende Inputs: Vorname, Nachname, Tel. und Adresse.
 
 **Actors**  <br>
@@ -8,6 +8,7 @@ Benutzer
 **Input**  <br>
 Eingabe von Vorname, Nachname, Tel. und Adresse in einzelnen Textfeldern. 
 Hinzufügen des neuen Kontaktes funktioniert dann über einen Button.
+Hinzufügen eines Bildes soll auch über einen Button funktionieren.
 
 
 **Internal State change**  <br>

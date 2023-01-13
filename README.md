@@ -30,3 +30,8 @@ Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. 
 
 ![StartScreen](https://github.com/denisepostl/AdressContactProject/blob/main/img/StartScreen.png)
 
+### Query SqLite
+
+Das Query <strong>adress_table.sql</strong> für die Erstellung der Tabellen befindet sich unter: [database](https://github.com/denisepostl/AdressContactProject/tree/main/database)
+Dieses Query kann ausgeführt werden und anschließend werden die Tabellen in der Datenbank <strong>adress.db</strong> erstellt. 
+

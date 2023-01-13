@@ -33,7 +33,7 @@ Benutzer
 
 **Input**  <br>
 Eingabe von Vor-und Nachnamen und anschließende Auswahl vom Kontakt durch den Benutzer.
-Vor- und Nachname kann in ein Textfeld eingegeben werden. Danach wird ein Kontakt od. mehrere wenn gleiche Namen vorhanden sind und der Benutzer kann
+Vor- und Nachname kann in ein Textfeld eingegeben werden. Danach wird ein Kontakt od. mehrere wenn gleiche Namen vorhanden ausgegeben und und der Benutzer kann
 seinen Kontakt dann auswählen.
 
 **Internal State change**  <br>
@@ -132,7 +132,7 @@ Als Entwickler benötige ich eine Auswahl vom Benutzer. Danach kann ich den Kont
 Benutzer
 
 **Input**  <br>
-Es wird einen Button "Kategorie" geben, wo er Benutzer dann die Kategorie hinzufügen kann.
+Es wird einen Button "Kategorie" geben, wo der Benutzer dann die Kategorie hinzufügen kann.
 Bestehende Kontakte können ausgewählt werden und anschließend auch kategorisiert werden. - Dieses Feature wird dann in Kontakt-ändern eingebaut werden.
 Auswahl der entsprechenden Kategorie durch den Benutzer bei einem spezifischen Kontakt.
 

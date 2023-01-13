@@ -14,6 +14,9 @@ Ein Benutzer kann
 
 Ein Kontakt kann mehr als eine Telefonnummer/Adresse haben.
 
+### User-Stories
+Die User-Stories befinden sich unter: [doc](https://github.com/denisepostl/AdressContactProject/tree/main/doc)
+
 ### Feature
 
     - Kontakt gehört zur Familie/Freund (Eigene Tabelle: Roles notwendig, die zur Contact-Tabelle referenziert)
@@ -32,6 +35,11 @@ Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. 
 
 ### Query SqLite
 
-Das Query <strong>adress_table.sql</strong> für die Erstellung der Tabellen befindet sich unter: [database](https://github.com/denisepostl/AdressContactProject/tree/main/database)
-Dieses Query kann ausgeführt werden und anschließend werden die Tabellen in der Datenbank <strong>adress.db</strong> erstellt. 
+Das Query für die Erstellung der Tabellen, welches sich im File *adress_table.sql* befindet wurde ausgeführt. <br>
+Anschließend wurden die Tabellen in der Datenbank *adress.db* erstellt. <br>
+Das SQL-File und die Datenbank befinden sich unter: [database](https://github.com/denisepostl/AdressContactProject/tree/main/database)
+
+
+
+
 

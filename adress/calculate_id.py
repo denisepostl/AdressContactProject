@@ -6,7 +6,7 @@ class CalculateID:
         self.connection = sqlite3.connect("contacts.db")
     
     def calculate_phone_id(self): 
-        """This function calculates the phone_id that the user can add contacts comfortable."""
+        """This method calculates the phone_id that the user can add contacts comfortable."""
         cur = self.connection.cursor()
         id = """
             SELECT 
@@ -20,7 +20,7 @@ class CalculateID:
         self.connection.commit()
 
     def calculate_contact_id(self): 
-        """This function calculates the contact_id that the user can add contacts comfortable."""
+        """This method calculates the contact_id that the user can add contacts comfortable."""
         cur = self.connection.cursor()
         id = """
             SELECT 
@@ -34,7 +34,7 @@ class CalculateID:
         self.connection.commit()
 
     def calculate_adress_id(self): 
-        """This function calculates the adress_id that the user can add contacts comfortable."""
+        """This method calculates the adress_id that the user can add contacts comfortable."""
         cur = self.connection.cursor()
         id = """
             SELECT 

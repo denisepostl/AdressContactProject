@@ -41,7 +41,7 @@ Das SQL-File und die Datenbank befinden sich unter: [database](https://github.co
 
 ### Kommandozeilenprogramm
 
-Beim ausführen von [main_contact.py] (https://github.com/denisepostl/AdressContactProject/tree/main/adress/main_contact.py) kann ein kleines Kommandozeilenprogramm getestet werde, das den Benutzern erlaubt einen Kontakt hinzuzufügen, abfragen, Kontaktdaten ändert und löscht. 
+Beim ausführen von [main_contact.py](https://github.com/denisepostl/AdressContactProject/tree/main/adress/main_contact.py) kann ein kleines Kommandozeilenprogramm getestet werde, das den Benutzern erlaubt einen Kontakt hinzuzufügen, abfragen, Kontaktdaten ändert und löscht. 
 
 
 

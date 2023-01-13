@@ -39,6 +39,11 @@ Das Query für die Erstellung der Tabellen, welches sich im File *adress_table.s
 Anschließend wurden die Tabellen in der Datenbank *adress.db* erstellt. <br>
 Das SQL-File und die Datenbank befinden sich unter: [database](https://github.com/denisepostl/AdressContactProject/tree/main/database)
 
+### Kommandozeilenprogramm
+
+Beim ausführen von [main_contact.py] (https://github.com/denisepostl/AdressContactProject/tree/main/adress/main_contact.py) kann ein kleines Kommandozeilenprogramm getestet werde, das den Benutzern erlaubt einen Kontakt hinzuzufügen, abfragen, Kontaktdaten ändert und löscht. 
+
+
 
 
 

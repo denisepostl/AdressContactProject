@@ -26,7 +26,7 @@ Ich muss daher auf die Foreign Keys der jeweiligen Tabellen achten.
 
 **Errors**  <br>
 Wenn der Benutzer einen falschen Datentyp verwendet wird ein Error erscheinen. - Ich werde Exceptions verwenden. 
-Wenn der Bentuzer den gleichen Vor-u. Nachnamen eingibt, der in der Datenbank vorhanden ist, werde ich nachfragen ob das gewünscht ist.
+Wenn der Benutzer den gleichen Vor-u. Nachnamen eingibt, der in der Datenbank vorhanden ist, werde ich nachfragen ob das gewünscht ist.
 
 ----------------------------------------------------------------------------------------
 

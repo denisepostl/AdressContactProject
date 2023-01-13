@@ -39,13 +39,13 @@ Benutzer
 
 **Input**  <br>
 Eingabe von Vor-und Nachnamen und anschließende Auswahl vom Kontakt durch den Benutzer.
-Vor- und Nachname kann in ein Textfeld eingegeben werden. Danach wird ein Kontakt od. mehrere wenn gleiche Namen vorhanden ausgegeben und und der Benutzer kann
+Vor- und Nachname kann in ein Textfeld eingegeben werden. Danach wird ein Kontakt od. mehrere wenn gleiche Namen vorhanden sind ausgegeben und und der Benutzer kann
 seinen Kontakt dann auswählen.
 
 **Background** <br>
 Nachdem der Benutzer den zu löschenden Kontakt ausgewählt hat, werde ich ihn fragen ob er wirklich diesen Kontakt löschen möchte. Dann werde ich mithilfe eines DELETE Querys den Kontakt löschen.
 Da die Tabelle Contact in Relation mit Adress und Phonenumber steht muss ich die FK's berücksichtigen. 
-Nach der Reihe werde ich dann die einzelnen Tabellen löschen.
+Nach der Reihe werde ich dann die einzelnen Datensätze in den Tabellen der Datenbank löschen.
 
 **Internal State change**  <br>
 Already deleted Contact.

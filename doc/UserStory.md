@@ -73,7 +73,7 @@ Anschließend kann der Benutzer den Kontakt aktualisieren.
 
 **Background** <br>
 Nachdem der Benutzer den zu aktualisierten Kontakt ausgewählt hat, werde ich mithilfe einer Methode, in der ich ein Update Query deklarieren werde, die 
-zu aktualisierenden Datensätze überschreiben. Anschließend frage ich mit einem SELECT QUERY den upgedateden Kontakt ab und gebe diesen aus.
+zu aktualisierenden Datensätze überschreiben. Anschließend frage ich mit einem SELECT QUERY den aktualisierten Kontakt ab und gebe diesen aus.
 
 **Internal State change**  <br>
 Deleted Contact.

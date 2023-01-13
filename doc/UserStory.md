@@ -132,9 +132,9 @@ Wenn der Benutzer auf einen Button drückt, dann wird eine Funktion aufgerufen. 
 die mir das Main-Window der Kontakt-Hinzufüge Option aufruft. In diesem Window befindet sich dann ein ADD-Contact Button über den eine Funktion aufgerufen wird
 die mir Datensätze mithilfe von einem INSERT QUERY zur Datenbank hinzufügt. Jeweilige Kontakt-Abfragen, Kontakt-Löschen, Kontakt-Ändern Button sollen am Rand angeführt sein wo der Benutzer dann durch Klicken auf ein neues Window hinkommt. z.B.: klickt er auf Kontakt-Abfragen, dann kann er hier einen Kontakt auswählen und abfragen. (eine ensprechende Funktion muss das navigieren zu diesem neuen Window im Kontakt-Abfragen Button des Main-Windows vom Kontakt-Hinzufügen ermöglichen)
 Und auch bei den anderen beiden Optionen: Kontakt-Löschen und Kontakt-Ändert funktioniert das navigieren in die jeweils anderen Optionen bzw. Windows gleich (sprich: über eine Funktion wird das jeweils andere Window aufgerufen). <br> <br>
-    - Beim Kontakt-Hinzufügen Window gibt es einen Button Kontakt-Hinzufügen. Mithilfe eines INSERT Querys, das in einer Methode deklariert ist, werden neue Datensätze in die Datenbank eingefügt. <br>
-    - Beim Kontakt-Löschen Window gibt es einen Button Kontakt-Löschen. Mithilfe eines DELETE Querys, das in einer Methode deklariert ist, wird der entsprechend ausgewählte Kontakt gelöscht. <br>
-    - Beim Kontakt-Ändern Window gibt es einen Button Kontakt-Ändern. Mithilfe eines UPDATE Querys, das in einer Methode deklariert ist, wird der entsprechend ausgewählte Kontakt gelöscht. <br>
+    - Beim Kontakt-Hinzufügen Window gibt es einen Button Kontakt-Hinzufügen. Mithilfe eines INSERT Querys, das in einer Methode deklariert ist, werden neue Datensätze in die Datenbank eingefügt. <br> <br>
+    - Beim Kontakt-Löschen Window gibt es einen Button Kontakt-Löschen. Mithilfe eines DELETE Querys, das in einer Methode deklariert ist, wird der entsprechend ausgewählte Kontakt gelöscht. <br> <br>
+    - Beim Kontakt-Ändern Window gibt es einen Button Kontakt-Ändern. Mithilfe eines UPDATE Querys, das in einer Methode deklariert ist, wird der entsprechend ausgewählte Kontakt gelöscht. <br> <br>
     - Beim Kontakt-Abfrage Window gibt es zwei Buttons: Einen Kontakt abfragen | alle Kontakte abfragen. Mithilfe eines SELECT Querys wird entweder ein Datensatz abgefragt (durch Eingabe von Vor- u. Nachname) oder alle Datensätze.
 
 **Input**  <br>

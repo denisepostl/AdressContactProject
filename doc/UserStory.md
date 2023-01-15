@@ -134,7 +134,7 @@ die mir Datensätze mithilfe von einem INSERT QUERY zur Datenbank hinzufügt. Je
 Und auch bei den anderen beiden Optionen: Kontakt-Löschen und Kontakt-Ändert funktioniert das navigieren in die jeweils anderen Optionen bzw. Windows gleich (sprich: über eine Funktion wird das jeweils andere Window aufgerufen). <br> <br>
     - Beim Kontakt-Hinzufügen Window gibt es einen Button Kontakt-Hinzufügen. Mithilfe eines INSERT Querys, das in einer Methode deklariert ist, werden neue Datensätze in die Datenbank eingefügt. <br> <br>
     - Beim Kontakt-Löschen Window gibt es einen Button Kontakt-Löschen. Mithilfe eines DELETE Querys, das in einer Methode deklariert ist, wird der entsprechend ausgewählte Kontakt gelöscht. <br> <br>
-    - Beim Kontakt-Ändern Window gibt es einen Button Kontakt-Ändern. Mithilfe eines UPDATE Querys, das in einer Methode deklariert ist, wird der entsprechend ausgewählte Kontakt gelöscht. <br> <br>
+    - Beim Kontakt-Ändern Window gibt es einen Button Kontakt-Ändern. Mithilfe eines UPDATE Querys, das in einer Methode deklariert ist, wird der entsprechend ausgewählte Kontakt aktualisiert. <br> <br>
     - Beim Kontakt-Abfrage Window gibt es zwei Buttons: Einen Kontakt abfragen | alle Kontakte abfragen. Mithilfe eines SELECT Querys wird entweder ein Datensatz abgefragt (durch Eingabe von Vor- u. Nachname) oder alle Datensätze.
 
 **Input**  <br>

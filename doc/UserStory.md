@@ -152,6 +152,17 @@ Die gewünschte Option wird durchgeführt z.B.: switchen auf das Benutzer-Hinzuf
 Graphische Oberfläche.
 Kontaktdaten können aktualisiert, geändert, gelöscht oder abgefragt werden.
 
+**Errors** <br>
+Ich werde den Benutzer mit Messages in einem neuen kleinen Fenster aufmerksammachen wenn:
+
+    - Enter drücken bei Kontaktabfrage in Textfeld wenn kein Name eingegeben ist.
+    
+    - Enter drücken bei Kontaktabfrage in Textfeld wenn nur entweder nur der Vorname oder nur der Nachname eingegeben wurde. (Beide Namen notwendig)
+    
+    - Betätigen des Kontakt löschen/ Kontakt Ändern / Kontakt Abfragen Buttons ohne einen Kontakt ausgewählt zu haben
+    
+    - Betätigen des Kontakt Hinzufügen Buttons ohne das Daten bzw. nicht alle erforderlichen Daten eingegeben wurden
+
 ----------------------------------------------------------------------------------------
 
 # User story Feature: Kategorie

@@ -40,7 +40,7 @@ Benutzer
 
 **Input**  <br>
 Eingabe von Vor-und Nachnamen (Typ: VARCHAR) und anschließende Auswahl vom Kontakt durch den Benutzer. 
-Vor- und Nachname kann in ein Textfeld eingegeben werden. Danach wird ein Kontakt od. mehrere wenn gleiche Namen vorhanden sind ausgegeben und der Benutzer kann seinen Kontakt dann auswählen.
+Vor- und Nachname kann in ein Textfeld eingegeben werden. Danach wird ein Kontakt od. mehrere wenn gleiche Namen vorhanden sind ausgegeben und der Benutzer kann seinen Kontakt dann auswählen. (Die Auswahl funktioniert dann entweder über einen Button mit JA/NEIN zum Bestätigen oder direkt in einer Tabelle)
 
 **Background** <br>
 Nachdem der Benutzer den zu löschenden Kontakt ausgewählt hat, werde ich ihn fragen ob er wirklich diesen Kontakt löschen möchte. Dann werde ich mithilfe eines DELETE Querys (welches in einer Methode deklariert wird) den Kontakt löschen.

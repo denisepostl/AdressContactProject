@@ -117,6 +117,7 @@ Kontakt wird ausgegeben.
 
 **Output**  <br>
 Die Kontaktdaten werden ausgegeben. Entweder nur die spezifischen von einem Kontakt oder alle.
+Das gespeicherte Kontaktbild wird daneben ausgegeben.
 
 **Errors**  <br>
 Wenn kein Kontakt unter einem bestimmten Namen gefunden wurde gibt es eine Exception: "Es wurde kein Kontakt unter diesem Namen gefunden".

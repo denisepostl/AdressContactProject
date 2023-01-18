@@ -12,6 +12,8 @@ Ein Benutzer kann
 
     - Kontaktinformationen löschen (Der ganze Kontakt wird gelöscht. Vorher wird der Kontakt noch einmal ausgegeben und gefragt ob das der richtige Kontakt ist.)
 
+    - Bild (z.B.: Profilbild) vom lokalen Rechner zu einem Kontakt hinzufügen (durch betätigen eines Buttons kann er ein Bild auswählen, welches dann in einem neuen         Ordner abgespeichert wird, damit es später bei der Abfrage eines Kontakts angezeigt werden kann)
+
 Ein Kontakt kann mehr als eine Telefonnummer/Adresse haben.
 
 ### User-Stories

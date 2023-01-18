@@ -13,7 +13,7 @@ Hinzufügen eines Bildes (Format: jpg oder png) soll auch über einen Button fun
 **Background** <br>
 Die eingegebenen Daten werden in einer Datenbank gespeichert.
 Ich werde eine eigene Methode schreiben, die es mir mithilfe eines INSERT - Querys ermöglicht die Datensätze in der DB zu speichern.
-Mithilfe eines SELECTS-Querys (ich mache eine eigene Methode dafür) frage ich die Datenbank nach den neu hinzugefügten Namen ab (eine eigene Variable wird benötigt die ich dann bei der SELECT-Methode verwende) und gebe den hinzugefügten Datensatz aus.
+Mithilfe eines SELECT-Querys (ich mache eine eigene Methode dafür) frage ich die Datenbank nach den neu hinzugefügten Namen ab (eigene Variablen werden benötigt die ich dann bei der SELECT-Methode verwende) und gebe den hinzugefügten Datensatz aus.
 Über einen Button soll der Benutzer nach Bildern lokal im Explorer suchen können. Ich werde für den Image import Pillow verwenden. Das Bild werde ich dann in einem Ordner abspeichern.
 
 

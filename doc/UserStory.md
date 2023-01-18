@@ -17,7 +17,7 @@ Mithilfe eines SELECTS-Querys frage ich die Datenbank nach den neu hinzugefügte
 
 
 **Internal State change**  <br>
-Acknowledgement.
+Benutzer wurde hinzugefügt.
 
 **Output**  <br>
 Eventuell die neu eingefügten Kontaktdaten.
@@ -48,7 +48,7 @@ Da die Tabelle Contact in Relation mit Adress und Phonenumber steht muss ich die
 Nach der Reihe werde ich dann die einzelnen Datensätze in den Tabellen der Datenbank löschen.
 
 **Internal State change**  <br>
-Already deleted Contact.
+Kontakt wurde gelöscht.
 
 **Output**  <br>
 Ich frage ob der Benutzer wirklich den Kontakt löschen möchte - wenn Ja: 
@@ -76,7 +76,7 @@ Nachdem der Benutzer den zu aktualisierten Kontakt ausgewählt hat, werde ich mi
 zu aktualisierenden Datensätze überschreiben. Anschließend frage ich mit einem SELECT QUERY den aktualisierten Kontakt ab und gebe diesen aus.
 
 **Internal State change**  <br>
-Deleted Contact.
+Kontakt wurde aktualisiert.
 
 **Output**  <br>
 Es wird dann folgendes ausgeben:
@@ -111,7 +111,7 @@ die jeweiligen Datensätze ausgeben.
 
 
 **Internal State change**  <br>
-Deleted Contact.
+Kontakt wird ausgegeben.
 
 **Output**  <br>
 Die Kontaktdaten werden ausgegeben.

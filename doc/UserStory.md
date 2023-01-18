@@ -104,7 +104,7 @@ Ich werde eine Auswahl mit 2 Buttons benötigen: "Alle Kontakte abfragen" | "Ein
 
 Wenn ein bestimmter Kontakt abgefragt werden soll benötige ich vom Benutzer:
     - Eingabe von Vorname, Nachname (Typ: VARCHAR)
-    - Eingabe von Telefonnummer (Typ: Integer)
+    - Eingabe von Telefonnummer (Typ: VARCHAR)
 Danach gebe ich den Kontakt aus.
 Ansonsten kann der Benutzer auf einen Button drücken: Alle Kontakte abfragen
 

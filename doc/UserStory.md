@@ -70,7 +70,7 @@ Benutzer
 **Input**  <br>
 Der Benutzer muss den entsprechenden Kontakt auswählen. 
 Ich lass ihn zuerst Vor-u. Nachname (Typ: VARCHAR) eingeben - ich gebe den Kontakt dann in einer Tabelle aus - und danach soll der Benutzer den entsprechenden Kontakt auswählen (ev. in einer Tabelle oder über Buttons zum bestätigen ob das der richtige Kontakt ist).
-Anschließend kann der Benutzer den Kontakt aktualisieren - er kann nun neue Daten eingeben.
+Anschließend kann der Benutzer den Kontakt aktualisieren - er kann nun neue Daten eingeben --> Entweder in der Tabelle oder in Textfeldern.
 
 **Background** <br>
 Nachdem der Benutzer den zu aktualisierten Kontakt ausgewählt hat, werde ich mithilfe einer Methode, in der ich ein Update Query deklarieren werde, die 

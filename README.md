@@ -31,12 +31,15 @@ Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. 
 
 ### Datenmodell für das Feature: Kategorie (Stand: 18.01.2023)
 
-![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/datamodel/datamodel.png)
+![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/img/DatamodellExtension.png)
 
 
 ### Beim Ausführen des Programms soll folgender Screen erscheinen: (Stand: 12.01.2023)
 
 ![StartScreen](https://github.com/denisepostl/AdressContactProject/blob/main/img/StartScreen.png)
+
+### Bei der Auswahl des Buttons: Kontakt hinzufügen soll folgender Screen erscheinen:
+
 
 ### Query SqLite
 

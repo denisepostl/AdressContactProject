@@ -69,7 +69,7 @@ Benutzer
 
 **Input**  <br>
 Der Benutzer muss den entsprechenden Kontakt auswählen. 
-Ich lass ihn zuerst Vor-u. Nachname (Typ: VARCHAR) eingeben - ich gebe den Kontakt in einer Tabelle aus - und danach soll der Benutzer den entsprechenden Kontakt auswählen (ev. in einer Tabelle oder über Buttons zum bestätigen ob das der richtige Kontakt ist).
+Ich lass ihn zuerst Vor-u. Nachname (Typ: VARCHAR) eingeben - ich gebe den Kontakt dann in einer Tabelle aus - und danach soll der Benutzer den entsprechenden Kontakt auswählen (ev. in einer Tabelle oder über Buttons zum bestätigen ob das der richtige Kontakt ist).
 Anschließend kann der Benutzer den Kontakt aktualisieren - er kann nun neue Daten eingeben.
 
 **Background** <br>

@@ -24,7 +24,7 @@ class Add(CalculateID):
 
         query = """
             INSERT INTO Adress(ID, Street, PostCode, City, Housenumber, Contact_ID)
-            VALUES(%d, "%s", %d, "%s", %d, %d); """ %(self.New_ID, street, post_code, city, house_number, Contact_ID)
+            VALUES(%d, "%s", "%s", "%s", "%s", %d); """ %(self.New_ID, street, post_code, city, house_number, Contact_ID)
         
         cur.execute(query)
         self.connection.commit()

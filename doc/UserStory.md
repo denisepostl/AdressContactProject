@@ -56,6 +56,7 @@ Ich frage ob der Benutzer wirklich den Kontakt löschen möchte - wenn Ja gebe i
 
 **Errors**  <br>
 Wenn kein Kontakt mit diesem Namen gefunden wurde gibt es eine Exception: "Es wurde kein Kontakt mit diesem Namen gefunden."
+Wenn falsche Datentypen für die Abfrage des zu löschenden Kontakts verwendet wurden wird es auch eine Exception geben: "Bitte Datentyp beachten"
 
 ----------------------------------------------------------------------------------------
 

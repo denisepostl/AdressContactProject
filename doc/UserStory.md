@@ -140,7 +140,7 @@ Und auch bei den anderen beiden Optionen: Kontakt-Löschen und Kontakt-Ändern f
     - Beim Kontakt-Hinzufügen Window gibt es einen Button Kontakt-Hinzufügen. Mithilfe eines INSERT Querys, das in einer Methode deklariert ist, werden neue Datensätze in die Datenbank eingefügt. <br> <br>
     - Beim Kontakt-Löschen Window gibt es einen Button Kontakt-Löschen. Mithilfe eines DELETE Querys, das in einer Methode deklariert ist, wird der entsprechend ausgewählte Kontakt gelöscht. Vorher wird der Kontakt durch Eingabe von Vor- u. Nachname vom Benutzer und Auswahl des Kontakts in einer Tabelle oder über eines Buttons ausgewählt.  <br> <br>
     - Beim Kontakt-Ändern Window gibt es einen Button Kontakt-Ändern. Mithilfe eines UPDATE Querys, das in einer Methode deklariert ist, wird der entsprechend ausgewählte Kontakt aktualisiert. Der Benutzer kann hier ähnlich wie beim DELETE seinen Kontakt auswählen und dementsprechnd neue Daten in neuen Textfeldern eingeben, die dann übernommen werden. <br> <br>
-    - Beim Kontakt-Abfrage Window gibt es zwei Buttons: Einen Kontakt abfragen | alle Kontakte abfragen. Mithilfe eines SELECT Querys wird entweder ein Datensatz abgefragt (durch Eingabe von Vor- u. Nachname) oder alle Datensätze. Der Benutzer kann hier in jeweils einem Textfeld Vor- u. Nachname od. Telefonnummer eingeben.
+    - Beim Kontakt-Abfrage Window gibt es zwei Buttons: Einen Kontakt abfragen | alle Kontakte abfragen. Mithilfe eines SELECT Querys wird entweder ein Datensatz abgefragt (durch Eingabe von Vor- u. Nachname od. Telefonnummer) oder alle Datensätze. Der Benutzer kann hier in jeweils einem Textfeld Vor- u. Nachname od. Telefonnummer eingeben.
 
 **Input**  <br>
 Auswahl der entsprechenden Tätigkeiten die gemacht werden möchten.
@@ -153,7 +153,7 @@ Graphische Oberfläche.
 Kontaktdaten können aktualisiert, geändert, gelöscht oder abgefragt werden.
 
 **Errors** <br>
-Ich werde den Benutzer mit Messages in einem neuen kleinen Fenster aufmerksammachen wenn:
+Ich werde den Benutzer mit Messages in einem neuen kleinen Fenster aufmerksam machen wenn:
 
     - Enter drücken bei Kontaktabfrage in Textfeld wenn kein Name eingegeben ist.
     

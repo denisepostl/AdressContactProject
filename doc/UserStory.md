@@ -156,7 +156,7 @@ Kontaktdaten können aktualisiert, geändert, gelöscht oder abgefragt werden.
 
 # User story Feature: Kategorie
 Als Benutzer möchte ich meine Kontakte anhand einer Kategorie kennzeichnen.
-Wenn es sich z.B.: um ein Familienmitglied handelt, soll sich diese Kategorie auswählen lassen.
+Wenn es sich z.B.: um ein Familienmitglied handelt, soll sich diese Kategorie (Typ: boolean) auswählen lassen.
 Auswahlmöglichkeiten:
     - Familie
     - Freunde

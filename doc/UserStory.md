@@ -157,7 +157,7 @@ Ich werde den Benutzer mit Messages in einem neuen kleinen Fenster aufmerksammac
 
     - Enter drücken bei Kontaktabfrage in Textfeld wenn kein Name eingegeben ist.
     
-    - Enter drücken bei Kontaktabfrage in Textfeld wenn nur entweder nur der Vorname oder nur der Nachname eingegeben wurde. (Beide Namen notwendig)
+    - Enter drücken bei Kontaktabfrage in Textfeld wenn entweder nur der Vorname oder nur der Nachname eingegeben wurde. (Beide Namen notwendig)
     
     - Betätigen des Kontakt löschen/ Kontakt Ändern / Kontakt Abfragen Buttons ohne einen Kontakt ausgewählt zu haben
     
@@ -169,9 +169,13 @@ Ich werde den Benutzer mit Messages in einem neuen kleinen Fenster aufmerksammac
 Als Benutzer möchte ich meine Kontakte anhand einer Kategorie kennzeichnen.
 Wenn es sich z.B.: um ein Familienmitglied handelt, soll sich diese Kategorie (Typ: VARCHAR) auswählen lassen.
 Auswahlmöglichkeiten:
+
     - Familie
+    
     - Freunde
+    
     - Schulkollegen
+    
     - Arbeitskollegen
     - ...
 

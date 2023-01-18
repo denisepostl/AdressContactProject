@@ -18,7 +18,7 @@ Mithilfe eines SELECT-Querys (ich mache eine eigene Methode dafür) frage ich di
 
 
 **Internal State change**  <br>
-Benutzer wurde hinzugefügt.
+Kontakt wurde hinzugefügt.
 
 **Output**  <br>
 Eventuell die neu eingefügten Kontaktdaten.

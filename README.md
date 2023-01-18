@@ -15,7 +15,7 @@ Ein Benutzer kann
 Ein Kontakt kann mehr als eine Telefonnummer/Adresse haben.
 
 ### User-Stories
-Die User-Stories befinden sich unter: [doc](https://github.com/denisepostl/AdressContactProject/tree/main/doc)
+Die User-Stories befinden sich unter: [doc](https://github.com/denisepostl/AdressContactProject/blob/main/doc/UserStory.md)
 
 ### Feature
 

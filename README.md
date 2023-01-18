@@ -38,8 +38,9 @@ Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. 
 
 ![StartScreen](https://github.com/denisepostl/AdressContactProject/blob/main/img/StartScreen.png)
 
-### Bei der Auswahl des Buttons: Kontakt hinzufügen soll folgender Screen erscheinen:
+### Bei der Auswahl des Buttons: Kontakt hinzufügen soll folgender Screen erscheinen: (Stand: 18.01.2022)
 
+![StartScreen](https://github.com/denisepostl/AdressContactProject/blob/main/img/Adress.png)
 
 ### Query SqLite
 

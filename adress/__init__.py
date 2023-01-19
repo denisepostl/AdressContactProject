@@ -4,6 +4,7 @@ from query import Ask
 from insert_query import Add
 from delete import Delete
 from update_query import Update
+from create_database import Create
 
 exports = [
     Contact,
@@ -11,5 +12,6 @@ exports = [
     Ask,
     Add,
     Delete,
+    Create,
     Update
 ]

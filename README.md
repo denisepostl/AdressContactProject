@@ -47,7 +47,7 @@ Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. 
 ### Query SqLite
 
 Für die Erstellung der Datenbank kann [create_database.py](https://github.com/denisepostl/AdressContactProject/blob/main/adress/create_database.py) ausgeführt werden.
-Anschließend wurden die Tabellen in der Datenbank *adress.db* erstellt. <br>
+Anschließend werden die Tabellen in der Datenbank *adress.db* erstellt. <br>
 Das SQL-File mit den CREATE Table Statements und die Datenbank befinden sich unter: [database](https://github.com/denisepostl/AdressContactProject/tree/main/database)
 
 ### Kommandozeilenprogramm

@@ -1,6 +1,6 @@
 import sqlite3
 
-class Create():
+class Create_Contact():
 
     def __init__(self):
         self.connection = sqlite3.connect("database/adress_category.db")
@@ -61,7 +61,7 @@ class Create():
         self.connection.commit()
 
 def main():
-    db = Create()
+    db = Create_Contact()
     db.create_Phonenumber()
     db.create_Contact()
     db.create_Adress()

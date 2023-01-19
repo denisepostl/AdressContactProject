@@ -5,6 +5,8 @@ from insert_query import Add
 from delete import Delete
 from update_query import Update
 from create_database import Create
+from create_database_category import Create_Contact
+from query_search_by import QuerySearchBy
 
 exports = [
     Contact,
@@ -13,5 +15,7 @@ exports = [
     Add,
     Delete,
     Create,
-    Update
+    Update,
+    Create_Contact,
+    QuerySearchBy
 ]

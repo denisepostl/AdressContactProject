@@ -3,7 +3,7 @@ import sqlite3
 class Create():
 
     def __init__(self):
-        self.connection = sqlite3.connect("database/adress.db")
+        self.connection = sqlite3.connect("database/adress_category.db")
 
 
     def create_Contact(self):
@@ -13,7 +13,9 @@ class Create():
             CREATE TABLE Contact(
             ID INT PRIMARY KEY,
             First_Name VARCHAR,
-            LastName VARCHAR);
+            LastName VARCHAR,
+            Kategorie_ID INTEGER,
+            FOREIGN KEY(Kategorie_ID) REFERENCES Kategorie(ID));
         """ 
         cur.execute(query)
         self.connection.commit()
@@ -47,11 +49,23 @@ class Create():
         cur.execute(query)
         self.connection.commit()
 
+    def create_Category(self):
+        """This method is used to create Table Category"""
+        cur = self.connection.cursor()
+        query = """
+            CREATE TABLE Kategorie(
+            ID INT PRIMARY KEY,
+            Kategorie VARCHAR);
+        """ 
+        cur.execute(query)
+        self.connection.commit()
+
 def main():
     db = Create()
     db.create_Phonenumber()
     db.create_Contact()
     db.create_Adress()
+    db.create_Category()
 
 if __name__ == "__main__":
     main()

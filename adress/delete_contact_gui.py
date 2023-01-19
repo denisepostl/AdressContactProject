@@ -28,7 +28,6 @@ class MainWinDel(Delete, QuerySearchBy):
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
-        
 
     def SearchByName(self, event):
         for x in self.tree.get_children():

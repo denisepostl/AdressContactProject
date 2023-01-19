@@ -6,7 +6,7 @@ class QuerySearchBy():
         self.connection = sqlite3.connect("database/adress.db")
 
 
-    def askin(self, first_name, last_name):
+    def askin_query(self, first_name, last_name):
         cur = self.connection.cursor()
         query = """
             SELECT
@@ -29,7 +29,7 @@ class QuerySearchBy():
         self.contact = cur.fetchall()
         self.connection.commit()
 
-    def askin_phone(self, phone):
+    def askin_phone_query(self, phone):
         cur = self.connection.cursor()
         query = """
             SELECT
@@ -53,7 +53,7 @@ class QuerySearchBy():
         self.connection.commit()
         
     
-    def askin_all(self):
+    def askin_all_query(self):
         cur = self.connection.cursor()
         query = """
             SELECT

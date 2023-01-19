@@ -22,18 +22,19 @@ class MainWinQuery(MainWin, MainWinDel, QuerySearchBy):
         self.win.configure(background=self.co0)
         self.win.resizable(width=False, height=False)
 
+
     def SearchByPhone(self, event):
         for x in self.tree.get_children():
             self.tree.delete(x)
         phone = self.entrySearchByPhone.get()
-        self.askin_phone(phone,)       
+        self.askin_phone_query(phone,)       
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
     def query_contact(self):
         for x in self.tree.get_children():
             self.tree.delete(x)
-        self.askin_all()
+        self.askin_all_query()
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
@@ -43,7 +44,7 @@ class MainWinQuery(MainWin, MainWinDel, QuerySearchBy):
             self.tree.delete(x)
         name = self.entrySearchByName.get()
         lname = self.entrySearchByLName.get()
-        self.askin(name, lname)
+        self.askin_query(name, lname)
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
@@ -83,16 +84,16 @@ class MainWinQuery(MainWin, MainWinDel, QuerySearchBy):
 
         
         # Add Contact Button
-        self.bAdd = Button(self.win, text="Query all Contacts", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.query_contact)
+        self.bAdd = Button(self.win, text="Alle Kontakte abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.query_contact)
         self.bAdd.place(x = 480, y = 370, width=255, height=40)
 
-        # Update
-        self.bAdd = Button(self.win, text="Update Contact", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
-        self.bAdd.place(x = 20, y = 100, width=180, height=40)
+        #Update
+        self.bAdd = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bAdd.place(x = 20, y = 128, width=190, height=40)
 
-        # Query Add
-        self.bAdd = Button(self.win, text="Add Contact", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
-        self.bAdd.place(x = 20, y = 200, width=180, height=40)
+        #Add
+        self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bAdd.place(x = 20, y = 228, width=190, height=40)
 
         def mainwin_del(self):
             self.win.withdraw()
@@ -100,10 +101,9 @@ class MainWinQuery(MainWin, MainWinDel, QuerySearchBy):
             win.Window()
             win.win.mainloop()
 
-            
-        #query
-        self.bquery = Button(self.win, text="Delete Contact", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=mainwin_del)
-        self.bquery.place(x = 20, y = 320, width=180, height=40)
+        #delete
+        self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=mainwin_del)
+        self.bdelete.place(x = 20, y = 328, width=190, height=40)
 
         self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,), height= 5, show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)

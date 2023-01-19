@@ -4,7 +4,7 @@ from calculate_id import CalculateID
 class Add(CalculateID):
 
     def __init__(self):
-        self.connection = sqlite3.connect("contacts.db")
+        self.connection = sqlite3.connect("database/adress.db")
 
     def add_Name(self, ID, first_name, last_name):
         """This method is used for inserting a first- and last name in contact table."""

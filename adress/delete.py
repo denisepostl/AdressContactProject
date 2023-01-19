@@ -3,7 +3,7 @@ import sqlite3
 class Delete():
 
     def __init__(self):
-        self.connection = sqlite3.connect("contacts.db")
+        self.connection = sqlite3.connect("database/adress.db")
 
     def get_del_id(self, first_name, last_name):
         """This method is used to return the id from record when the user wants to delete a record by first- and last name."""

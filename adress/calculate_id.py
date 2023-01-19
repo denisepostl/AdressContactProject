@@ -3,7 +3,7 @@ import sqlite3
 class CalculateID:
 
     def __init__(self):
-        self.connection = sqlite3.connect("contacts.db")
+        self.connection = sqlite3.connect("database/adress.db")
     
     def calculate_phone_id(self): 
         """This method calculates the phone_id that the user can add contacts comfortable."""

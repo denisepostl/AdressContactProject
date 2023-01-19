@@ -3,7 +3,7 @@ import sqlite3
 class Ask():
 
     def __init__(self):
-        self.connection = sqlite3.connect("contacts.db")
+        self.connection = sqlite3.connect("database/adress.db")
 
 
     def askin(self, first_name, last_name):

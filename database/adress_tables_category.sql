@@ -9,9 +9,9 @@ CREATE TABLE Contact(
 CREATE TABLE Adress(
     ID INT PRIMARY KEY,
     Street VARCHAR,
-    PostCode INT,
+    PostCode VARCHAR,
     City VARCHAR,
-    HouseNumber INT,
+    HouseNumber NVARCHAR,
     Contact_ID INT,
     FOREIGN KEY(Contact_ID) REFERENCES Contact(ID)
 

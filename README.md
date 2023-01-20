@@ -27,11 +27,11 @@ Die User-Stories befinden sich unter: [doc](https://github.com/denisepostl/Adres
 
 Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. Mit TKinter soll ein GUI erstellt werden und die Datenbank muss dementsprechend verbunden werden.
 
-### Datenmodell (Stand: 12.01.2023)
+### Datenmodell (Stand: 20.01.2023)
 
 ![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/datamodel/datamodel.png)
 
-### Datenmodell für das Feature: Kategorie (Stand: 19.01.2023)
+### Datenmodell für das Feature: Kategorie (Stand: 20.01.2023)
 
 ![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/img/DatamodellExtension.png)
 
@@ -40,7 +40,7 @@ Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. 
 
 ![StartScreen](https://github.com/denisepostl/AdressContactProject/blob/main/img/StartScreen.png)
 
-### Bei der Auswahl des Buttons: Kontakt hinzufügen soll folgender Screen erscheinen: (Stand: 18.01.2023)
+### Bei der Auswahl des Buttons: Kontakt hinzufügen soll folgender Screen erscheinen: (Stand: 20.01.2023)
 
 ![StartScreen](https://github.com/denisepostl/AdressContactProject/blob/main/img/Adress.png)
 

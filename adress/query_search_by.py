@@ -13,9 +13,9 @@ class QuerySearchBy():
                 a.ID,
 	            a.First_Name,
 	            a.LastName,
+                b.PostCode,
+                b.City,
 	            b.Street,
-	            b.PostCode,
-	            b.City,
 	            b.HouseNumber,
 	            c.PhoneNumber
             from Contact a
@@ -36,9 +36,9 @@ class QuerySearchBy():
                 a.ID,
 	            a.First_Name,
 	            a.LastName,
+                b.PostCode,
+                b.City,
 	            b.Street,
-	            b.PostCode,
-	            b.City,
 	            b.HouseNumber,
 	            c.PhoneNumber
             from Contact a
@@ -57,11 +57,12 @@ class QuerySearchBy():
         cur = self.connection.cursor()
         query = """
             SELECT
+                a.ID,
 	            a.First_Name,
 	            a.LastName,
+                b.PostCode,
+                b.City,
 	            b.Street,
-	            b.PostCode,
-	            b.City,
 	            b.HouseNumber,
 	            c.PhoneNumber
             from Contact a

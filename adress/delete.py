@@ -41,7 +41,7 @@ class Delete():
         """This method is used for deleting a record in adress table."""
         cur = self.connection.cursor()
         query = """
-            DELETE FROM PhoneNumber
+            DELETE FROM Adress
             where Contact_ID like "%d"
         """ %(self.ID)
         cur.execute(query)

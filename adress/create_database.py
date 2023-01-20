@@ -24,7 +24,7 @@ class Create():
         query = """
             CREATE TABLE PhoneNumber(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
-            PhoneNumber VARCHAR,
+            PhoneNumber VARCHAR UNIQUE,
             Contact_ID INT,
             FOREIGN KEY(Contact_ID) REFERENCES Contact(ID));
         """ 

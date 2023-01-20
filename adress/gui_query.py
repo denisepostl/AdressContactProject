@@ -7,10 +7,12 @@ import os
 from PIL import Image, ImageTk
 from query_search_by import QuerySearchBy
 import sqlite3
-from delete_contact_gui import MainWinDel
 from add_contact_gui import MainWin
 
-class MainWinQuery(MainWin, MainWinDel, QuerySearchBy):
+#load the image
+Profile = {1: ""}
+
+class MainWinQuery(MainWin, QuerySearchBy):
     def __init__(self):
         self.connection = sqlite3.connect("database/adress.db")
         self.win = Tk()
@@ -53,8 +55,8 @@ class MainWinQuery(MainWin, MainWinDel, QuerySearchBy):
         top = Frame(self.win, width=800, height=50, bg=self.co2)
         top.grid(row=0, column=0, padx=0, pady=1)
 
-        bottom = Frame(self.win, width=800, height=150, bg=self.co2)
-        bottom.place(x=0, y=480)
+        bottom = Frame(self.win, width=800, height=140, bg=self.co2)
+        bottom.place(x=0, y=540)
 
         header = Label(top, text="Adress-Management ✆", height=1, font=("Bahnschrift 22 bold"), bg= self.co2, fg=self.co0)
         header.place(x=280, y=2)
@@ -95,36 +97,63 @@ class MainWinQuery(MainWin, MainWinDel, QuerySearchBy):
         self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
         self.bAdd.place(x = 20, y = 228, width=190, height=40)
 
-        def mainwin_del(self):
-            self.win.withdraw()
-            win = MainWinDel()
-            win.Window()
-            win.win.mainloop()
-
         #delete
         self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=mainwin_del)
         self.bdelete.place(x = 20, y = 328, width=190, height=40)
 
-        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,), height= 5, show="headings")
+        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,), height= 5, show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)
+        self.tree.bind("<<TreeviewSelect>>", self.treeActionSelect)
 
         #Add headings
-        self.tree.heading(1, text="Vorname")
-        self.tree.heading(2, text="Nachname")
-        self.tree.heading(3, text="PLZ")
-        self.tree.heading(4, text="Ort")
-        self.tree.heading(5, text="Straße")
-        self.tree.heading(6, text="Haus-Nr.")
-        self.tree.heading(7, text="Tel.-Nr.")
+        self.tree.heading(1, text="ID")
+        self.tree.heading(2, text="Vorname")
+        self.tree.heading(3, text="Nachname")
+        self.tree.heading(4, text="PLZ")
+        self.tree.heading(5, text="Ort")
+        self.tree.heading(6, text="Straße")
+        self.tree.heading(7, text="Haus-Nr.")
+        self.tree.heading(8, text="Tel.-Nr.")
 
         #define column width
-        self.tree.column(1, width=40)
+        self.tree.column(1, width=2)
         self.tree.column(2, width=40)
-        self.tree.column(3, width=20)
-        self.tree.column(5, width=20)
+        self.tree.column(3, width=48)
+        self.tree.column(4, width=2)
         self.tree.column(5, width=20)
         self.tree.column(6, width=20)
         self.tree.column(7, width=20)
+        self.tree.column(8, width=20)
+
+        load = Image.open("img/profile.png")
+        photo = ImageTk.PhotoImage(load)
+        self.label_image = Label(self.win, image=photo)
+        self.label_image.place(x=40, y=400)
+
+       
+    def treeActionSelect(self, event):
+        self.label_image.destroy()
+        idSelect = self.tree.item(self.tree.selection())['values'][0]
+        first_name = self.tree.item(self.tree.selection())['values'][1]
+        last_name = self.tree.item(self.tree.selection())['values'][2]
+        plz = self.tree.item(self.tree.selection())['values'][3]
+        ort = self.tree.item(self.tree.selection())['values'][4]
+        street = self.tree.item(self.tree.selection())['values'][5]
+        house_nr = self.tree.item(self.tree.selection())['values'][6]
+        tel = self.tree.item(self.tree.selection())['values'][7]
+        imgProfile="img/profile_" + str(idSelect) + "." + "jpg"
+        load = Image.open(imgProfile)
+        load.thumbnail((100, 100))
+        photo = ImageTk.PhotoImage(load)
+        Profile[1] = photo
+        lblImage = Label(self.win, bg= "blue",image=photo)
+        lblImage.place(x=40, y=400)
+        lname = Label(self.win, text="Name: " + str(first_name) + " " +str(last_name), bg=self.co0)
+        lname.place(x=142, y=400)
+        lname = Label(self.win, text="Adresse: " + str(street) + " " +str(house_nr) + " " + str(ort) + " " + str(plz), bg=self.co0)
+        lname.place(x=142, y=430)
+        lphone = Label(self.win, text="Tel.-Nr: " + str(tel), bg=self.co0)
+        lphone.place(x=142, y=460)
 
 
 def main():

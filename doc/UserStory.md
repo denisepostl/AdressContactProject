@@ -6,7 +6,7 @@ Als Entwickler brauche ich folgende Inputs: Vorname, Nachname, Tel. und Adresse.
 Benutzer
 
 **Input**  <br>
-Eingabe von Vorname (Typ: VARCHAR), Nachname (Typ: VARCHAR), Tel. (Typ: VARCHAR) und Adresse (Ort u. Straße Typ: VARCHAR | PLZ u. Hausnummer Typ: Integer) in einzelnen Textfeldern. 
+Eingabe von Vorname (Typ: VARCHAR), Nachname (Typ: VARCHAR), Tel. (Typ: VARCHAR) und Adresse (Ort u. Straße Typ: VARCHAR | PLZ (VARCHAR)u. Hausnummer Typ: NVARCHAR - wegen der führenden Nullen die möglich sein könnten (international)) in einzelnen Textfeldern. 
 Hinzufügen des neuen Kontaktes funktioniert dann über einen Button.
 Hinzufügen eines Bildes (Format: jpg oder png) soll auch über einen Button funktionieren.
 

@@ -31,6 +31,8 @@ Es wird eine SQLite Datenbank für die Speicherung von Address-Daten verwendet. 
 
 ![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/datamodel/datamodel.png)
 
+Wegen der möglicherweise führenden Nullen die bei Telefonnummer, PLZ u. Hausnummer auftreten könnten habe ich mich für die Telefonnummer und PLZ für den Datentyp VARCHAR entschieden und für die Hausnummer verwende ich den Datentyp NVARCHAR.
+
 ### Datenmodell für das Feature: Kategorie (Stand: 20.01.2023)
 
 ![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/img/DatamodellExtension.png)

@@ -7,7 +7,6 @@ class Add(CalculateID):
         self.connection = sqlite3.connect("database/adress.db")
 
     def add_Name(self, ID, first_name, last_name):
-        """This method is used for inserting a first- and last name in contact table."""
         cur = self.connection.cursor()
         query = """
             INSERT INTO Contact(ID, First_Name, LastName)
@@ -18,7 +17,6 @@ class Add(CalculateID):
 
 
     def add_Address(self, street, post_code, city, house_number, Contact_ID):
-        """This method is used for inserting a adress in adress table."""
         cur = self.connection.cursor()
         self.calculate_adress_id()
 
@@ -31,7 +29,6 @@ class Add(CalculateID):
 
 
     def add_PhoneNumber(self, phone_number, Contact_ID):
-        """This method is used for add a phonenumber in phonennumber table."""
         cur = self.connection.cursor()
         self.calculate_phone_id()
         query = """

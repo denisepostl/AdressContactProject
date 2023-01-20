@@ -5,10 +5,9 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 import sqlite3
 from calculate_id import CalculateID
-from insert_query import Add
 from query import Ask
 
-class MainWin(Add, Ask, CalculateID):
+class MainWin(Ask):
 
     def __init__(self):
         self.connection = sqlite3.connect("database/adress.db")
@@ -21,8 +20,9 @@ class MainWin(Add, Ask, CalculateID):
         self.win.configure(background=self.co0)
         self.win.resizable(width=False, height=False)
 
-    
+
     def add_contact(self):
+        cur = self.connection.cursor()
         self.FName = self.entryFName.get()
         self.LName = self.entryName.get()
         self.Ort = self.entryOrt.get()
@@ -31,20 +31,20 @@ class MainWin(Add, Ask, CalculateID):
         self.Str = self.entryStr.get()
         self.Phone = self.entryPhone.get()
 
-        self.calculate_contact_id()
-        self.add_Name(self.My_ID, self.FName, self.LName)
-        self.add_Address(self.Str, self.PLZ, self.Ort, self.HNR, self.My_ID)
-        self.add_PhoneNumber(self.Phone, self.My_ID)
-        self.connection.commit()
-        self.prin_(self.FName, self.LName)
-       
+        self.FName = self.entryFName.get()
+        self.LName = self.entryName.get()
+        self.Ort = self.entryOrt.get()
+        self.PLZ = self.entryPLZ.get()
+        self.HNR = self.entryHNR.get()
+        self.Str = self.entryStr.get()
+        self.Phone = self.entryPhone.get()
 
-    def prin_(self, name, lname):
-        label = Label(self.win, text=" ", bg=self.co2, fg=self.co0, font=("Calibri 14 bold"))
-        label.place(x=20, y=510, width=800)
-        self.askin(name, lname)
-        return label.configure(text="Ihr Kontakt wurde erfolgreich hinzugefügt: \n"+ "|Vorname        |Nachname        |PLZ        |Ort        |Straße        |Haus-Nr.        |Tel.-Nr.       |\n"+str(self.contact[0]) + "             " + str(self.contact[1]) + "             "+ str(self.contact[2]) + "             "+ str(self.contact[3]) + "             "+ str(self.contact[4]) + "             "+ str(self.contact[5]) + "             "+ str(self.contact[6]))
-        
+        cur.execute("INSERT INTO Contact ('First_Name', 'LastName') values(?,?)", (self.FName, self.LName))
+        contact_id = cur.lastrowid
+        cur.execute("INSERT INTO Adress ('Street', 'PostCode', 'City', 'Housenumber', 'Contact_ID') values(?,?,?,?,?)", (self.Str, self.Ort, self.PLZ, self.HNR, contact_id))
+        cur.execute("INSERT INTO PhoneNumber ('PhoneNumber', 'Contact_ID') values(?,?)", (self.Phone, contact_id))
+        self.connection.commit()
+   
 
     def BrowsePhoto(self):
         self.entryPhoto.delete(0, END)
@@ -52,7 +52,7 @@ class MainWin(Add, Ask, CalculateID):
         return self.entryPhoto.insert(END, filename)
         
 
-    def Window(self):
+    def Window_Main(self):
         top = Frame(self.win, width=800, height=50, bg=self.co2)
         top.grid(row=0, column=0, padx=0, pady=1)
 
@@ -134,7 +134,7 @@ def Delete():
 
 def main():
     win = MainWin()
-    win.Window()
+    win.Window_Main()
     win.win.mainloop()
 
 if __name__ == "__main__":

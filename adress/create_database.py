@@ -11,7 +11,7 @@ class Create():
         cur = self.connection.cursor()
         query = """
             CREATE TABLE Contact(
-            ID INT PRIMARY KEY,
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,
             First_Name VARCHAR,
             LastName VARCHAR);
         """ 
@@ -23,7 +23,7 @@ class Create():
         cur = self.connection.cursor()
         query = """
             CREATE TABLE PhoneNumber(
-            ID INT PRIMARY KEY,
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,
             PhoneNumber VARCHAR,
             Contact_ID INT,
             FOREIGN KEY(Contact_ID) REFERENCES Contact(ID));
@@ -36,7 +36,7 @@ class Create():
         cur = self.connection.cursor()
         query = """
             CREATE TABLE Adress(
-            ID INT PRIMARY KEY,
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,
             Street VARCHAR,
             PostCode VARCHAR,
             City VARCHAR,

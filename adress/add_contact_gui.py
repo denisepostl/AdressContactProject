@@ -136,9 +136,6 @@ class MainWin(Ask):
         self.bDelete = Button(self.win, text="Delete Contact", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
         self.bDelete.place(x = 20, y = 300, width=180, height=40)
 
-       
-def Delete():
-    pass
 
 def main():
     win = MainWin()

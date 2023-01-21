@@ -98,7 +98,7 @@ class MainWinQuery(MainWin, QuerySearchBy):
         self.bAdd.place(x = 20, y = 228, width=190, height=40)
 
         #delete
-        self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=mainwin_del)
+        self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
         self.bdelete.place(x = 20, y = 328, width=190, height=40)
 
         self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,), height= 5, show="headings")

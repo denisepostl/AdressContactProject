@@ -51,7 +51,7 @@ class MainWin(Ask):
         filename = self.entryPhoto.get()
         im = Image.open(filename)
         rgb_im = im.convert('RGB')
-        rgb_im.save(("img/profile_" + str(id) + "." + "jpg"))
+        rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg"))
    
 
     def BrowsePhoto(self):

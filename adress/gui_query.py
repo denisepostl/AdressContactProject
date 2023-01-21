@@ -141,7 +141,7 @@ class MainWinQuery(MainWin, QuerySearchBy):
         street = self.tree.item(self.tree.selection())['values'][5]
         house_nr = self.tree.item(self.tree.selection())['values'][6]
         tel = self.tree.item(self.tree.selection())['values'][7]
-        imgProfile="img/profile_" + str(idSelect) + "." + "jpg"
+        imgProfile="img/img_/profile_" + str(idSelect) + "." + "jpg"
         load = Image.open(imgProfile)
         load.thumbnail((100, 100))
         photo = ImageTk.PhotoImage(load)

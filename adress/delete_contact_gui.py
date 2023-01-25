@@ -7,12 +7,12 @@ import os
 from PIL import Image, ImageTk
 from query_search_by import QuerySearchBy
 import sqlite3
-from add_contact_gui import MainWin
+from gui_query import MainWinQuery
 
 #load the image
 Profile = {1: ""}
 
-class MainWinDelete(MainWin, QuerySearchBy):
+class MainWinDelete(QuerySearchBy):
     def __init__(self):
         self.connection = sqlite3.connect("database/adress.db")
         self.win = Tk()
@@ -73,6 +73,28 @@ class MainWinDelete(MainWin, QuerySearchBy):
             self.tree.insert('', END, values=row)
 
 
+    def Add_Win(self):
+        self.win.withdraw()
+        from add_contact_gui import MainWin
+        win = MainWin()
+        win.Window_Main()
+        win.win.mainloop()
+
+    def Query_Win(self):
+        self.win.withdraw()
+        from gui_query import MainWinQuery
+        win = MainWinQuery()
+        win.Window()
+        win.win.mainloop()
+
+    def Update_Win(self):
+        self.win.withdraw()
+        from gui_update_record import MainWinUpdate
+        win = MainWinUpdate()
+        win.MainWinUpdate()
+        win.win.mainloop()
+
+
     def Window(self):
         top = Frame(self.win, width=800, height=50, bg=self.co2)
         top.grid(row=0, column=0, padx=0, pady=1)
@@ -104,16 +126,16 @@ class MainWinDelete(MainWin, QuerySearchBy):
         self.bAdd.place(x = 480, y = 370, width=255, height=40)
 
         #Update
-        self.bAdd = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bAdd = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Update_Win)
         self.bAdd.place(x = 20, y = 128, width=190, height=40)
 
         #Add
-        self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Add_Win)
         self.bAdd.place(x = 20, y = 228, width=190, height=40)
 
-        #delete
-        self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
-        self.bdelete.place(x = 20, y = 328, width=190, height=40)
+        #query
+        self.bquery = Button(self.win, text="Kontakt abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Query_Win)
+        self.bquery.place(x = 20, y = 328, width=190, height=40)
 
         self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,), height= 5, show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)
@@ -142,7 +164,7 @@ def main():
     win = MainWinDelete()
     win.Window()
     win.win.mainloop()
-#
+
 if __name__ == "__main__":
     main()
 

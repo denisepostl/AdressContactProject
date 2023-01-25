@@ -7,12 +7,12 @@ import os
 from PIL import Image, ImageTk
 from query_search_by import QuerySearchBy
 import sqlite3
-from add_contact_gui import MainWin
+
 
 #load the image
 Profile = {1: ""}
 
-class MainWinQuery(MainWin, QuerySearchBy):
+class MainWinQuery(QuerySearchBy):
     def __init__(self):
         self.connection = sqlite3.connect("database/adress.db")
         self.win = Tk()
@@ -22,7 +22,7 @@ class MainWinQuery(MainWin, QuerySearchBy):
         self.co1 = "#000000"
         self.co2 = "#20214f"
         self.win.configure(background=self.co0)
-        self.win.resizable(width=False, height=False)
+        self.win.resizable(width=False, height=False) 
 
 
     def SearchByPhone(self, event):
@@ -49,6 +49,27 @@ class MainWinQuery(MainWin, QuerySearchBy):
         self.askin_query(name, lname)
         for row in self.contact:
             self.tree.insert('', END, values=row)
+
+    def Delete_Win(self):
+        self.win.withdraw()
+        from delete_contact_gui import MainWinDelete
+        win = MainWinDelete()
+        win.Window()
+        win.win.mainloop()
+
+    def Add_Win(self):
+        self.win.withdraw()
+        from add_contact_gui import MainWin
+        win = MainWin()
+        win.Window_Main()
+        win.win.mainloop()
+
+    def Update_Win(self):
+        self.win.withdraw()
+        from gui_update_record import MainWinUpdate
+        win = MainWinUpdate()
+        win.MainWinUpdate()
+        win.win.mainloop()
 
 
     def Window(self):
@@ -90,15 +111,15 @@ class MainWinQuery(MainWin, QuerySearchBy):
         self.bAdd.place(x = 480, y = 370, width=255, height=40)
 
         #Update
-        self.bAdd = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bAdd = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Update_Win)
         self.bAdd.place(x = 20, y = 128, width=190, height=40)
 
         #Add
-        self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Add_Win)
         self.bAdd.place(x = 20, y = 228, width=190, height=40)
 
         #delete
-        self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command= self.Delete_Win)
         self.bdelete.place(x = 20, y = 328, width=190, height=40)
 
         self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,), height= 5, show="headings")
@@ -125,35 +146,35 @@ class MainWinQuery(MainWin, QuerySearchBy):
         self.tree.column(7, width=20)
         self.tree.column(8, width=20)
 
-        load = Image.open("img/profile.png")
-        photo = ImageTk.PhotoImage(load)
-        self.label_image = Label(self.win, image=photo)
+        self.load = Image.open("img/profile.png")
+        self.photo = ImageTk.PhotoImage(self.load)
+        self.label_image = Label(self.win, image=self.photo)  
         self.label_image.place(x=40, y=400)
 
        
     def treeActionSelect(self, event):
         self.label_image.destroy()
-        idSelect = self.tree.item(self.tree.selection())['values'][0]
-        first_name = self.tree.item(self.tree.selection())['values'][1]
-        last_name = self.tree.item(self.tree.selection())['values'][2]
-        plz = self.tree.item(self.tree.selection())['values'][3]
-        ort = self.tree.item(self.tree.selection())['values'][4]
-        street = self.tree.item(self.tree.selection())['values'][5]
-        house_nr = self.tree.item(self.tree.selection())['values'][6]
-        tel = self.tree.item(self.tree.selection())['values'][7]
-        imgProfile="img/img_/profile_" + str(idSelect) + "." + "jpg"
-        load = Image.open(imgProfile)
-        load.thumbnail((100, 100))
-        photo = ImageTk.PhotoImage(load)
-        Profile[1] = photo
-        lblImage = Label(self.win, bg= "blue",image=photo)
-        lblImage.place(x=40, y=400)
-        lname = Label(self.win, text="Name: " + str(first_name) + " " +str(last_name), bg=self.co0)
-        lname.place(x=142, y=400)
-        lname = Label(self.win, text="Adresse: " + str(street) + " " +str(house_nr) + " " + str(ort) + " " + str(plz), bg=self.co0)
-        lname.place(x=142, y=430)
-        lphone = Label(self.win, text="Tel.-Nr: " + str(tel), bg=self.co0)
-        lphone.place(x=142, y=460)
+        self.idSelect = self.tree.item(self.tree.selection())['values'][0]
+        self.first_name = self.tree.item(self.tree.selection())['values'][1]
+        self.last_name = self.tree.item(self.tree.selection())['values'][2]
+        self.plz = self.tree.item(self.tree.selection())['values'][3]
+        self.ort = self.tree.item(self.tree.selection())['values'][4]
+        self.street = self.tree.item(self.tree.selection())['values'][5]
+        self.house_nr = self.tree.item(self.tree.selection())['values'][6]
+        self.tel = self.tree.item(self.tree.selection())['values'][7]
+        self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg"
+        self.load = Image.open(self.imgProfile)
+        self.load.thumbnail((100, 100))
+        self.photo = ImageTk.PhotoImage(self.load)
+        Profile[1] = self.photo
+        self.lblImage = Label(self.win, bg= "blue",image=self.photo)
+        self.lblImage.place(x=40, y=400)
+        self.lname = Label(self.win, width=40, anchor="w", text="Name: " + str(self.first_name) + " " +str(self.last_name), bg=self.co0)
+        self.lname.place(x=148, y=400)
+        self.ladr = Label(self.win, width=40, anchor="w", text="Adresse: " + str(self.street) + " " +str(self.house_nr) + " " + str(self.ort) + " " + str(self.plz), bg=self.co0)
+        self.ladr.place(x=148, y=430)
+        self.lphone = Label(self.win, width=40, anchor="w", text="Tel.-Nr: " + str(self.tel), bg=self.co0)
+        self.lphone.place(x=148, y=460)
 
 
 def main():

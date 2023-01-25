@@ -27,26 +27,29 @@ class Win(MainWinDelete, MainWin, MainWinUpdate):
     
     def Delete_Win(self):
         self.win.withdraw()
-        delete = MainWinDelete()
-        delete.Window_Main()
-        delete.delete.mainloop()
+        win = MainWinDelete()
+        win.Window()
+        win.win.mainloop()
 
     def Add_Win(self):
         self.win.withdraw()
-        add = MainWin()
-        add.Window_Main()
-        add.add.mainloop()
+        win = MainWin()
+        win.Window_Main()
+        win.win.mainloop()
+
 
     def Query_Win(self):
         self.win.withdraw()
-        query = MainWinQuery()
-        query.mainloop()
+        win = MainWinQuery()
+        win.Window()
+        win.win.mainloop()
 
     def Update_Win(self):
         self.win.withdraw()
-        wind = Tk()
-        application = MainWinUpdate (wind)
-        wind.mainloop()
+        win = MainWinUpdate()
+        win.MainWinUpdate()
+        win.win.mainloop()
+
         
 
     def Window(self):

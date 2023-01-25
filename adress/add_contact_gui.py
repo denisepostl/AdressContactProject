@@ -1,13 +1,18 @@
 from tkinter import ttk 
+import tkinter as tk
 from tkinter import *
 
 from tkinter import filedialog
+import os
 from PIL import Image, ImageTk
 import sqlite3
 from calculate_id import CalculateID
 from query import Ask
+from gui_query import MainWinQuery
 
-class MainWin(Ask):
+Profile = {1: ""}
+
+class MainWin(Ask, MainWinQuery):
 
     def __init__(self):
         self.connection = sqlite3.connect("database/adress.db")
@@ -58,7 +63,28 @@ class MainWin(Ask):
         self.entryPhoto.delete(0, END)
         filename = filedialog.askopenfilename(initialdir="/", title="Select File")
         return self.entryPhoto.insert(END, filename)
-        
+
+    def Delete_Win(self):
+        self.win.withdraw()
+        from delete_contact_gui import MainWinDelete
+        win = MainWinDelete()
+        win.Window()
+        win.win.mainloop()
+
+    def Query_Win(self):
+        self.win.withdraw()
+        from gui_query import MainWinQuery
+        win = MainWinQuery()
+        win.Window()
+        win.win.mainloop()
+
+    def Update_Win(self):
+        self.win.withdraw()
+        from gui_update_record import MainWinUpdate
+        win = MainWinUpdate()
+        win.MainWinUpdate()
+        win.win.mainloop()
+
 
     def Window_Main(self):
         top = Frame(self.win, width=800, height=50, bg=self.co2)
@@ -121,20 +147,44 @@ class MainWin(Ask):
         self.entryPhoto.place(x=496, y=310, width=200, height=30)
 
         # Add Contact Button
-        self.bAdd = Button(self.win, text="Add Contact", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_contact)
+        self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_contact)
         self.bAdd.place(x = 480, y = 410, width=255, height=40)
 
         # Update Button
-        self.bUpdate = Button(self.win, text="Update Contact", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bUpdate = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Update_Win)
         self.bUpdate.place(x = 20, y = 100, width=180, height=40)
 
         # Query Button
-        self.bQuery = Button(self.win, text="Query Contact", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bQuery = Button(self.win, text="Kontakt abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Query_Win)
         self.bQuery.place(x = 20, y = 200, width=180, height=40)
 
         #Delete Button
-        self.bDelete = Button(self.win, text="Delete Contact", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
+        self.bDelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
         self.bDelete.place(x = 20, y = 300, width=180, height=40)
+
+    def treeActionSelect(self, event):
+        self.label_image.destroy()
+        self.idSelect = self.tree.item(self.tree.selection())['values'][0]
+        self.first_name = self.tree.item(self.tree.selection())['values'][1]
+        self.last_name = self.tree.item(self.tree.selection())['values'][2]
+        self.plz = self.tree.item(self.tree.selection())['values'][3]
+        self.ort = self.tree.item(self.tree.selection())['values'][4]
+        self.street = self.tree.item(self.tree.selection())['values'][5]
+        self.house_nr = self.tree.item(self.tree.selection())['values'][6]
+        self.tel = self.tree.item(self.tree.selection())['values'][7]
+        self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg"
+        self.load = Image.open(self.imgProfile)
+        self.load.thumbnail((100, 100))
+        self.photo = ImageTk.PhotoImage(self.load)
+        Profile[1] = self.photo
+        self.lblImage = Label(self.win, bg= "blue",image=self.photo)
+        self.lblImage.place(x=40, y=400)
+        self.lname = Label(self.win, width=40, anchor="w", text="Name: " + str(self.first_name) + " " +str(self.last_name), bg=self.co0)
+        self.lname.place(x=148, y=400)
+        self.ladr = Label(self.win, width=40, anchor="w", text="Adresse: " + str(self.street) + " " +str(self.house_nr) + " " + str(self.ort) + " " + str(self.plz), bg=self.co0)
+        self.ladr.place(x=148, y=430)
+        self.lphone = Label(self.win, width=40, anchor="w", text="Tel.-Nr: " + str(self.tel), bg=self.co0)
+        self.lphone.place(x=148, y=460)
 
 
 def main():

@@ -1,34 +1,75 @@
-from tkinter import *
 from tkinter import ttk 
+import tkinter as tk
+from tkinter import *
+
+from tkinter import filedialog
+import os
+from PIL import Image, ImageTk
 import sqlite3
 from query_search_by import QuerySearchBy
+from gui_query import MainWinQuery
+
+Profile = {1: ""}
 
 class MainWinUpdate(QuerySearchBy):
     db_name = 'database/adress.db'
-    def __init__(self, wind):
+
+    def __init__(self):
         self.connection = sqlite3.connect("database/adress.db")
-        self.wind = wind
+        self.win = Tk()
         self.co0 = "#ffffff"
         self.co1 = "#000000"
         self.co2 = "#20214f"
-        self.wind.geometry('800x600')
-        self.wind.title ('Adress-Management')
-        self.wind.configure(background=self.co0)
-        self.wind.resizable(width=False, height=False)
+        self.win.geometry('800x600')
+        self.win.title ('Adress-Management')
+        self.win.configure(background=self.co0)
+        self.win.resizable(width=False, height=False)
     
     
-
-        top = Frame(self.wind, width=800, height=50, bg=self.co2)
+    def MainWinUpdate(self):
+        top = Frame(self.win, width=800, height=50, bg=self.co2)
         top.grid(row=0, column=0, padx=0, pady=1)
 
-        bottom = Frame(self.wind, width=800, height=140, bg=self.co2)
+        bottom = Frame(self.win, width=800, height=140, bg=self.co2)
         bottom.place(x=0, y=540)
 
         header = Label(top, text="Adress-Management ✆", height=1, font=("Bahnschrift 22 bold"), bg= self.co2, fg=self.co0)
         header.place(x=280, y=2)
 
+        #Update Contact Button
+        self.bUpdate = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.editing)
+        self.bUpdate.place(x = 480, y = 370, width=255, height=40)
+
+        #Query
+        self.bQuery = Button(self.win, text="Kontakt abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Query_Win)
+        self.bQuery.place(x = 20, y = 128, width=190, height=40)
+
+        #Add
+        self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Add_Win)
+        self.bAdd.place(x = 20, y = 228, width=190, height=40)
+
+        #delete
+        self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
+        self.bdelete.place(x = 20, y = 328, width=190, height=40)
+
+        self.lbSearchByName = Label(self.win, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)
+        self.lbSearchByName.place(x=200, y=60, width=200)
+        self.entrySearchByName = Entry(self.win)
+        self.entrySearchByName.insert(0, "Vorname")
+        self.entrySearchByName.bind("<Return>", self.SearchByName)
+        self.entrySearchByName.place(x=400, y=60, width=160, height=30)
+
+
+        self.lbSearchByLName = Label(self.win, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)
+        self.lbSearchByLName.place(x=200, y=60, width=200)
+        self.entrySearchByLName = Entry(self.win)
+        self.entrySearchByLName.insert(0, "Nachname")
+        self.entrySearchByLName.bind("<Return>", self.SearchByName)
+        self.entrySearchByLName.place(x=580, y=60, width=160, height=30)
+
         self.tree = ttk.Treeview(height=10,columns=(1,2,3,4,5,6,7,8,),show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)
+
         self.tree.heading(1, text="ID")
         self.tree.heading(2, text="Vorname")
         self.tree.heading(3, text="Nachname")
@@ -47,37 +88,28 @@ class MainWinUpdate(QuerySearchBy):
         self.tree.column(7, width=20)
         self.tree.column(8, width=20)
 
-        # Add Contact Button
-        self.bAdd = Button(self.wind, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.editing)
-        self.bAdd.place(x = 480, y = 370, width=255, height=40)
-
-        #Update
-        self.bAdd = Button(self.wind, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
-        self.bAdd.place(x = 20, y = 128, width=190, height=40)
-
-        #Add
-        self.bAdd = Button(self.wind, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
-        self.bAdd.place(x = 20, y = 228, width=190, height=40)
-
-        #delete
-        self.bdelete = Button(self.wind, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0)
-        self.bdelete.place(x = 20, y = 328, width=190, height=40)
-
-        self.lbSearchByName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)
-        self.lbSearchByName.place(x=200, y=60, width=200)
-        self.entrySearchByName = Entry(self.wind)
-        self.entrySearchByName.insert(0, "Vorname")
-        self.entrySearchByName.bind("<Return>", self.SearchByName)
-        self.entrySearchByName.place(x=400, y=60, width=160, height=30)
 
 
-        self.lbSearchByLName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)
-        self.lbSearchByLName.place(x=200, y=60, width=200)
-        self.entrySearchByLName = Entry(self.wind)
-        self.entrySearchByLName.insert(0, "Nachname")
-        self.entrySearchByLName.bind("<Return>", self.SearchByName)
-        self.entrySearchByLName.place(x=580, y=60, width=160, height=30)
+    def Delete_Win(self):
+        self.win.withdraw()
+        from delete_contact_gui import MainWinDelete
+        win = MainWinDelete()
+        win.Window()
+        win.win.mainloop()
 
+    def Add_Win(self):
+        self.win.withdraw()
+        from add_contact_gui import MainWin
+        win = MainWin()
+        win.Window_Main()
+        win.win.mainloop()
+
+    def Query_Win(self):
+        self.win.withdraw()
+        from gui_query import MainWinQuery
+        win = MainWinQuery()
+        win.Window()
+        win.win.mainloop()
 
     
     def query_contact(self):
@@ -106,8 +138,6 @@ class MainWinUpdate(QuerySearchBy):
         return query_result
 
    
-
-
     def editing(self):
         self.tree.item(self.tree.selection())['values'][0]
 
@@ -195,11 +225,13 @@ class MainWinUpdate(QuerySearchBy):
         for row in db_rows:
             self.tree.insert('', END, values=row)
 
+def main():
+    win = MainWinUpdate()
+    win.MainWinUpdate()
+    win.win.mainloop()
 
-if __name__ == '__main__':
-    wind = Tk()
-    application = MainWinUpdate (wind)
-    wind.mainloop()
+if __name__ == "__main__":
+    main()
 
 
 

@@ -7,6 +7,10 @@ from update_query import Update
 from create_database import Create
 from create_database_category import Create_Contact
 from query_search_by import QuerySearchBy
+from add_contact_gui import MainWin
+from gui_update_record import MainWinUpdate
+from delete_contact_gui import MainWinDelete
+from gui_query import MainWinQuery
 
 exports = [
     Contact,
@@ -17,5 +21,9 @@ exports = [
     Create,
     Update,
     Create_Contact,
-    QuerySearchBy
+    MainWin,
+    MainWinUpdate,
+    QuerySearchBy,
+    MainWinDelete,
+    MainWinQuery
 ]

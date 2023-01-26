@@ -7,12 +7,11 @@ import sqlite3
 from calculate_id import CalculateID
 from insert_query import Add
 from query import Ask
-from delete_contact_gui import MainWinDelete
-from gui_query import MainWinQuery
-from add_contact_gui import MainWin
-from gui_update_record import MainWinUpdate
+from query_search_by import QuerySearchBy
 
-class Win(MainWinDelete, MainWin, MainWinUpdate):
+
+
+class Win():
 
     def __init__(self):
         self.win = Tk()
@@ -27,12 +26,14 @@ class Win(MainWinDelete, MainWin, MainWinUpdate):
     
     def Delete_Win(self):
         self.win.withdraw()
+        from delete_contact_gui import MainWinDelete
         win = MainWinDelete()
         win.Window()
         win.win.mainloop()
 
     def Add_Win(self):
         self.win.withdraw()
+        from add_contact_gui import MainWin
         win = MainWin()
         win.Window_Main()
         win.win.mainloop()
@@ -40,17 +41,18 @@ class Win(MainWinDelete, MainWin, MainWinUpdate):
 
     def Query_Win(self):
         self.win.withdraw()
+        from gui_query import MainWinQuery
         win = MainWinQuery()
         win.Window()
         win.win.mainloop()
 
     def Update_Win(self):
         self.win.withdraw()
+        from gui_update_record import MainWinUpdate
         win = MainWinUpdate()
         win.MainWinUpdate()
         win.win.mainloop()
 
-        
 
     def Window(self):
         #top

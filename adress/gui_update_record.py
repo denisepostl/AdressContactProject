@@ -67,7 +67,8 @@ class MainWinUpdate(QuerySearchBy):
         self.entrySearchByLName.bind("<Return>", self.SearchByName)
         self.entrySearchByLName.place(x=580, y=60, width=160, height=30)
 
-        self.tree = ttk.Treeview(height=10,columns=(1,2,3,4,5,6,7,8,),show="headings")
+    
+        self.tree = ttk.Treeview(self.win, height=10,columns=(1,2,3,4,5,6,7,8,),show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)
 
         self.tree.heading(1, text="ID")
@@ -87,7 +88,6 @@ class MainWinUpdate(QuerySearchBy):
         self.tree.column(6, width=20)
         self.tree.column(7, width=20)
         self.tree.column(8, width=20)
-
 
 
     def Delete_Win(self):
@@ -149,46 +149,49 @@ class MainWinUpdate(QuerySearchBy):
         self.house_nr = self.tree.item(self.tree.selection())['values'][6]
         self.telefone = self.tree.item(self.tree.selection())['values'][7]
 
-        self.edit_wind = Toplevel()
-        self.edit_wind.title('Editing')
-        
+        self.edit_wind = Tk() #Toplevel()
+        self.edit_wind.title("EDIT-CONTACT")
+        self.edit_wind.geometry('280x240')
+        self.edit_wind.configure(background=self.co2)
+        self.edit_wind.resizable(width=False, height=False)
+
         #FirstName
-        Label (self.edit_wind, text='Vorname: ').grid(row=1, column=1)
+        Label (self.edit_wind, bg=self.co2, fg=self.co0, text='Vorname: ').grid(row=3, column=3)
         self.new_name = Entry(self.edit_wind)
-        self.new_name.grid(row=1, column=2)
+        self.new_name.grid(row=3, column=4)
 
         #Nachname
-        Label (self.edit_wind, text='Nachname: ').grid(row=2, column=1)
+        Label (self.edit_wind, bg=self.co2, fg=self.co0, text='Nachname: ').grid(row=4, column=3)
         self.lname = Entry(self.edit_wind)
-        self.lname.grid(row=2, column=2)
+        self.lname.grid(row=4, column=4)
 
         #PLZ
-        Label (self.edit_wind, text='PLZ: ').grid(row=3, column=1)
+        Label (self.edit_wind, bg=self.co2, fg=self.co0, text='PLZ: ').grid(row=5, column=3)
         self.plz_ = Entry(self.edit_wind)
-        self.plz_.grid(row=3, column=2)
+        self.plz_.grid(row=5, column=4)
 
         #House Nr
-        Label (self.edit_wind, text='Haus-Nr: ').grid(row=4, column=1)
+        Label (self.edit_wind, bg=self.co2, fg=self.co0, text='Haus-Nr: ').grid(row=6, column=3)
         self.hNR = Entry(self.edit_wind)
-        self.hNR.grid(row=4, column=2)
+        self.hNR.grid(row=6, column=4)
 
         #City
-        Label (self.edit_wind, text='Ort: ').grid(row=5, column=1)
+        Label (self.edit_wind, bg=self.co2, fg=self.co0, text='Ort: ').grid(row=7, column=3)
         self.city = Entry(self.edit_wind)
-        self.city.grid(row=5, column=2)
+        self.city.grid(row=7, column=4)
 
         #Straße
-        Label (self.edit_wind, text='Straße: ').grid(row=6, column=1)
+        Label (self.edit_wind, bg=self.co2, fg=self.co0, text='Straße: ').grid(row=8, column=3)
         self.street_ = Entry(self.edit_wind)
-        self.street_.grid(row=6, column=2)
+        self.street_.grid(row=8, column=4)
 
         #Tel.:
-        Label (self.edit_wind, text='Tel.: ').grid(row=7, column=1)
+        Label (self.edit_wind, bg=self.co2, fg=self.co0, text='Tel.: ').grid(row=9, column=3)
         self.phone_ = Entry(self.edit_wind)
-        self.phone_.grid(row=7, column=2)
+        self.phone_.grid(row=9, column=4)
 
 
-        Button(self.edit_wind, text='Änderungen speichern', command=self.update_records).grid(row=8, column=2, sticky=W)
+        Button(self.edit_wind, bg=self.co0, fg=self.co1, text='Änderungen speichern', command=self.update_records).grid(row=10, column=4, sticky=W)
         self.edit_wind.mainloop()
 
     def update_records(self):        

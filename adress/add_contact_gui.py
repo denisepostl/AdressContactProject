@@ -8,11 +8,10 @@ from PIL import Image, ImageTk
 import sqlite3
 from calculate_id import CalculateID
 from query import Ask
-from gui_query import MainWinQuery
 
 Profile = {1: ""}
 
-class MainWin(Ask, MainWinQuery):
+class MainWin(Ask):
 
     def __init__(self):
         self.connection = sqlite3.connect("database/adress.db")
@@ -161,30 +160,6 @@ class MainWin(Ask, MainWinQuery):
         #Delete Button
         self.bDelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
         self.bDelete.place(x = 20, y = 300, width=180, height=40)
-
-    def treeActionSelect(self, event):
-        self.label_image.destroy()
-        self.idSelect = self.tree.item(self.tree.selection())['values'][0]
-        self.first_name = self.tree.item(self.tree.selection())['values'][1]
-        self.last_name = self.tree.item(self.tree.selection())['values'][2]
-        self.plz = self.tree.item(self.tree.selection())['values'][3]
-        self.ort = self.tree.item(self.tree.selection())['values'][4]
-        self.street = self.tree.item(self.tree.selection())['values'][5]
-        self.house_nr = self.tree.item(self.tree.selection())['values'][6]
-        self.tel = self.tree.item(self.tree.selection())['values'][7]
-        self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg"
-        self.load = Image.open(self.imgProfile)
-        self.load.thumbnail((100, 100))
-        self.photo = ImageTk.PhotoImage(self.load)
-        Profile[1] = self.photo
-        self.lblImage = Label(self.win, bg= "blue",image=self.photo)
-        self.lblImage.place(x=40, y=400)
-        self.lname = Label(self.win, width=40, anchor="w", text="Name: " + str(self.first_name) + " " +str(self.last_name), bg=self.co0)
-        self.lname.place(x=148, y=400)
-        self.ladr = Label(self.win, width=40, anchor="w", text="Adresse: " + str(self.street) + " " +str(self.house_nr) + " " + str(self.ort) + " " + str(self.plz), bg=self.co0)
-        self.ladr.place(x=148, y=430)
-        self.lphone = Label(self.win, width=40, anchor="w", text="Tel.-Nr: " + str(self.tel), bg=self.co0)
-        self.lphone.place(x=148, y=460)
 
 
 def main():

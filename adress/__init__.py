@@ -12,11 +12,11 @@ from gui_update_record import MainWinUpdate
 from delete_contact_gui import MainWinDelete
 from gui_query import MainWinQuery
 
-exports = [
+__exports__ = [
+    Add,
     Contact,
     CalculateID,
     Ask,
-    Add,
     Delete,
     Create,
     Update,

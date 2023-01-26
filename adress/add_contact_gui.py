@@ -45,7 +45,7 @@ class MainWin(Ask):
 
         cur.execute("INSERT INTO Contact ('First_Name', 'LastName') values(?,?)", (self.FName, self.LName))
         contact_id = cur.lastrowid
-        cur.execute("INSERT INTO Adress ('Street', 'PostCode', 'City', 'Housenumber', 'Contact_ID') values(?,?,?,?,?)", (self.Str, self.Ort, self.PLZ, self.HNR, contact_id))
+        cur.execute("INSERT INTO Adress ('PostCode', 'Street', 'City', 'Housenumber', 'Contact_ID') values(?,?,?,?,?)", (self.PLZ, self.Str, self.Ort, self.HNR, contact_id))
         cur.execute("INSERT INTO PhoneNumber ('PhoneNumber', 'Contact_ID') values(?,?)", (self.Phone, contact_id))
         self.connection.commit()
 
@@ -80,9 +80,9 @@ class MainWin(Ask):
     def Update_Win(self):
         self.win.withdraw()
         from gui_update_record import MainWinUpdate
-        win = MainWinUpdate()
-        win.MainWinUpdate()
-        win.win.mainloop()
+        wind = MainWinUpdate()
+        wind.MainWinUpdate()
+        wind.wind.mainloop()
 
 
     def Window_Main(self):

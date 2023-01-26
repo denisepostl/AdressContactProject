@@ -49,9 +49,9 @@ class Win():
     def Update_Win(self):
         self.win.withdraw()
         from gui_update_record import MainWinUpdate
-        win = MainWinUpdate()
-        win.MainWinUpdate()
-        win.win.mainloop()
+        wind = MainWinUpdate()
+        wind.MainWinUpdate()
+        wind.wind.mainloop()
 
 
     def Window(self):

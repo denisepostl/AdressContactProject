@@ -21,7 +21,7 @@ Die User-Stories befinden sich unter: [doc](https://github.com/denisepostl/Adres
 
 ### Feature
 
-    - Kontakt gehört zur Familie/Freund (Eigene Tabelle: Roles notwendig, die zur Contact-Tabelle referenziert)
+    - Kontakt gehört zur Familie/Freunde (Eigene Tabelle: Roles notwendig, die zur Contact-Tabelle referenziert)
 
 ### Verwendung von Python, SQLite und TKinter
 

@@ -1,9 +1,12 @@
 from tkinter import *
 from tkinter import ttk 
 import sqlite3
-from .query_search_by import QuerySearchBy
+from adress.query_search_by import QuerySearchBy
+from adress.update_for_gui import Updating
 
-class MainWinUpdate(QuerySearchBy):
+Profile = {1: ""}
+
+class MainWinUpdate(QuerySearchBy, Updating):
     db_name = 'database/adress.db'
     def __init__(self):
         self.connection = sqlite3.connect("database/adress.db")
@@ -191,37 +194,23 @@ class MainWinUpdate(QuerySearchBy):
         self.edit_wind.mainloop()
 
     def update_records(self):        
-        cur = self.connection.cursor()
-        cur.execute("UPDATE Contact SET First_Name = ? WHERE First_Name = ?" , (str(self.new_name.get()), str(self.F_Name)))
-        cur.execute("UPDATE Contact SET LastName = ? WHERE LastName = ?" , (str(self.lname.get()), str(self.L_Name)))
-        cur.execute("UPDATE Adress SET PostCode = ? WHERE PostCode = ?" , (str(self.plz_.get()), str(self.PLZ)))
-        cur.execute("UPDATE Adress SET City = ? WHERE City = ?" , (str(self.city.get()), str(self.ort)))
-        cur.execute("UPDATE Adress SET Street = ? WHERE Street = ?" , (str(self.street_.get()), str(self.street)))
-        cur.execute("UPDATE Adress SET HouseNumber = ? WHERE HouseNumber = ?" , (str(self.hNR.get()), str(self.house_nr)))
-        cur.execute("UPDATE PhoneNumber SET PhoneNumber = ? WHERE PhoneNumber = ?" , (str(self.phone_.get()), str(self.telefone)))
-
+        self.connection.cursor()
+        self.update_FName(str(self.new_name.get()), str(self.F_Name))
+        self.update_LName(str(self.lname.get()), str(self.L_Name))
+        self.update_PostCode(str(self.plz_.get()), str(self.PLZ))
+        self.update_City(str(self.city.get()), str(self.ort))
+        self.update_Street(str(self.street_.get()), str(self.street))
+        self.update_HNR(str(self.hNR.get()), str(self.house_nr))
+        self.update_Tel(str(self.phone_.get()), str(self.telefone))
         self.connection.commit()
         self.edit_wind.destroy()
         self.viewing_records()
 
     def viewing_records(self):
-        records = self.tree.get_children()
-        for element in records:
-            self.tree.delete (element)
-        query = """Select 
-	            c.ID,
-	            c.First_Name,
-	            c.LastName,
-	            a.PostCode,
-	            a.City,
-	            a.Street,
-	            a.HouseNumber,
-	            p.PhoneNumber
-                from Contact c
-                join adress a on a.ID = c.ID
-                join PhoneNumber p on c.ID = p.ID""" 
-        db_rows = self.run_query(query)
-        for row in db_rows:
+        for x in self.tree.get_children():
+            self.tree.delete(x)
+        self.askin_all_query()
+        for row in self.contact:
             self.tree.insert('', END, values=row)
 
 

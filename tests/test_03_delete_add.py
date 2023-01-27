@@ -1,5 +1,6 @@
 import sqlite3
 import logging
+import pytest
 
 try:
     import adress
@@ -20,6 +21,8 @@ def test_001_add_Name():
     assert len(result) == 1
     assert result[0][1] == first_name
     assert result[0][2] == last_name
+    c.execute("DELETE FROM Contact WHERE ID = 1")
+    conn.commit()
     conn.close()
 
 def test_002_add_Address():
@@ -40,6 +43,8 @@ def test_002_add_Address():
     assert result[0][3] == city
     assert result[0][4] == house_number
     assert result[0][5] == Contact_ID
+    c.execute("DELETE FROM Adress WHERE Contact_ID = 1")
+    conn.commit()
     conn.close()
     
 def test_003_add_PhoneNumber():
@@ -54,4 +59,6 @@ def test_003_add_PhoneNumber():
     assert len(result) == 1
     assert result[0][1] == phone_number
     assert result[0][2] == Contact_ID
+    c.execute("DELETE FROM PhoneNumber WHERE Contact_ID = 1")
+    conn.commit()
     conn.close()

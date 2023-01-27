@@ -13,6 +13,8 @@ from .query_search_by import QuerySearchBy
 from .query import Ask
 from .update_item_query import Update_Select
 from .update_query import Update
+from .add_for_gui import Insert
+from .update_for_gui import Updating
 
 __exports__ = [
     Add,
@@ -29,5 +31,7 @@ __exports__ = [
     MainWinDelete,
     MainWinQuery, 
     Update_Select, 
-    Win
+    Win,
+    Insert, 
+    Updating
 ]

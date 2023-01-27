@@ -5,7 +5,7 @@ from tkinter import *
 from tkinter import filedialog
 import os
 from PIL import Image, ImageTk
-from .query_search_by import QuerySearchBy
+from adress.query_search_by import QuerySearchBy
 import sqlite3
 
 
@@ -22,8 +22,8 @@ class MainWinQuery(QuerySearchBy):
         self.co1 = "#000000"
         self.co2 = "#20214f"
         self.win.configure(background=self.co0)
-        self.win.resizable(width=False, height=False) 
-
+        self.win.resizable(width=False, height=False)
+        
 
     def SearchByPhone(self, event):
         for x in self.tree.get_children():
@@ -146,14 +146,14 @@ class MainWinQuery(QuerySearchBy):
         self.tree.column(7, width=20)
         self.tree.column(8, width=20)
 
-        self.load = Image.open("img/profile.png")
-        self.photo = ImageTk.PhotoImage(self.load)
-        self.label_image = Label(self.win, image=self.photo)  
-        self.label_image.place(x=40, y=400)
+        #self.load = Image.open("img/profile.png")
+        #self.photo = ImageTk.PhotoImage(self.load)
+        #self.label_image = Label(self.win, image=self.photo)  
+        #self.label_image.place(x=40, y=400)
 
        
     def treeActionSelect(self, event):
-        self.label_image.destroy()
+        #self.label_image.destroy()
         self.idSelect = self.tree.item(self.tree.selection())['values'][0]
         self.first_name = self.tree.item(self.tree.selection())['values'][1]
         self.last_name = self.tree.item(self.tree.selection())['values'][2]
@@ -162,13 +162,13 @@ class MainWinQuery(QuerySearchBy):
         self.street = self.tree.item(self.tree.selection())['values'][5]
         self.house_nr = self.tree.item(self.tree.selection())['values'][6]
         self.tel = self.tree.item(self.tree.selection())['values'][7]
-        self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg"
-        self.load = Image.open(self.imgProfile)
-        self.load.thumbnail((100, 100))
-        self.photo = ImageTk.PhotoImage(self.load)
-        Profile[1] = self.photo
-        self.lblImage = Label(self.win, bg= "blue",image=self.photo)
-        self.lblImage.place(x=40, y=400)
+        #self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg"
+        #self.load = Image.open(self.imgProfile)
+        #self.load.thumbnail((100, 100))
+        #self.photo = ImageTk.PhotoImage(self.load)
+        #Profile[1] = self.photo
+        #self.lblImage = Label(self.win, bg= "blue",image=self.photo)
+        #self.lblImage.place(x=40, y=400)
         self.lname = Label(self.win, width=40, anchor="w", text="Name: " + str(self.first_name) + " " +str(self.last_name), bg=self.co0)
         self.lname.place(x=148, y=400)
         self.ladr = Label(self.win, width=40, anchor="w", text="Adresse: " + str(self.street) + " " +str(self.house_nr) + " " + str(self.ort) + " " + str(self.plz), bg=self.co0)

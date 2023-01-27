@@ -4,15 +4,14 @@ from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
 import sqlite3
-from .calculate_id import CalculateID
-from .insert_query import Add
-from .query import Ask
-from .query_search_by import QuerySearchBy
+from adress.calculate_id import CalculateID
+from adress.insert_query import Add
+from adress.query import Ask
+from adress.query_search_by import QuerySearchBy
 
 
 
 class Win():
-
     def __init__(self):
         self.win = Tk()
         self.win.title=("Adress-Management")
@@ -22,7 +21,6 @@ class Win():
         self.co2 = "#20214f"
         self.win.configure(background=self.co0)
         self.win.resizable(width=False, height=False)
-
     
     def Delete_Win(self):
         self.win.withdraw()

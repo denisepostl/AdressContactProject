@@ -6,15 +6,17 @@ from tkinter import filedialog
 import os
 from PIL import Image, ImageTk
 import sqlite3
-from .calculate_id import CalculateID
-from .query import Ask
+from adress.query import Ask
+from adress.add_for_gui import Insert
 
 Profile = {1: ""}
 
-class MainWin(Ask):
+class MainWin(Ask, Insert):
 
     def __init__(self):
+        #connect with database
         self.connection = sqlite3.connect("database/adress.db")
+        #create Window and define details like title, geometry and colors
         self.win = Tk()
         self.win.title=("Adress-Management")
         self.win.geometry('800x600')
@@ -22,12 +24,12 @@ class MainWin(Ask):
         self.co1 = "#000000"
         self.co2 = "#20214f"
         self.win.configure(background=self.co0)
-        self.win.resizable(width=False, height=False)
+        self.win.resizable(width=False, height=False) #don't allow resizeable window
 
 
     def add_contact(self):
-        cur = self.connection.cursor()
-        self.FName = self.entryFName.get()
+        cur = self.connection.cursor() # define connection to database
+        self.FName = self.entryFName.get() #define Entrys
         self.LName = self.entryName.get()
         self.Ort = self.entryOrt.get()
         self.PLZ = self.entryPLZ.get()
@@ -43,10 +45,9 @@ class MainWin(Ask):
         self.Str = self.entryStr.get()
         self.Phone = self.entryPhone.get()
 
-        cur.execute("INSERT INTO Contact ('First_Name', 'LastName') values(?,?)", (self.FName, self.LName))
-        contact_id = cur.lastrowid
-        cur.execute("INSERT INTO Adress ('PostCode', 'Street', 'City', 'Housenumber', 'Contact_ID') values(?,?,?,?,?)", (self.PLZ, self.Str, self.Ort, self.HNR, contact_id))
-        cur.execute("INSERT INTO PhoneNumber ('PhoneNumber', 'Contact_ID') values(?,?)", (self.Phone, contact_id))
+        self.insert_Name(self.FName, self.LName) #methods which allow to save data
+        self.insert_Address(self.PLZ, self.Str, self.Ort, self.HNR)
+        self.insert_PhoneNumber(self.Phone)
         self.connection.commit()
 
         select = cur.execute("SELECT * FROM Contact order by id desc")
@@ -55,7 +56,7 @@ class MainWin(Ask):
         filename = self.entryPhoto.get()
         im = Image.open(filename)
         rgb_im = im.convert('RGB')
-        rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg"))
+        rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg")) #save the selected image
    
 
     def BrowsePhoto(self):

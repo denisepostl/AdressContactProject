@@ -1,9 +1,9 @@
 import sqlite3
-from .calculate_id import CalculateID
-from .insert_query import Add
-from .query import Ask
-from .update_query import Update
-from .delete import Delete
+from adress.calculate_id import CalculateID
+from adress.insert_query import Add
+from adress.query import Ask
+from adress.update_query import Update
+from adress.delete import Delete
 
 class Contact(Add, Ask, Delete, CalculateID, Update):
     """This is a little command line program which allows you to inserting, update, query and delete records."""  

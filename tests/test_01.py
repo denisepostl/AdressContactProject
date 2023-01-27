@@ -1,12 +1,17 @@
-import os
+import pytest
+import logging
 
 try:
     import adress
-except Exception as e:
-    print(type(e))
-    adress = None
+except ModuleNotFoundError as e:
+    logging.error("Module not found %s", e)
 
 
-def test_import_successful():
-    """Test if import is possible."""
-    assert type(adress) == type(os)
+def test_001_import(capsys):
+    assert adress
+
+    out, err = capsys.readouterr()
+    assert out == ""
+    assert err == ""
+
+

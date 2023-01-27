@@ -5,7 +5,7 @@ from tkinter import *
 from tkinter import filedialog
 import os
 from PIL import Image, ImageTk
-from query_search_by import QuerySearchBy
+from .query_search_by import QuerySearchBy
 import sqlite3
 
 

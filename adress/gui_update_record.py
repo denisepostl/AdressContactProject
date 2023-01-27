@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk 
 import sqlite3
-from query_search_by import QuerySearchBy
+from .query_search_by import QuerySearchBy
 
 class MainWinUpdate(QuerySearchBy):
     db_name = 'database/adress.db'

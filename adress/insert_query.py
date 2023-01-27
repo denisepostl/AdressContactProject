@@ -1,5 +1,5 @@
 import sqlite3
-from calculate_id import CalculateID
+from .calculate_id import CalculateID
 
 class Add(CalculateID):
 

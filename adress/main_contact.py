@@ -1,9 +1,9 @@
 import sqlite3
-from calculate_id import CalculateID
-from insert_query import Add
-from query import Ask
-from update_query import Update
-from delete import Delete
+from .calculate_id import CalculateID
+from .insert_query import Add
+from .query import Ask
+from .update_query import Update
+from .delete import Delete
 
 class Contact(Add, Ask, Delete, CalculateID, Update):
     """This is a little command line program which allows you to inserting, update, query and delete records."""  
@@ -143,5 +143,6 @@ class Contact(Add, Ask, Delete, CalculateID, Update):
         return "Ihre Kontakte wurden erfolgreich hinzugefügt!\n\n" 
 
 
-c = Contact()
-print(c.add_Contact())
+if __name__ == "__main__":
+    c = Contact()
+    print(c.add_Contact())

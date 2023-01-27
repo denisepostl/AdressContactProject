@@ -6,8 +6,8 @@ from tkinter import filedialog
 import os
 from PIL import Image, ImageTk
 import sqlite3
-from calculate_id import CalculateID
-from query import Ask
+from .calculate_id import CalculateID
+from .query import Ask
 
 Profile = {1: ""}
 

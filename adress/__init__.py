@@ -1,16 +1,18 @@
-from main_contact import Contact
-from calculate_id import CalculateID
-from query import Ask
-from insert_query import Add
-from delete import Delete
-from update_query import Update
-from create_database import Create
-from create_database_category import Create_Contact
-from query_search_by import QuerySearchBy
-from add_contact_gui import MainWin
-from gui_update_record import MainWinUpdate
-from delete_contact_gui import MainWinDelete
-from gui_query import MainWinQuery
+from .add_contact_gui import MainWin
+from .calculate_id import CalculateID
+from .create_database_category import Create_Contact
+from .create_database import Create
+from .delete_contact_gui import MainWinDelete
+from .delete import Delete
+from .gui_query import MainWinQuery
+from .gui_update_record import MainWinUpdate
+from .insert_query import Add
+from .main_contact import Contact
+from .main_gui import Win
+from .query_search_by import QuerySearchBy
+from .query import Ask
+from .update_item_query import Update_Select
+from .update_query import Update
 
 __exports__ = [
     Add,
@@ -25,5 +27,7 @@ __exports__ = [
     MainWinUpdate,
     QuerySearchBy,
     MainWinDelete,
-    MainWinQuery
+    MainWinQuery, 
+    Update_Select, 
+    Win
 ]

@@ -77,6 +77,7 @@ class MainWin(Ask, Insert):
         rgb_im = im.convert('RGB')
         rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg")) #save the selected image
 
+
     def BrowsePhoto(self):
         self.entryPhoto.delete(0, END)
         filename = filedialog.askopenfilename(initialdir="/", title="Select File")

@@ -15,6 +15,7 @@ from .update_item_query import Update_Select
 from .update_query import Update
 from .add_for_gui import Insert
 from .update_for_gui import Updating
+from .add_second import AddSecondRecord
 
 __exports__ = [
     Add,
@@ -33,5 +34,6 @@ __exports__ = [
     Update_Select, 
     Win,
     Insert, 
-    Updating
+    Updating,
+    AddSecondRecord
 ]

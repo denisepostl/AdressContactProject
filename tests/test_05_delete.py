@@ -22,21 +22,6 @@ def test_get_del_id():
     cur.execute("SELECT ID FROM Contact WHERE First_Name = 'John' AND LastName = 'Doe'")
     assert cur.fetchone()[0] == id
 
-def test_delete_contact():
-    # Add a test contact to the database
-    del_obj = adress.Delete()
-    connection = sqlite3.connect("database/adress.db")
-    cur = connection.cursor()
-    cur.execute("INSERT INTO Contact (First_Name, LastName) VALUES ('John', 'Doe')")
-    connection.commit()
-
-    # Delete the test contact
-    del_obj.delete_contact("John", "Doe")
-
-    # Test that the contact was deleted
-    cur.execute("SELECT * FROM Contact WHERE First_Name = 'John' AND LastName = 'Doe'")
-    assert cur.fetchone() == None
-
 def test_delete_adress():
     # Add a test contact and address to the database
     del_obj = adress.Delete()
@@ -73,4 +58,19 @@ def test_delete_phonenumber():
 
     # Test that the address was deleted
     cur.execute("SELECT * FROM PhoneNumber WHERE Contact_ID = ?", (contact_id,))
+    assert cur.fetchone() == None
+
+def test_delete_contact():
+    # Add a test contact to the database
+    del_obj = adress.Delete()
+    connection = sqlite3.connect("database/adress.db")
+    cur = connection.cursor()
+    cur.execute("INSERT INTO Contact (First_Name, LastName) VALUES ('John', 'Doe')")
+    connection.commit()
+
+    # Delete the test contact
+    del_obj.delete_contact("John", "Doe")
+
+    # Test that the contact was deleted
+    cur.execute("SELECT * FROM Contact WHERE First_Name = 'John' AND LastName = 'Doe'")
     assert cur.fetchone() == None

@@ -56,7 +56,16 @@ Das SQL-File mit den CREATE Table Statements und die Datenbank befinden sich unt
 
 Beim Ausführen von [main_contact.py](https://github.com/denisepostl/AdressContactProject/tree/main/adress/main_contact.py) kann ein kleines Kommandozeilenprogramm ausprobiert werden, dass den Benutzern erlaubt einen Kontakt hinzuzufügen, abfragen, Kontaktdaten ändern und zu löschen. 
 
+### Tests
 
+| Test-Nr. | Ziel |
+| --- | --- | 
+| 01 | Es soll getestet werden, ob der Import aller Klassen und deren Methoden möglich ist.  |
+| 02 | Es soll getestet werden, ob alle Tabellen samt Spaltenbezeichnungen in der Datenbank korrekt vorhanden sind.  |
+| 03 | Es soll getestet werden, ob das Hinzufügen von Datensätzen mit einer spezifischen Methode möglich ist.  |
+| 04 | Es soll getestet werden, ob das Aktualisieren von Datensätzen mit einer spezifischen Methode möglich ist.  |
+
+Stand (28.01.2023)
 
 
 

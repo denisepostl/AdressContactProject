@@ -4,10 +4,11 @@ from tkinter import messagebox
 import sqlite3
 from adress.query_search_by import QuerySearchBy
 from adress.update_for_gui import Updating
+from adress.add_second import AddSecondRecord
 
 Profile = {1: ""}
 
-class MainWinUpdate(QuerySearchBy, Updating):
+class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
     db_name = 'database/adress.db' 
     def __init__(self):
         self.connection = sqlite3.connect("database/adress.db") #connection to database 
@@ -59,6 +60,15 @@ class MainWinUpdate(QuerySearchBy, Updating):
         #Query Button - switch to Query Win
         self.bQuery = Button(self.wind, text="Kontakt abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Query_Win)
         self.bQuery.place(x = 20, y = 128, width=190, height=40)
+
+        # Add 2nd Tel.-Nr. Button
+        self.bTel = Button(self.wind, text="Tel.-Nr. hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_tel)
+        self.bTel.place(x = 20, y = 410, width=180, height=40)
+
+        # Add 2nd Adress Button
+        self.bTel = Button(self.wind, text="Adresse hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_adress)
+        self.bTel.place(x = 220, y = 410, width=180, height=40)
+
 
         #Add Button - switch to Add Win
         self.bAdd = Button(self.wind, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Add_Win)
@@ -136,6 +146,91 @@ class MainWinUpdate(QuerySearchBy, Updating):
             query_result = cursor.execute(query, parameters)
             conn.commit()
         return query_result
+
+
+    #----------------------Add-Second-Adress------------------------------------------#
+
+    def add_adress(self):
+        self.tree.item(self.tree.selection())['values'][0]
+        self.GetFName = self.tree.item(self.tree.selection())['values'][1]
+        self.GetLName = self.tree.item(self.tree.selection())['values'][2]
+
+        self.new = Tk()
+        self.new.title("Add-Second Tel.-Nr")
+        self.new.geometry('220x180')
+        self.new.configure(background=self.co2)
+        self.new.resizable(width=False, height=False)
+
+
+        #PLZ
+        Label (self.new, text='PLZ: ', bg=self.co2, fg=self.co0).grid(row=3, column=1)
+        self.postcode = Entry(self.new)
+        self.postcode.grid(row=3, column=2)
+
+        #House Nr
+        Label (self.new, text='Haus-Nr: ', bg=self.co2, fg=self.co0).grid(row=4, column=1)
+        self.housenumber = Entry(self.new)
+        self.housenumber.grid(row=4, column=2)
+
+        #City
+        Label (self.new, text='Ort: ', bg=self.co2, fg=self.co0).grid(row=5, column=1)
+        self.CITY = Entry(self.new)
+        self.CITY.grid(row=5, column=2)
+
+        #Straße
+        Label (self.new, text='Straße: ', bg=self.co2, fg=self.co0).grid(row=6, column=1)
+        self.STREET = Entry(self.new)
+        self.STREET.grid(row=6, column=2)
+
+
+        Button(self.new, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_adress).grid(row=8, column=2, sticky=W)
+        self.new.mainloop()
+
+    def adding_adress(self):
+        FirstName = self.GetFName
+        LastName = self.GetLName
+
+        plz = self.postcode.get()
+        housenr = self.housenumber.get()
+        city = self.CITY.get()
+        street = self.STREET.get()
+
+        self.get_name_id(FirstName, LastName)
+        self.add_adress_(str(plz), str(street), str(city), str(housenr))
+        self.new.destroy()
+
+
+    #------------------------Add-Second-TelefoneNumber------------------------------------#    
+
+    def add_tel(self):
+        self.tree.item(self.tree.selection())['values'][0]
+        self.Get_FName = self.tree.item(self.tree.selection())['values'][1]
+        self.Get_LName = self.tree.item(self.tree.selection())['values'][2]
+
+        self.window = Tk()
+        self.window.title("Add-Second Tel.-Nr")
+        self.window.geometry('220x80')
+        self.window.configure(background=self.co2)
+        self.window.resizable(width=False, height=False)
+
+        #Tel.:
+        Label (self.window, text='Tel.: ', bg=self.co2, fg=self.co0).grid(row=7, column=1)
+        self.get_phone = Entry(self.window)
+        self.get_phone.grid(row=7, column=2)
+
+
+        Button(self.window, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_tel).grid(row=8, column=2, sticky=W)
+        self.window.mainloop()
+
+    def adding_tel(self):
+        Fname = self.Get_FName
+        Lname = self.Get_LName
+        phone = self.get_phone.get()
+        self.get_name_id(Fname, Lname)
+        self.add_phone(str(phone))
+        self.window.destroy()
+
+    #---------------------------------------------Edit-Entry----------------------------------------------------#
 
     def editing(self):
         self.tree.item(self.tree.selection())['values'][0]

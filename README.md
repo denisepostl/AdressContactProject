@@ -64,6 +64,8 @@ Beim Ausführen von [main_contact.py](https://github.com/denisepostl/AdressConta
 | 02 | Es soll getestet werden, ob alle Tabellen samt Spaltenbezeichnungen in der Datenbank korrekt vorhanden sind.  |
 | 03 | Es soll getestet werden, ob das Hinzufügen von Datensätzen mit einer spezifischen Methode möglich ist.  |
 | 04 | Es soll getestet werden, ob das Aktualisieren von Datensätzen mit einer spezifischen Methode möglich ist.  |
+| 05 | Es soll getestet werden, ob das Löschen von Datensätzen mit einer spezifischen Methode möglich ist.  |
+| 06 | Es soll getestet werden, ob das Abfragen von Datensätzen mit einer spezifischen Methode möglich ist.  |
 
 Stand (28.01.2023)
 

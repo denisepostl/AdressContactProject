@@ -14,8 +14,6 @@ Ein Benutzer kann
 
     - Bild (z.B.: Profilbild) vom lokalen Rechner zu einem Kontakt hinzufügen (durch betätigen eines Buttons kann er ein Bild auswählen, welches dann in einem neuen   Ordner abgespeichert wird, damit es später bei der Abfrage eines Kontakts angezeigt werden kann)
 
-Ein Kontakt kann mehr als eine Telefonnummer/Adresse haben.
-
 ### User-Stories
 Die User-Stories befinden sich unter: [doc](https://github.com/denisepostl/AdressContactProject/blob/main/doc/UserStory.md)
 

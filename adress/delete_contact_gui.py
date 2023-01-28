@@ -35,6 +35,7 @@ class MainWinDelete(QuerySearchBy):
         con.commit()
         self.tree.delete(self.tree.selection())
 
+
     def get_name_id(self, first_name, last_name):
         cur = self.connection.cursor()
         query = """

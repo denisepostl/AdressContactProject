@@ -26,10 +26,9 @@ class Ask():
             and LastName like "%s"; """ %(first_name, last_name)
         
         cur.execute(query)
-        contacts = cur.fetchall()
+        self.contacts = cur.fetchall()
         self.connection.commit()
-        for self.contact in contacts:
-            return self.contact
+        print(self.contacts)
         
 
     def askin_all(self):
@@ -58,3 +57,4 @@ class Ask():
             print(contact)
         
         return "--------------------------------------------------------"
+

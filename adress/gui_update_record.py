@@ -194,7 +194,6 @@ class MainWinUpdate(QuerySearchBy, Updating):
         self.edit_wind.mainloop()
 
     def update_records(self):        
-        self.connection.cursor()
         self.update_FName(str(self.new_name.get()), str(self.F_Name))
         self.update_LName(str(self.lname.get()), str(self.L_Name))
         self.update_PostCode(str(self.plz_.get()), str(self.PLZ))
@@ -202,7 +201,6 @@ class MainWinUpdate(QuerySearchBy, Updating):
         self.update_Street(str(self.street_.get()), str(self.street))
         self.update_HNR(str(self.hNR.get()), str(self.house_nr))
         self.update_Tel(str(self.phone_.get()), str(self.telefone))
-        self.connection.commit()
         self.edit_wind.destroy()
         self.viewing_records()
 

@@ -8,12 +8,11 @@ from PIL import Image, ImageTk
 from adress.query_search_by import QuerySearchBy
 import sqlite3
 from adress.gui_query import MainWinQuery
-from adress.calculate_id import CalculateID
 
 #load the image
 Profile = {1: ""}
 
-class MainWinDelete(QuerySearchBy, CalculateID):
+class MainWinDelete(QuerySearchBy):
     def __init__(self):
         self.connection = sqlite3.connect("database/adress.db")
         self.win = Tk()
@@ -36,6 +35,25 @@ class MainWinDelete(QuerySearchBy, CalculateID):
         con.commit()
         self.tree.delete(self.tree.selection())
 
+    def get_name_id(self, first_name, last_name):
+        cur = self.connection.cursor()
+        query = """
+            SELECT 
+	            c.ID 
+            from Contact c
+            join PhoneNumber a
+                on c.ID=a.ID
+            join Adress b
+                on b.ID = c.ID
+            where First_Name like "%s" and LastName like "%s"
+        """ %(first_name, last_name)
+        cur.execute(query)
+        ID = cur.fetchall()
+        tup = ID[0]
+        self.name_id  = int(tup[0])
+        self.connection.commit()
+        return self.name_id
+    
 
     def query_contact(self):
         for x in self.tree.get_children():

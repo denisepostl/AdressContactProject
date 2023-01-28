@@ -6,7 +6,7 @@ class QuerySearchBy():
         self.connection = sqlite3.connect("database/adress.db")
 
 
-    def askin_query(self, first_name, last_name):
+    def askin_query(self, first_name="Denise", last_name="Test"):
         cur = self.connection.cursor()
         query = """
             SELECT

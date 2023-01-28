@@ -57,7 +57,6 @@ class MainWin(Ask, Insert):
         im = Image.open(filename)
         rgb_im = im.convert('RGB')
         rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg")) #save the selected image
-   
 
     def BrowsePhoto(self):
         self.entryPhoto.delete(0, END)

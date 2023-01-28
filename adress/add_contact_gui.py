@@ -3,6 +3,8 @@ import tkinter as tk
 from tkinter import *
 
 from tkinter import filedialog
+from tkinter import messagebox
+import re
 import os
 from PIL import Image, ImageTk
 import sqlite3
@@ -30,20 +32,37 @@ class MainWin(Ask, Insert):
     def add_contact(self):
         cur = self.connection.cursor() # define connection to database
         self.FName = self.entryFName.get() #define Entrys
-        self.LName = self.entryName.get()
-        self.Ort = self.entryOrt.get()
-        self.PLZ = self.entryPLZ.get()
-        self.HNR = self.entryHNR.get()
-        self.Str = self.entryStr.get()
-        self.Phone = self.entryPhone.get()
+        if type(self.FName) != str:
+            messagebox.showerror("Fehler", "Falscher Datentyp")
 
-        self.FName = self.entryFName.get()
+      
         self.LName = self.entryName.get()
+        if type(self.LName) != str:
+            messagebox.showerror("Fehler", "Falscher Datentyp")
+
+
         self.Ort = self.entryOrt.get()
+        if type(self.Ort) != str:
+            messagebox.showerror("Fehler", "Falscher Datentyp")
+
         self.PLZ = self.entryPLZ.get()
+        if not re.search(r'^\d{4}$', self.PLZ):
+            messagebox.showerror("Error", "Bitte geben Sie eine gültige PLZ ein.")
+
         self.HNR = self.entryHNR.get()
+        if type(self.HNR) is None:
+            messagebox.showerror("Fehler", "Falscher Datentyp")
+
+
         self.Str = self.entryStr.get()
+        if type(self.Str) != str:
+            messagebox.showerror("Fehler", "Falscher Datentyp")
+
+
         self.Phone = self.entryPhone.get()
+        if type(self.Phone) is None:
+            messagebox.showerror("Fehler", "Falscher Datentyp")
+
 
         self.insert_Name(self.FName, self.LName) #methods which allow to save data
         self.insert_Address(self.PLZ, self.Str, self.Ort, self.HNR)
@@ -160,7 +179,6 @@ class MainWin(Ask, Insert):
         #Delete Button
         self.bDelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
         self.bDelete.place(x = 20, y = 300, width=180, height=40)
-
 
 def main():
     win = MainWin()

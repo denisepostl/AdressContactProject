@@ -1,7 +1,7 @@
 from tkinter import ttk 
 import tkinter as tk
 from tkinter import *
-
+from tkinter import messagebox
 from tkinter import filedialog
 import os
 from PIL import Image, ImageTk
@@ -70,6 +70,8 @@ class MainWinDelete(QuerySearchBy):
         self.name = self.entrySearchByName.get()
         self.lname = self.entrySearchByLName.get()
         self.askin_query(self.name, self.lname)
+        if not self.contact:
+            messagebox.showinfo("Error", "Eintrag nicht vorhanden!")
         for row in self.contact:
             self.tree.insert('', END, values=row)
 

@@ -1,13 +1,13 @@
 from tkinter import ttk 
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox
 
 from tkinter import filedialog
 import os
 from PIL import Image, ImageTk
 from adress.query_search_by import QuerySearchBy
 import sqlite3
-
 
 #load the image
 Profile = {1: ""}
@@ -23,13 +23,17 @@ class MainWinQuery(QuerySearchBy):
         self.co2 = "#20214f"
         self.win.configure(background=self.co0)
         self.win.resizable(width=False, height=False)
+        self.lblImage = None
+
         
 
     def SearchByPhone(self, event):
         for x in self.tree.get_children():
             self.tree.delete(x)
         phone = self.entrySearchByPhone.get()
-        self.askin_phone_query(phone,)       
+        self.askin_phone_query(phone,)  
+        if not self.contact:
+            messagebox.showinfo("Error", "Telefonnummer nicht vorhanden!")
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
@@ -47,8 +51,11 @@ class MainWinQuery(QuerySearchBy):
         name = self.entrySearchByName.get()
         lname = self.entrySearchByLName.get()
         self.askin_query(name, lname)
-        for row in self.contact:
-            self.tree.insert('', END, values=row)
+        if not self.contact:
+            messagebox.showinfo("Error", "Eintrag nicht vorhanden!")
+        else:
+            for row in self.contact:
+                self.tree.insert('', END, values=row)
 
     def Delete_Win(self):
         self.win.withdraw()

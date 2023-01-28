@@ -59,7 +59,7 @@ Beim Ausführen von [main_contact.py](https://github.com/denisepostl/AdressConta
 ### Tests
 
 | Testnummer | Ziel |
-| --- | --- | --- |
+| --- | --- | 
 | 01 | Es soll getestet werden, ob der Import aller Klassen und deren Methoden möglich ist.  |
 | 02 | Es soll getestet werden, ob alle Tabellen samt Spaltenbezeichnungen in der Datenbank korrekt vorhanden sind.  |
 | 03 | Es soll getestet werden, ob das Hinzufügen von Datensätzen mit einer spezifischen Methode möglich ist.  |

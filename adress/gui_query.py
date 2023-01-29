@@ -13,7 +13,9 @@ import sqlite3
 Profile = {1: ""}
 
 class MainWinQuery(QuerySearchBy):
+
     def __init__(self):
+        """Initialize database connection and define settings like color, geometry"""
         self.connection = sqlite3.connect("database/adress_cat.db")
         self.win = Tk()
         self.win.title=("Adress-Management")
@@ -21,23 +23,23 @@ class MainWinQuery(QuerySearchBy):
         self.co0 = "#ffffff"
         self.co1 = "#000000"
         self.co2 = "#20214f"
-        self.win.configure(background=self.co0)
-        self.win.resizable(width=False, height=False)
-        self.lblImage = None
-
+        self.win.configure(background=self.co0) #set the background color
+        self.win.resizable(width=False, height=False) #don't let the window resizing
         
 
     def SearchByPhone(self, event):
+        """Search for record by phonenumber"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         phone = self.entrySearchByPhone.get()
         self.askin_phone_query(phone,)  
         if not self.contact:
-            messagebox.showinfo("Error", "Telefonnummer nicht vorhanden!")
+            messagebox.showinfo("Error", "Telefonnummer nicht vorhanden!") #raise messagebox if the specific record is not in db
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
     def query_contact(self):
+        """Get the record in treeview"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         self.askin_all_query()
@@ -46,33 +48,37 @@ class MainWinQuery(QuerySearchBy):
 
 
     def SearchByName(self, event):
+        """Search for Record by name"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         name = self.entrySearchByName.get()
         lname = self.entrySearchByLName.get()
         self.askin_query(name, lname)
         if not self.contact:
-            messagebox.showinfo("Error", "Eintrag nicht vorhanden!")
+            messagebox.showinfo("Error", "Eintrag nicht vorhanden!") #raise messagebox if specific record isn't in db
         else:
             for row in self.contact:
                 self.tree.insert('', END, values=row)
 
     def Delete_Win(self):
-        self.win.withdraw()
+        """Switch to delete window"""
+        self.win.withdraw()#destroy actual window
         from delete_contact_gui import MainWinDelete
         win = MainWinDelete()
         win.Window()
         win.win.mainloop()
 
     def Add_Win(self):
-        self.win.withdraw()
+        """Switch to Add Window"""
+        self.win.withdraw()#destroy actual Window
         from add_contact_gui import MainWin
         win = MainWin()
         win.Window_Main()
         win.win.mainloop()
 
     def Update_Win(self):
-        self.win.withdraw()
+        """Switch to Update Window"""
+        self.win.withdraw()#destroy actual Window
         from gui_update_record import MainWinUpdate
         wind = MainWinUpdate()
         wind.MainWinUpdate()
@@ -80,6 +86,7 @@ class MainWinQuery(QuerySearchBy):
 
 
     def Window(self):
+        """Create the Window for the Query Option Window"""
         top = Frame(self.win, width=800, height=50, bg=self.co2)
         top.grid(row=0, column=0, padx=0, pady=1)
 

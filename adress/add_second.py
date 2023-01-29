@@ -7,6 +7,7 @@ class AddSecondRecord():
 
 
     def get_name_id(self, first_name, last_name):
+        """Method which return the ID of the contact"""
         cur = self.connection.cursor()
         query = """
             SELECT 
@@ -25,12 +26,12 @@ class AddSecondRecord():
         self.connection.commit()
         return self.name_id
     
-    def add_adress_(self, post_code, street, city, house_number):
+    def add_adress_(self, post_code, street, city, house_number): #add another adress
        cur = self.connection.cursor()
        cur.execute("INSERT INTO Adress ('PostCode', 'Street', 'City', 'Housenumber', 'Contact_ID') values(?,?,?,?,?)", (post_code, street, city, house_number, self.name_id))
        self.connection.commit()
 
-    def add_phone(self, phone_number):
+    def add_phone(self, phone_number): #add another phonenumber
         cur = self.connection.cursor()
         cur.execute("INSERT INTO PhoneNumber ('PhoneNumber', 'Contact_ID') values(?,?)", (phone_number, self.name_id))
         self.connection.commit()

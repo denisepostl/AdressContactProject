@@ -128,6 +128,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
 
     def query_contact(self):
+        """Ask for a contact and get the records"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         self.askin_all_query()
@@ -136,6 +137,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
 
     def SearchByName(self, event):
+        """Search for recrod by name"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         name = self.entrySearchByName.get()
@@ -148,6 +150,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
 
     def run_query(self, query, parameters=()):
+        """Let the query run"""
         with sqlite3.connect(self.db_name) as conn:
             cursor = conn.cursor()
             query_result = cursor.execute(query, parameters)
@@ -159,13 +162,14 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
   
     def combo_(self):
-        self.tree.item(self.tree.selection())['values'][0]
-        self.GetFName_ = self.tree.item(self.tree.selection())['values'][1]
+        """Define the combo box"""
+        self.tree.item(self.tree.selection())['values'][0]#let set the record
+        self.GetFName_ = self.tree.item(self.tree.selection())['values'][1]#get the name
         self.GetLName_ = self.tree.item(self.tree.selection())['values'][2]
-        self.GetKategorie = self.tree.item(self.tree.selection())['values'][8]
+        self.GetKategorie = self.tree.item(self.tree.selection())['values'][8]#get the category
 
 
-        self.root = tk.Tk()
+        self.root = tk.Tk()#new window
         self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
         self.combo.pack()
         self.combo.current(0) # setting default value
@@ -175,6 +179,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
 
     def save_close(self):
+        """Save the updated category and close the window"""
         FirstName = self.GetFName_
         LastName = self.GetLName_
 
@@ -187,8 +192,9 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
     #----------------------Add-Second-Adress------------------------------------------#
 
     def add_adress(self):
-        self.tree.item(self.tree.selection())['values'][0]
-        self.GetFName = self.tree.item(self.tree.selection())['values'][1]
+        """Window for adding another adress to Contact"""
+        self.tree.item(self.tree.selection())['values'][0]#let set the contact
+        self.GetFName = self.tree.item(self.tree.selection())['values'][1]#get the name
         self.GetLName = self.tree.item(self.tree.selection())['values'][2]
 
         self.new = Tk()
@@ -223,6 +229,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.new.mainloop()
 
     def adding_adress(self):
+        """Add another Adress to Contact"""
         FirstName = self.GetFName
         LastName = self.GetLName
 
@@ -239,8 +246,9 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
     #------------------------Add-Second-TelefoneNumber------------------------------------#    
 
     def add_tel(self):
-        self.tree.item(self.tree.selection())['values'][0]
-        self.Get_FName = self.tree.item(self.tree.selection())['values'][1]
+        """Add another telefone to contact"""
+        self.tree.item(self.tree.selection())['values'][0]#let the record select
+        self.Get_FName = self.tree.item(self.tree.selection())['values'][1]#get the name
         self.Get_LName = self.tree.item(self.tree.selection())['values'][2]
 
         self.window = Tk()
@@ -269,8 +277,10 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
     #---------------------------------------------Edit-Entry----------------------------------------------------#
 
     def editing(self):
-        self.tree.item(self.tree.selection())['values'][0]
+        """Edit records in database"""
+        self.tree.item(self.tree.selection())['values'][0]#let the record select
 
+        #select records like Name, Adress, Telefone
         self.F_Name = self.tree.item(self.tree.selection())['values'][1]
         self.L_Name = self.tree.item(self.tree.selection())['values'][2]
         self.PLZ = self.tree.item(self.tree.selection())['values'][3]
@@ -331,7 +341,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         Button(self.edit_wind, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.update_records).grid(row=8, column=2, sticky=W)
         self.edit_wind.mainloop()
 
-    def update_records(self):        
+    def update_records(self):  
+        """Update the records"""      
         self.update_FName(str(self.new_name.get()), str(self.F_Name))
         self.update_LName(str(self.lname.get()), str(self.L_Name))
         self.update_PostCode(str(self.plz_.get()), str(self.PLZ))
@@ -343,6 +354,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.viewing_records()
 
     def viewing_records(self):
+        """Show the records"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         self.askin_all_query()

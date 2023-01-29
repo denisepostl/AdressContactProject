@@ -30,6 +30,7 @@ class MainWin(Insert):
         self.win.resizable(width=False, height=False) #don't allow resizeable window
 
     def add_contact(self):
+        """This method allows to add records in connected database."""
         cur = self.connection.cursor() # define connection to database
         self.FName = self.entryFName.get() #define Entrys
         self.LName = self.entryName.get()
@@ -58,6 +59,7 @@ class MainWin(Insert):
 
 
     def combo_(self):
+        """Create a Combo Box for Kategorie items"""
         self.root = tk.Tk()
         self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
         self.combo.pack()
@@ -68,43 +70,44 @@ class MainWin(Insert):
 
 
     def save_close(self):
+        """Save Kategory item in Database and Close the Combobox"""
         self.selected = self.combo.get()
         self.connection.commit()
         self.root.destroy()
     
 
     def BrowsePhoto(self):
+        """Allows to search for a photo"""
         self.entryPhoto.delete(0, END)
         filename = filedialog.askopenfilename(initialdir="/", title="Select File")
         return self.entryPhoto.insert(END, filename)
 
     def Delete_Win(self):
-        self.win.withdraw()
+        """Switch to Delete Win"""
+        self.win.withdraw()#close actual window
         from delete_contact_gui import MainWinDelete
         win = MainWinDelete()
         win.Window()
         win.win.mainloop()
 
     def Query_Win(self):
-        self.win.withdraw()
+        """Switch to Query Win"""
+        self.win.withdraw()#close actual window
         from gui_query import MainWinQuery
         win = MainWinQuery()
         win.Window()
         win.win.mainloop()
 
     def Update_Win(self):
-        self.win.withdraw()
+        """Switch to Update Win"""
+        self.win.withdraw()#close actual window
         from gui_update_record import MainWinUpdate
         wind = MainWinUpdate()
         wind.MainWinUpdate()
         wind.wind.mainloop()
 
-
-   
-
-
-
     def Window_Main(self):
+        """Create the Main Window of the Add Window"""
         top = Frame(self.win, width=800, height=50, bg=self.co2)
         top.grid(row=0, column=0, padx=0, pady=1)
 

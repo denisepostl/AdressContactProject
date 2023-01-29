@@ -3,6 +3,7 @@ import sqlite3
 class Delete():
 
     def __init__(self):
+        """Initialize database connection."""
         self.connection = sqlite3.connect("database/adress.db")
 
     def get_del_id(self, first_name, last_name):

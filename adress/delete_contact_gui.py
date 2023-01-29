@@ -13,7 +13,9 @@ from adress.gui_query import MainWinQuery
 Profile = {1: ""}
 
 class MainWinDelete(QuerySearchBy):
+
     def __init__(self):
+        """Initialize the database Connection and define Settings for the Window like color, geometry or Title"""
         self.connection = sqlite3.connect("database/adress_cat.db")
         self.win = Tk()
         self.win.title=("Adress-Management")
@@ -25,6 +27,7 @@ class MainWinDelete(QuerySearchBy):
         self.win.resizable(width=False, height=False)
     
     def delete_contact(self):
+        """Delete the Contact by selecting of Record"""
         self.idSelect = self.tree.item(self.tree.selection())['values'][0]
         self.get_id_ = self.get_name_id(self.name, self.lname)
         con = self.connection
@@ -38,6 +41,7 @@ class MainWinDelete(QuerySearchBy):
 
 
     def get_name_id(self, first_name, last_name):
+        """Get the ID from the Contact by first and last name"""
         cur = self.connection.cursor()
         query = """
             SELECT 
@@ -60,6 +64,7 @@ class MainWinDelete(QuerySearchBy):
     
 
     def query_contact(self):
+        """Insert founded Records in treeview"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         self.askin_all_query()
@@ -68,6 +73,7 @@ class MainWinDelete(QuerySearchBy):
 
 
     def SearchByName(self, event):
+        """Search for records by name"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         self.name = self.entrySearchByName.get()
@@ -80,21 +86,24 @@ class MainWinDelete(QuerySearchBy):
 
 
     def Add_Win(self):
-        self.win.withdraw()
+        """Switch to Add Window"""
+        self.win.withdraw()#destroy actual window
         from add_contact_gui import MainWin
         win = MainWin()
         win.Window_Main()
         win.win.mainloop()
 
     def Query_Win(self):
-        self.win.withdraw()
+        """Switch to Query Window"""
+        self.win.withdraw()#destroy actual window
         from gui_query import MainWinQuery
         win = MainWinQuery()
         win.Window()
         win.win.mainloop()
 
     def Update_Win(self):
-        self.win.withdraw()
+        """Switch to Update Window"""
+        self.win.withdraw()#destroy actual window
         from gui_update_record import MainWinUpdate
         wind = MainWinUpdate()
         wind.MainWinUpdate()
@@ -102,6 +111,7 @@ class MainWinDelete(QuerySearchBy):
 
 
     def Window(self):
+        """Create the main window for the Delete Window Option"""
         top = Frame(self.win, width=800, height=50, bg=self.co2)
         top.grid(row=0, column=0, padx=0, pady=1)
 
@@ -117,7 +127,7 @@ class MainWinDelete(QuerySearchBy):
         self.entrySearchByName = Entry(self.win)
         self.entrySearchByName.insert(0, "Vorname")
         self.entrySearchByName.bind("<Return>", self.SearchByName)
-        self.entrySearchByName.place(x=400, y=60, width=160, height=30)
+        self.entrySearchByName.place(x=400, y=60, width=160, height=30) #search for a record by First Name
 
 
         self.lbSearchByLName = Label(self.win, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)
@@ -125,7 +135,7 @@ class MainWinDelete(QuerySearchBy):
         self.entrySearchByLName = Entry(self.win)
         self.entrySearchByLName.insert(0, "Nachname")
         self.entrySearchByLName.bind("<Return>", self.SearchByName)
-        self.entrySearchByLName.place(x=580, y=60, width=160, height=30)
+        self.entrySearchByLName.place(x=580, y=60, width=160, height=30) #search for a record by Last Name
         
         #Delete Contact Button
         self.bAdd = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.delete_contact)
@@ -143,7 +153,7 @@ class MainWinDelete(QuerySearchBy):
         self.bquery = Button(self.win, text="Kontakt abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Query_Win)
         self.bquery.place(x = 20, y = 328, width=190, height=40)
 
-        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,9,), height= 5, show="headings")
+        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,9,), height= 5, show="headings") #treeview
         self.tree.place(x=220, y=140, width=520, height=220)
 
         #Add headings

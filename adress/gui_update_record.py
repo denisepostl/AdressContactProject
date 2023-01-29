@@ -3,9 +3,9 @@ from tkinter import ttk
 import tkinter as tk
 from tkinter import messagebox
 import sqlite3
-from query_search_by import QuerySearchBy
-from update_for_gui import Updating
-from add_second import AddSecondRecord
+from adress.query_search_by import QuerySearchBy
+from adress.update_for_gui import Updating
+from adress.add_second import AddSecondRecord
 
 Profile = {1: ""}
 

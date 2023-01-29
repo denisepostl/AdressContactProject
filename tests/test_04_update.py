@@ -24,7 +24,7 @@ def setup_database():
     cursor.execute("INSERT INTO Contact VALUES ('John', 'Doe')")
     cursor.execute("INSERT INTO Adress VALUES ('12345', 'Test City', 'Test Street', '1')")
     cursor.execute("INSERT INTO PhoneNumber VALUES ('1234567890')")
-    cursor.execute("INSERT INTO Kategorie VALUES ('Arbeit')")
+    cursor.execute("INSERT INTO Kategorie VALUES ('Freunde')")
     connection.commit()
     yield connection
     connection.close()
@@ -89,5 +89,16 @@ def test_update_PostCode(setup_database):
     result = cursor.fetchone()
 
     assert result[0] == '54321'
+
+def test_update_Category(setup_database):
+    updater = adress.Updating()
+    updater.connection = setup_database
+    updater.update_Category('Familie', 'Freunde')
+
+    cursor = setup_database.cursor()
+    cursor.execute("SELECT Kategorie FROM Kategorie")
+    result = cursor.fetchone()
+
+    assert result[0] == 'Familie'
 
 

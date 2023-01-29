@@ -28,54 +28,49 @@ class MainWin(Ask, Insert):
         self.win.configure(background=self.co0)
         self.win.resizable(width=False, height=False) #don't allow resizeable window
 
-
     def add_contact(self):
         cur = self.connection.cursor() # define connection to database
         self.FName = self.entryFName.get() #define Entrys
-        if type(self.FName) != str:
-            messagebox.showerror("Fehler", "Falscher Datentyp")
-
-      
         self.LName = self.entryName.get()
-        if type(self.LName) != str:
-            messagebox.showerror("Fehler", "Falscher Datentyp")
-
-
         self.Ort = self.entryOrt.get()
-        if type(self.Ort) != str:
-            messagebox.showerror("Fehler", "Falscher Datentyp")
-
         self.PLZ = self.entryPLZ.get()
-        if not re.search(r'^\d{4}$', self.PLZ):
-            messagebox.showerror("Error", "Bitte geben Sie eine gültige PLZ ein.")
-
         self.HNR = self.entryHNR.get()
-        if type(self.HNR) is None:
-            messagebox.showerror("Fehler", "Falscher Datentyp")
-
-
         self.Str = self.entryStr.get()
-        if type(self.Str) != str:
-            messagebox.showerror("Fehler", "Falscher Datentyp")
-
-
         self.Phone = self.entryPhone.get()
-        if type(self.Phone) is None:
+        if type(self.FName) != str or type(self.LName) != str or type(self.Ort) != str or type(self.PLZ) != str or type(self.Str) != str:
             messagebox.showerror("Fehler", "Falscher Datentyp")
+        elif not re.search(r'^\d{4}$', self.PLZ):
+            messagebox.showerror("Error", "Bitte geben Sie eine gültige PLZ ein.")
+        else: 
+            self.insert_Name(self.FName, self.LName) #methods which allow to save data
+            self.insert_Address(self.PLZ, self.Str, self.Ort, self.HNR)
+            self.insert_PhoneNumber(self.Phone)
+            self.connection.commit()
 
+            select = cur.execute("SELECT * FROM Contact order by id desc")
+            select = list(select)
+            id = select[0][0]
+            filename = self.entryPhoto.get()
+            im = Image.open(filename)
+            rgb_im = im.convert('RGB')
+            rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg")) #save the selected image
 
-        self.insert_Name(self.FName, self.LName) #methods which allow to save data
-        self.insert_Address(self.PLZ, self.Str, self.Ort, self.HNR)
-        self.insert_PhoneNumber(self.Phone)
+    
+    def save_and_close(self):
+        selected = self.combo.get()
+        self.Insert_Category(selected)
         self.connection.commit()
+        self.root.destroy()
 
-        select = cur.execute("SELECT * FROM Contact order by id desc")
-        select = list(select)
-        id = select[0][0]
-        filename = self.entryPhoto.get()
-        im = Image.open(filename)
-        rgb_im = im.convert('RGB')
-        rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg")) #save the selected image
+    def combo_(self):
+        self.root = tk.Tk()
+        self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
+        self.combo.pack()
+        self.combo.current(0) # setting default value
+        ok_button = tk.Button(self.root, bg = self.co2, fg = self.co0, text="OK", command=self.save_and_close)
+        ok_button.pack()
+        self.root.mainloop()
+
 
 
     def BrowsePhoto(self):
@@ -103,6 +98,10 @@ class MainWin(Ask, Insert):
         wind = MainWinUpdate()
         wind.MainWinUpdate()
         wind.wind.mainloop()
+
+
+   
+
 
 
     def Window_Main(self):
@@ -180,6 +179,13 @@ class MainWin(Ask, Insert):
         #Delete Button
         self.bDelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
         self.bDelete.place(x = 20, y = 300, width=180, height=40)
+
+        #Category Button
+        self.bCategory = Button(self.win, text="Kategorie hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combo_)
+        self.bCategory.place(x = 280, y = 410, width=180, height=40)
+
+
+    
 
 def main():
     win = MainWin()

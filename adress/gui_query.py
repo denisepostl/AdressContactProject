@@ -6,7 +6,7 @@ from tkinter import messagebox
 from tkinter import filedialog
 import os
 from PIL import Image, ImageTk
-from adress.query_search_by import QuerySearchBy
+from query_search_by import QuerySearchBy
 import sqlite3
 
 #load the image
@@ -129,7 +129,7 @@ class MainWinQuery(QuerySearchBy):
         self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command= self.Delete_Win)
         self.bdelete.place(x = 20, y = 328, width=190, height=40)
 
-        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,), height= 5, show="headings")
+        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,9,), height= 5, show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)
         self.tree.bind("<<TreeviewSelect>>", self.treeActionSelect)
 
@@ -142,6 +142,8 @@ class MainWinQuery(QuerySearchBy):
         self.tree.heading(6, text="Straße")
         self.tree.heading(7, text="Haus-Nr.")
         self.tree.heading(8, text="Tel.-Nr.")
+        self.tree.heading(9, text="Kategorie")
+
 
         #define column width
         self.tree.column(1, width=2)
@@ -152,6 +154,8 @@ class MainWinQuery(QuerySearchBy):
         self.tree.column(6, width=20)
         self.tree.column(7, width=20)
         self.tree.column(8, width=20)
+        self.tree.column(9, width=20)
+
 
         #self.load = Image.open("img/profile.png")
         #self.photo = ImageTk.PhotoImage(self.load)

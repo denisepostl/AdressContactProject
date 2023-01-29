@@ -40,3 +40,8 @@ class Updating():
         cur = self.connection.cursor()
         cur.execute("UPDATE PhoneNumber SET PhoneNumber = ? WHERE PhoneNumber = ?" , (newtel, oldtel))
         self.connection.commit()
+
+    def update_Category(self, Cat, OldCat):
+        cur = self.connection.cursor()
+        cur.execute("UPDATE Kategorie SET Kategorie = ? WHERE Kategorie = ?" , (Cat, OldCat))
+        self.connection.commit()

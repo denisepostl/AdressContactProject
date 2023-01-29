@@ -3,9 +3,9 @@ from tkinter import ttk
 import tkinter as tk
 from tkinter import messagebox
 import sqlite3
-from adress.query_search_by import QuerySearchBy
-from adress.update_for_gui import Updating
-from adress.add_second import AddSecondRecord
+from query_search_by import QuerySearchBy
+from update_for_gui import Updating
+from add_second import AddSecondRecord
 
 Profile = {1: ""}
 
@@ -82,7 +82,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.bdelete.place(x = 20, y = 328, width=190, height=40)
 
         #Add Category
-        self.bCategory = Button(self.wind, text="Kategorie hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combo_)
+        self.bCategory = Button(self.wind, text="Kategorie ändern", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combo_)
         self.bCategory.place(x = 420, y = 428, width=190, height=40)
 
         self.lbSearchByName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1) #Label for Name Searching (First Name)
@@ -155,13 +155,15 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         return query_result
 
 
-    #------------------------------ADD-Category--------------------------------------------------#
+    #------------------------------Edit-Category--------------------------------------------------#
 
   
     def combo_(self):
         self.tree.item(self.tree.selection())['values'][0]
         self.GetFName_ = self.tree.item(self.tree.selection())['values'][1]
         self.GetLName_ = self.tree.item(self.tree.selection())['values'][2]
+        self.GetKategorie = self.tree.item(self.tree.selection())['values'][8]
+
 
         self.root = tk.Tk()
         self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
@@ -178,12 +180,10 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
         self.selected = self.combo.get()
         self.get_name_id(FirstName, LastName)
-        self.Insert_Category(self.selected)
+        self.update_Category(self.selected, self.GetKategorie)
         self.connection.commit()
         self.root.destroy()
-    
-
-
+   
     #----------------------Add-Second-Adress------------------------------------------#
 
     def add_adress(self):

@@ -4,10 +4,6 @@ from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
 import sqlite3
-from adress.calculate_id import CalculateID
-from adress.insert_query import Add
-from adress.query import Ask
-from adress.query_search_by import QuerySearchBy
 
 
 

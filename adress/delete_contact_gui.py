@@ -5,9 +5,9 @@ from tkinter import messagebox
 from tkinter import filedialog
 import os
 from PIL import Image, ImageTk
-from adress.query_search_by import QuerySearchBy
+from query_search_by import QuerySearchBy
 import sqlite3
-from adress.gui_query import MainWinQuery
+from gui_query import MainWinQuery
 
 #load the image
 Profile = {1: ""}
@@ -32,6 +32,7 @@ class MainWinDelete(QuerySearchBy):
         cur.execute("delete from Contact where ID = {}".format(self.idSelect))
         cur.execute("Delete from Adress where Contact_ID = %s" %(self.get_id_)) 
         cur.execute("Delete from PhoneNumber where Contact_ID = %s" %(self.get_id_)) 
+        cur.execute("Delete from Kategorie where Contact_ID = %s" %(self.get_id_)) 
         con.commit()
         self.tree.delete(self.tree.selection())
 
@@ -46,6 +47,8 @@ class MainWinDelete(QuerySearchBy):
                 on c.ID=a.ID
             join Adress b
                 on b.ID = c.ID
+            join Kategorie d
+                on c.ID = d.ID
             where First_Name like "%s" and LastName like "%s"
         """ %(first_name, last_name)
         cur.execute(query)
@@ -140,7 +143,7 @@ class MainWinDelete(QuerySearchBy):
         self.bquery = Button(self.win, text="Kontakt abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Query_Win)
         self.bquery.place(x = 20, y = 328, width=190, height=40)
 
-        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,), height= 5, show="headings")
+        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,9,), height= 5, show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)
 
         #Add headings
@@ -152,6 +155,8 @@ class MainWinDelete(QuerySearchBy):
         self.tree.heading(6, text="Straße")
         self.tree.heading(7, text="Haus-Nr.")
         self.tree.heading(8, text="Tel.-Nr.")
+        self.tree.heading(9, text="Kategorie")
+
 
         #define column width
         self.tree.column(1, width=2)
@@ -162,6 +167,8 @@ class MainWinDelete(QuerySearchBy):
         self.tree.column(6, width=20)
         self.tree.column(7, width=20)
         self.tree.column(8, width=20)
+        self.tree.column(9, width=20)
+
 
 def main():
     win = MainWinDelete()

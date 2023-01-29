@@ -16,7 +16,7 @@ from .update_query import Update
 from .add_for_gui import Insert
 from .update_for_gui import Updating
 from .add_second import AddSecondRecord
-from .category import Category
+
 
 __exports__ = [
     Add,
@@ -36,6 +36,6 @@ __exports__ = [
     Win,
     Insert, 
     Updating,
-    AddSecondRecord,
-    Category
+    AddSecondRecord
+
 ]

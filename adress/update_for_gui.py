@@ -3,7 +3,7 @@ import sqlite3
 class Updating():
 
     def __init__(self):
-        self.connection = sqlite3.connect("database/adress.db")
+        self.connection = sqlite3.connect("database/adress_cat.db")
 
 
     def update_FName(self, new_name, old_name):
@@ -39,4 +39,9 @@ class Updating():
     def update_Tel(self, newtel, oldtel):
         cur = self.connection.cursor()
         cur.execute("UPDATE PhoneNumber SET PhoneNumber = ? WHERE PhoneNumber = ?" , (newtel, oldtel))
+        self.connection.commit()
+
+    def update_Category(self, Cat, OldCat):
+        cur = self.connection.cursor()
+        cur.execute("UPDATE Kategorie SET Kategorie = ? WHERE Kategorie = ?" , (Cat, OldCat))
         self.connection.commit()

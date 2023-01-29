@@ -1,6 +1,8 @@
 from tkinter import ttk 
 import tkinter as tk
 from tkinter import *
+import tkinter as tk
+import tkinter.ttk as ttk
 
 from tkinter import filedialog
 from tkinter import messagebox
@@ -8,16 +10,15 @@ import re
 import os
 from PIL import Image, ImageTk
 import sqlite3
-from adress.query import Ask
 from adress.add_for_gui import Insert
 
 Profile = {1: ""}
 
-class MainWin(Ask, Insert):
+class MainWin(Insert):
 
     def __init__(self):
         #connect with database
-        self.connection = sqlite3.connect("database/adress.db")
+        self.connection = sqlite3.connect("database/adress_cat.db")
         #create Window and define details like title, geometry and colors
         self.win = Tk()
         self.win.title=("Adress-Management")
@@ -37,7 +38,7 @@ class MainWin(Ask, Insert):
         self.HNR = self.entryHNR.get()
         self.Str = self.entryStr.get()
         self.Phone = self.entryPhone.get()
-        if type(self.FName) != str or type(self.LName) != str or type(self.Ort) != str or type(self.PLZ) != str or type(self.Str) != str:
+        if type(self.FName) != str or type(self.LName) != str or type(self.Ort) != str or type(self.Str) != str:
             messagebox.showerror("Fehler", "Falscher Datentyp")
         elif not re.search(r'^\d{4}$', self.PLZ):
             messagebox.showerror("Error", "Bitte geben Sie eine gültige PLZ ein.")
@@ -47,7 +48,6 @@ class MainWin(Ask, Insert):
             self.insert_PhoneNumber(self.Phone)
             self.Insert_Category(self.selected)
             self.connection.commit()
-
             select = cur.execute("SELECT * FROM Contact order by id desc")
             select = list(select)
             id = select[0][0]
@@ -56,6 +56,22 @@ class MainWin(Ask, Insert):
             rgb_im = im.convert('RGB')
             rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg")) #save the selected image
 
+
+    def combo_(self):
+        self.root = tk.Tk()
+        self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
+        self.combo.pack()
+        self.combo.current(0) # setting default value
+        ok_button = tk.Button(self.root, bg = self.co2, fg = self.co0, text="OK", command=self.save_close)
+        ok_button.pack()
+        self.root.mainloop()
+
+
+    def save_close(self):
+        self.selected = self.combo.get()
+        self.connection.commit()
+        self.root.destroy()
+    
 
     def BrowsePhoto(self):
         self.entryPhoto.delete(0, END)

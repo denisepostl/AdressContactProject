@@ -3,7 +3,7 @@ import sqlite3
 class QuerySearchBy():
 
     def __init__(self):
-        self.connection = sqlite3.connect("database/adress.db")
+        self.connection = sqlite3.connect("database/adress_cat.db")
 
 
     def askin_query(self, first_name, last_name):
@@ -23,6 +23,8 @@ class QuerySearchBy():
 	            on a.ID = b.Contact_ID
             join PhoneNumber c
 	            on a.ID = c.Contact_ID
+            join Kategorie d
+                on a.ID = d.Contact_ID
             where First_Name like "%s" and LastName like "%s" """ %(first_name, last_name,)
         
         cur.execute(query)
@@ -46,6 +48,8 @@ class QuerySearchBy():
 	            on a.ID = b.Contact_ID
             join PhoneNumber c
 	            on a.ID = c.Contact_ID
+            join Kategorie d
+                on a.ID = d.Contact_ID
             where PhoneNumber like "%s" """ %(phone,)
         
         cur.execute(query)
@@ -69,7 +73,9 @@ class QuerySearchBy():
             join Adress b
 	            on a.ID = b.Contact_ID
             join PhoneNumber c
-	            on a.ID = c.Contact_ID """ 
+	            on a.ID = c.Contact_ID
+            join Kategorie d
+                on a.ID = d.Contact_ID """ 
         
         cur.execute(query)
         self.contact = cur.fetchall()

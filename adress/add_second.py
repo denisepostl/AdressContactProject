@@ -3,7 +3,7 @@ import sqlite3
 class AddSecondRecord():
 
     def __init__(self):
-        self.connection = sqlite3.connect("database/adress.db")
+        self.connection = sqlite3.connect("database/adress_cat.db")
 
 
     def get_name_id(self, first_name, last_name):

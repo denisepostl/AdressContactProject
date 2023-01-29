@@ -3,7 +3,7 @@ import sqlite3
 class Insert():
 
     def __init__(self):
-        self.connection = sqlite3.connect("database/adress.db")
+        self.connection = sqlite3.connect("database/adress_cat.db")
 
 
     def insert_Name(self, first_name, last_name):

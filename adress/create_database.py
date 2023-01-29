@@ -3,7 +3,7 @@ import sqlite3
 class Create():
 
     def __init__(self):
-        self.connection = sqlite3.connect("database/adress.db")
+        self.connection = sqlite3.connect("database/adress_cat.db")
 
 
     def create_Contact(self):

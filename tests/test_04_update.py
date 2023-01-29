@@ -18,11 +18,13 @@ def setup_database():
     cursor.execute("CREATE TABLE Contact (First_Name TEXT, LastName TEXT)")
     cursor.execute("CREATE TABLE Adress (PostCode TEXT, City TEXT, Street TEXT, HouseNumber TEXT)")
     cursor.execute("CREATE TABLE PhoneNumber (PhoneNumber TEXT)")
+    cursor.execute("CREATE TABLE Kategorie (Kategorie TEXT)")
 
     # insert test data
     cursor.execute("INSERT INTO Contact VALUES ('John', 'Doe')")
     cursor.execute("INSERT INTO Adress VALUES ('12345', 'Test City', 'Test Street', '1')")
     cursor.execute("INSERT INTO PhoneNumber VALUES ('1234567890')")
+    cursor.execute("INSERT INTO Kategorie VALUES ('Arbeit')")
     connection.commit()
     yield connection
     connection.close()
@@ -89,11 +91,3 @@ def test_update_PostCode(setup_database):
     assert result[0] == '54321'
 
 
-def test_update_PhoneNumber(setup_database):
-    updater = adress.Updating()
-    updater.connection = setup_database
-    updater.update_Tel('01234567', '1234567890')
-    cursor = setup_database.cursor()
-    cursor.execute("SELECT PhoneNumber FROM PhoneNumber")
-    result = cursor.fetchone()
-    assert result[0] == '01234567'

@@ -5,9 +5,9 @@ from tkinter import messagebox
 from tkinter import filedialog
 import os
 from PIL import Image, ImageTk
-from adress.query_search_by import QuerySearchBy
+from query_search_by import QuerySearchBy
 import sqlite3
-from adress.gui_query import MainWinQuery
+from gui_query import MainWinQuery
 
 #load the image
 Profile = {1: ""}

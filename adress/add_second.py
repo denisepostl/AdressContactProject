@@ -35,8 +35,5 @@ class AddSecondRecord():
         cur.execute("INSERT INTO PhoneNumber ('PhoneNumber', 'Contact_ID') values(?,?)", (phone_number, self.name_id))
         self.connection.commit()
 
-    def Insert_Category(self, category):
-        cur = self.connection.cursor()
-        cur.execute("INSERT INTO Kategorie ('Kategorie', 'Contact_ID') values(?,?)", (category, self.name_id))
-        self.connection.commit()
+
 

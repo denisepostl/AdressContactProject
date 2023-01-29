@@ -17,7 +17,8 @@ class QuerySearchBy():
                 b.City,
 	            b.Street,
 	            b.HouseNumber,
-	            c.PhoneNumber
+	            c.PhoneNumber,
+                d.Kategorie
             from Contact a
             join Adress b
 	            on a.ID = b.Contact_ID
@@ -42,7 +43,8 @@ class QuerySearchBy():
                 b.City,
 	            b.Street,
 	            b.HouseNumber,
-	            c.PhoneNumber
+	            c.PhoneNumber,
+                d.Kategorie
             from Contact a
             join Adress b
 	            on a.ID = b.Contact_ID
@@ -68,7 +70,8 @@ class QuerySearchBy():
                 b.City,
 	            b.Street,
 	            b.HouseNumber,
-	            c.PhoneNumber
+	            c.PhoneNumber,
+                d.Kategorie
             from Contact a
             join Adress b
 	            on a.ID = b.Contact_ID

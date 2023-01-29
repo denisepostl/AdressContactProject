@@ -45,6 +45,7 @@ class MainWin(Ask, Insert):
             self.insert_Name(self.FName, self.LName) #methods which allow to save data
             self.insert_Address(self.PLZ, self.Str, self.Ort, self.HNR)
             self.insert_PhoneNumber(self.Phone)
+            self.Insert_Category(self.selected)
             self.connection.commit()
 
             select = cur.execute("SELECT * FROM Contact order by id desc")
@@ -54,23 +55,6 @@ class MainWin(Ask, Insert):
             im = Image.open(filename)
             rgb_im = im.convert('RGB')
             rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg")) #save the selected image
-
-    
-    def save_and_close(self):
-        selected = self.combo.get()
-        self.Insert_Category(selected)
-        self.connection.commit()
-        self.root.destroy()
-
-    def combo_(self):
-        self.root = tk.Tk()
-        self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
-        self.combo.pack()
-        self.combo.current(0) # setting default value
-        ok_button = tk.Button(self.root, bg = self.co2, fg = self.co0, text="OK", command=self.save_and_close)
-        ok_button.pack()
-        self.root.mainloop()
-
 
 
     def BrowsePhoto(self):

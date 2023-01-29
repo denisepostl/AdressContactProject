@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk 
+import tkinter as tk
 from tkinter import messagebox
 import sqlite3
 from adress.query_search_by import QuerySearchBy
@@ -33,7 +34,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         header = Label(top, text="Adress-Management ✆", height=1, font=("Bahnschrift 22 bold"), bg= self.co2, fg=self.co0)
         header.place(x=280, y=2) #define header
 
-        self.tree = ttk.Treeview(self.wind, height=10,columns=(1,2,3,4,5,6,7,8,),show="headings") #treeview for records
+        self.tree = ttk.Treeview(self.wind, height=10,columns=(1,2,3,4,5,6,7,8,9,),show="headings") #treeview for records
         self.tree.place(x=220, y=140, width=520, height=220) #place the treeview
         self.tree.heading(1, text="ID") #define headers of treeview
         self.tree.heading(2, text="Vorname")
@@ -43,6 +44,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.tree.heading(6, text="Straße")
         self.tree.heading(7, text="Haus-Nr.")
         self.tree.heading(8, text="Tel.-Nr.")
+        self.tree.heading(9, text="Kategorie")
 
         self.tree.column(1, width=2)
         self.tree.column(2, width=40)
@@ -52,6 +54,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.tree.column(6, width=20)
         self.tree.column(7, width=20)
         self.tree.column(8, width=20)
+        self.tree.column(9, width=20)
 
         #Update Contact Button
         self.bUpdate = Button(self.wind, text="Kontaktdaten aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.editing)
@@ -63,11 +66,11 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
         # Add 2nd Tel.-Nr. Button
         self.bTel = Button(self.wind, text="Tel.-Nr. hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_tel)
-        self.bTel.place(x = 20, y = 410, width=180, height=40)
+        self.bTel.place(x = 20, y = 428, width=180, height=40)
 
         # Add 2nd Adress Button
         self.bTel = Button(self.wind, text="Adresse hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_adress)
-        self.bTel.place(x = 220, y = 410, width=180, height=40)
+        self.bTel.place(x = 220, y = 428, width=180, height=40)
 
 
         #Add Button - switch to Add Win
@@ -77,6 +80,10 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         #dDelete Button - switch to Delete Win
         self.bdelete = Button(self.wind, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
         self.bdelete.place(x = 20, y = 328, width=190, height=40)
+
+        #Add Category
+        self.bCategory = Button(self.wind, text="Kategorie hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combo_)
+        self.bCategory.place(x = 420, y = 428, width=190, height=40)
 
         self.lbSearchByName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1) #Label for Name Searching (First Name)
         self.lbSearchByName.place(x=200, y=60, width=200)
@@ -146,6 +153,35 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
             query_result = cursor.execute(query, parameters)
             conn.commit()
         return query_result
+
+
+    #------------------------------ADD-Category--------------------------------------------------#
+
+  
+    def combo_(self):
+        self.tree.item(self.tree.selection())['values'][0]
+        self.GetFName_ = self.tree.item(self.tree.selection())['values'][1]
+        self.GetLName_ = self.tree.item(self.tree.selection())['values'][2]
+
+        self.root = tk.Tk()
+        self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
+        self.combo.pack()
+        self.combo.current(0) # setting default value
+        ok_button = tk.Button(self.root, bg = self.co2, fg = self.co0, text="OK", command=self.save_close)
+        ok_button.pack()
+        self.root.mainloop()
+
+
+    def save_close(self):
+        FirstName = self.GetFName_
+        LastName = self.GetLName_
+
+        self.selected = self.combo.get()
+        self.get_name_id(FirstName, LastName)
+        self.Insert_Category(self.selected)
+        self.connection.commit()
+        self.root.destroy()
+    
 
 
     #----------------------Add-Second-Adress------------------------------------------#

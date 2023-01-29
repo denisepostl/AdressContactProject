@@ -47,11 +47,25 @@ class Create():
         cur.execute(query)
         self.connection.commit()
 
+    def create_Category(self):
+        """This method is used to create Table Category"""
+        cur = self.connection.cursor()
+        query = """
+            CREATE TABLE Kategorie(
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            Kategorie VARCHAR,
+            Contact_ID INT,
+            FOREIGN KEY(Contact_ID) REFERENCES Contact(ID));
+        """ 
+        cur.execute(query)
+        self.connection.commit()
+
 def main():
     db = Create()
     db.create_Phonenumber()
     db.create_Contact()
     db.create_Adress()
+    db.create_Category()
 
 if __name__ == "__main__":
     main()

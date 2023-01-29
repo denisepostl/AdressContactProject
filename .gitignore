@@ -3,3 +3,4 @@ venv
 __pycache__
 database/adress.db
 database/adress_category.db
+.pytest_cache

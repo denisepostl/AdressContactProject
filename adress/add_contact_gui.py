@@ -61,6 +61,8 @@ class MainWin(Insert):
     def combo_(self):
         """Create a Combo Box for Kategorie items"""
         self.root = tk.Tk()
+        self.root.configure(background=self.co2)
+        self.root.resizable(width=False, height=False) #don't allow resizeable window
         self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
         self.combo.pack()
         self.combo.current(0) # setting default value

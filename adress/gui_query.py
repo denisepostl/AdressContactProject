@@ -39,10 +39,12 @@ class MainWinQuery(QuerySearchBy):
             self.tree.insert('', END, values=row)
 
     def query_contact(self):
-        """Get the record in treeview"""
+        """Get all records in treeview"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         self.askin_all_query()
+        if not self.contact:
+            messagebox.showwarning("Error", "Keine Datensätze vorhanden") #raise messagebox if db is empty
         for row in self.contact:
             self.tree.insert('', END, values=row)
 

@@ -170,6 +170,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
 
         self.root = tk.Tk()#new window
+        self.root.configure(background=self.co2)
         self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
         self.combo.pack()
         self.combo.current(0) # setting default value

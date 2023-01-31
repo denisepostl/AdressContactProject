@@ -8,11 +8,12 @@ from PIL import Image, ImageTk
 from adress.query_search_by import QuerySearchBy
 import sqlite3
 from adress.gui_query import MainWinQuery
+from adress.delete_for_gui import Delete_Contact
 
 #load the image
 Profile = {1: ""}
 
-class MainWinDelete(QuerySearchBy):
+class MainWinDelete(QuerySearchBy, Delete_Contact):
 
     def __init__(self):
         """Initialize the database Connection and define Settings for the Window like color, geometry or Title"""
@@ -27,15 +28,15 @@ class MainWinDelete(QuerySearchBy):
         self.win.resizable(width=False, height=False)
     
     def delete_contact(self):
-        """Delete the Contact by selecting of Record"""
+        """Delete the Contact by selecting of Contact-Record"""
         self.idSelect = self.tree.item(self.tree.selection())['values'][0]
         self.get_id_ = self.get_name_id(self.name, self.lname)
         con = self.connection
         cur = con.cursor()
         cur.execute("delete from Contact where ID = {}".format(self.idSelect))
-        cur.execute("Delete from Adress where Contact_ID = %s" %(self.get_id_)) 
-        cur.execute("Delete from PhoneNumber where Contact_ID = %s" %(self.get_id_)) 
-        cur.execute("Delete from Kategorie where Contact_ID = %s" %(self.get_id_)) 
+        self.delete_adress(self.get_id_)
+        self.delete_phonenumber(self.get_id_)
+        self.delete_category(self.get_id_)
         con.commit()
         self.tree.delete(self.tree.selection())
 

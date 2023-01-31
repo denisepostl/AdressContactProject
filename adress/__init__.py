@@ -16,6 +16,7 @@ from .update_query import Update
 from .add_for_gui import Insert
 from .update_for_gui import Updating
 from .add_second import AddSecondRecord
+from .delete_for_gui import Delete_Contact
 
 __exports__ = [
     Add,
@@ -35,5 +36,6 @@ __exports__ = [
     Win,
     Insert, 
     Updating,
-    AddSecondRecord
+    AddSecondRecord, 
+    Delete_Contact
 ]

@@ -1,10 +1,12 @@
 import sqlite3
 
+
 class Create_Contact():
+    """Create Tables for database."""
 
     def __init__(self):
+        """Initialize the database connection."""
         self.connection = sqlite3.connect("database/adress_category.db")
-
 
     def create_Contact(self):
         """This method is used to create Table Contact"""
@@ -16,7 +18,7 @@ class Create_Contact():
             LastName VARCHAR,
             Kategorie_ID INTEGER,
             FOREIGN KEY(Kategorie_ID) REFERENCES Kategorie(ID));
-        """ 
+        """
         cur.execute(query)
         self.connection.commit()
 
@@ -29,7 +31,7 @@ class Create_Contact():
             PhoneNumber VARCHAR UNIQUE,
             Contact_ID INT,
             FOREIGN KEY(Contact_ID) REFERENCES Contact(ID));
-        """ 
+        """
         cur.execute(query)
         self.connection.commit()
 
@@ -45,7 +47,7 @@ class Create_Contact():
             HouseNumber NVARCHAR,
             Contact_ID INT,
             FOREIGN KEY(Contact_ID) REFERENCES Contact(ID));
-        """ 
+        """
         cur.execute(query)
         self.connection.commit()
 
@@ -56,9 +58,10 @@ class Create_Contact():
             CREATE TABLE Kategorie(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
             Kategorie VARCHAR);
-        """ 
+        """
         cur.execute(query)
         self.connection.commit()
+
 
 def main():
     db = Create_Contact()
@@ -66,6 +69,7 @@ def main():
     db.create_Contact()
     db.create_Adress()
     db.create_Category()
+
 
 if __name__ == "__main__":
     main()

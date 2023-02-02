@@ -17,6 +17,8 @@ def test_import_successful():
 
 
 #------------------------------Ask-Class-------------------------------------#
+
+
 def test_Ask_class_present():
     """Test if class is present."""
     assert adress is not None
@@ -34,12 +36,13 @@ def test_class_methods_present():
 
 
 #------------------------------Add-Class-------------------------------------#
+
+
 def test_Add_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.Add
     assert type(adress.Add) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of Add is complete."""
@@ -51,12 +54,13 @@ def test_class_methods_present():
     assert type(adress.Add.add_PhoneNumber) == FunctionType
 
 #------------------------------Contact-Class-------------------------------------#
+
+
 def test_Contact_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.Contact
     assert type(adress.Contact) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of Contact is complete."""
@@ -67,12 +71,13 @@ def test_class_methods_present():
 
 
 #------------------------------Calculate-ID-Class-------------------------------------#
+
+
 def test_calculate_id_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.CalculateID
     assert type(adress.CalculateID) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of CalculateID is complete."""
@@ -84,12 +89,13 @@ def test_class_methods_present():
     assert type(adress.CalculateID.calculate_contact_id) == FunctionType
 
 #------------------------------Delete-Class-------------------------------------#
+
+
 def test_delete_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.Delete
     assert type(adress.Delete) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of Delete is complete."""
@@ -103,12 +109,13 @@ def test_class_methods_present():
 
 
 #------------------------------Create-Class-------------------------------------#
+
+
 def test_create_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.Create
     assert type(adress.Create) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of Create is complete."""
@@ -121,12 +128,13 @@ def test_class_methods_present():
 
 
 #------------------------------Update-Class-------------------------------------#
+
+
 def test_update_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.Update
     assert type(adress.Update) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of Update is complete."""
@@ -145,12 +153,13 @@ def test_class_methods_present():
 
 
 #------------------------------Create_Contact-Class-------------------------------------#
+
+
 def test_create_contact_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.Create_Contact
     assert type(adress.Create_Contact) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of Create_Contact is complete."""
@@ -163,12 +172,13 @@ def test_class_methods_present():
     assert type(adress.Create_Contact.create_Contact) == FunctionType
 
 #------------------------------Win-Class-------------------------------------#
+
+
 def test_win_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.Win
     assert type(adress.Win) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of Win is complete."""
@@ -182,12 +192,13 @@ def test_class_methods_present():
     assert type(adress.Win.Update_Win) == FunctionType
 
 #------------------------------MainWin-Class-------------------------------------#
+
+
 def test_mainwin_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.MainWin
     assert type(adress.MainWin) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of MainWin is complete."""
@@ -202,12 +213,13 @@ def test_class_methods_present():
     assert type(adress.MainWin.add_contact) == FunctionType
 
 #------------------------------MainWinUpdate-Class-------------------------------------#
+
+
 def test_mainwin_class_present():
     """Test if class is present."""
     assert adress is not None
     assert adress.MainWinUpdate
     assert type(adress.MainWin) is not None
-
 
 def test_class_methods_present():
     """Test if the interface of MainWinUpdate is complete."""

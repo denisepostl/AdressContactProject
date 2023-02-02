@@ -8,8 +8,10 @@ try:
 except ModuleNotFoundError as e:
     logging.error("Module not found %s", e)
 
+
 @pytest.fixture
 def setup_delete_contact():
+    """Create in-memory database for testing"""
     connection = sqlite3.connect(":memory:")
     cur = connection.cursor()
     cur.execute("""
@@ -51,7 +53,9 @@ def setup_delete_contact():
     yield connection
     connection.close()
 
+
 def test_delete_adress(setup_delete_contact):
+    """Test if user can delete adress"""
     delete_contact = adress.Delete_Contact()
     delete_contact.connection = setup_delete_contact
     delete_contact.delete_adress(1)
@@ -61,7 +65,9 @@ def test_delete_adress(setup_delete_contact):
     assert len(adresses) == 1
     assert adresses[0][0] == 2
 
+
 def test_delete_phonenumber(setup_delete_contact):
+    """Test if user can delete phonenumber"""
     delete_contact = adress.Delete_Contact()
     delete_contact.connection = setup_delete_contact
     delete_contact.delete_phonenumber(1)
@@ -71,7 +77,9 @@ def test_delete_phonenumber(setup_delete_contact):
     assert len(phone_numbers) == 1
     assert phone_numbers[0][0] == 2
 
+
 def test_delete_category(setup_delete_contact):
+    """Test if user can delete category"""
     delete_contact = adress.Delete_Contact()
     delete_contact.connection = setup_delete_contact
     delete_contact.delete_category(1)

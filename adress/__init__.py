@@ -1,3 +1,5 @@
+"""__init__ module for AdressContactProject"""
+
 from .add_contact_gui import MainWin
 from .calculate_id import CalculateID
 from .create_database_category import Create_Contact
@@ -18,6 +20,8 @@ from .update_for_gui import Updating
 from .add_second import AddSecondRecord
 from .delete_for_gui import Delete_Contact
 
+
+"""Export the classes of the adress-module"""
 __exports__ = [
     Add,
     Contact,
@@ -31,11 +35,11 @@ __exports__ = [
     MainWinUpdate,
     QuerySearchBy,
     MainWinDelete,
-    MainWinQuery, 
-    Update_Select, 
+    MainWinQuery,
+    Update_Select,
     Win,
-    Insert, 
+    Insert,
     Updating,
-    AddSecondRecord, 
-    Delete_Contact
+    AddSecondRecord,
+    Delete_Contact,
 ]

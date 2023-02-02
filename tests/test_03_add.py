@@ -9,6 +9,7 @@ except ModuleNotFoundError as e:
 
 
 def test_001_add_Name():
+    """Test if user can add a First- and Lastname in Table Contact"""
     add_obj = adress.Add()
     ID = 2
     first_name = "John"
@@ -25,7 +26,9 @@ def test_001_add_Name():
     conn.commit()
     conn.close()
 
+
 def test_002_add_Address():
+    """Test if user can add an Adress in Table Adress"""
     add_obj = adress.Add()
     street = "Main St"
     post_code = "12345"
@@ -46,8 +49,10 @@ def test_002_add_Address():
     c.execute("DELETE FROM Adress WHERE Contact_ID = 2")
     conn.commit()
     conn.close()
-    
+
+
 def test_003_add_PhoneNumber():
+    """Test if user can add a PhoneNumber in Table PhoneNumber"""
     add_obj = adress.Add()
     phone_number = "06401212"
     Contact_ID = 2

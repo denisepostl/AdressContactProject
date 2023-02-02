@@ -8,8 +8,8 @@ except ModuleNotFoundError as e:
     logging.error("Module not found %s", e)
 
 
-
 def test_get_del_id():
+    """Test if correct id returned"""
     # Add a test contact to the database
     del_obj = adress.Delete()
     connection = sqlite3.connect("database/adress.db")
@@ -22,7 +22,9 @@ def test_get_del_id():
     cur.execute("SELECT ID FROM Contact WHERE First_Name = 'John' AND LastName = 'Doe'")
     assert cur.fetchone()[0] == id
 
+
 def test_delete_contact_with_data():
+    """Test if user can delete Contact"""
     # Add a test contact to the database
     del_obj = adress.Delete()
     connection = sqlite3.connect("database/adress.db")
@@ -43,6 +45,7 @@ def test_delete_contact_with_data():
 
 
 def test_delete_adress():
+    """Test if user can delete adress"""
     # Add a test contact and address to the database
     del_obj = adress.Delete()
     connection = sqlite3.connect("database/adress.db")
@@ -63,6 +66,7 @@ def test_delete_adress():
 
 
 def test_delete_phonenumber():
+    """Test if user can delete PhoneNumber"""
     # Add a test contact and PhoneNumber to the database
     del_obj = adress.Delete()
     connection = sqlite3.connect("database/adress.db")
@@ -80,4 +84,3 @@ def test_delete_phonenumber():
     # Test that the address was deleted
     cur.execute("SELECT * FROM PhoneNumber WHERE Contact_ID = ?", (contact_id,))
     assert cur.fetchone() == None
-

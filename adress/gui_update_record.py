@@ -9,34 +9,35 @@ from adress.add_second import AddSecondRecord
 
 Profile = {1: ""}
 
+
 class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
-    db_name = 'database/adress_cat.db' 
+    db_name = 'database/adress_cat.db'
+
     def __init__(self):
-        self.connection = sqlite3.connect("database/adress_cat.db") #connection to database 
-        self.wind = Tk() #create new Window
-        self.co0 = "#ffffff" #define colors
+        self.connection = sqlite3.connect("database/adress_cat.db")  # connection to database 
+        self.wind = Tk()  # create new Window
+        self.co0 = "#ffffff"  # define colors
         self.co1 = "#000000"
         self.co2 = "#20214f"
-        self.wind.geometry('800x600') #define geometry
-        self.wind.title ('Adress-Management') #define title
-        self.wind.configure(background=self.co0) #define background
-        self.wind.resizable(width=False, height=False) #don't let the window resizing
-
+        self.wind.geometry('800x600')  # define geometry
+        self.wind.title ('Adress-Management')  # define title
+        self.wind.configure(background=self.co0)  # define background
+        self.wind.resizable(width=False, height=False)  # don't let the window resizing
 
     def MainWinUpdate(self):
         """Main Window of Update Adress"""
-        top = Frame(self.wind, width=800, height=50, bg=self.co2) #design top with blue box
+        top = Frame(self.wind, width=800, height=50, bg=self.co2)  # design top with blue box
         top.grid(row=0, column=0, padx=0, pady=1)
 
-        bottom = Frame(self.wind, width=800, height=140, bg=self.co2) #design button with blue box
+        bottom = Frame(self.wind, width=800, height=140, bg=self.co2)  # design button with blue box
         bottom.place(x=0, y=540)
 
         header = Label(top, text="Adress-Management ✆", height=1, font=("Bahnschrift 22 bold"), bg= self.co2, fg=self.co0)
-        header.place(x=280, y=2) #define header
+        header.place(x=280, y=2)  # define header
 
-        self.tree = ttk.Treeview(self.wind, height=10,columns=(1,2,3,4,5,6,7,8,9,),show="headings") #treeview for records
-        self.tree.place(x=220, y=140, width=520, height=220) #place the treeview
-        self.tree.heading(1, text="ID") #define headers of treeview
+        self.tree = ttk.Treeview(self.wind, height=10,columns=(1, 2, 3, 4, 5, 6, 7, 8, 9,),show="headings")  # treeview for records
+        self.tree.place(x=220, y=140, width=520, height=220)  # place the treeview
+        self.tree.heading(1, text="ID")  # define headers of treeview
         self.tree.heading(2, text="Vorname")
         self.tree.heading(3, text="Nachname")
         self.tree.heading(4, text="PLZ")
@@ -56,50 +57,48 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.tree.column(8, width=20)
         self.tree.column(9, width=20)
 
-        #Update Contact Button
+        # Update Contact Button
         self.bUpdate = Button(self.wind, text="Kontaktdaten aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.editing)
-        self.bUpdate.place(x = 480, y = 370, width=255, height=40) 
+        self.bUpdate.place(x=480, y=370, width=255, height=40)
 
-        #Query Button - switch to Query Win
+        # Query Button - switch to Query Win
         self.bQuery = Button(self.wind, text="Kontakt abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Query_Win)
-        self.bQuery.place(x = 20, y = 128, width=190, height=40)
+        self.bQuery.place(x=20, y=128, width=190, height=40)
 
         # Add 2nd Tel.-Nr. Button
         self.bTel = Button(self.wind, text="Tel.-Nr. hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_tel)
-        self.bTel.place(x = 20, y = 428, width=180, height=40)
+        self.bTel.place(x=20, y=428, width=180, height=40)
 
         # Add 2nd Adress Button
         self.bTel = Button(self.wind, text="Adresse hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_adress)
-        self.bTel.place(x = 220, y = 428, width=180, height=40)
+        self.bTel.place(x=220, y=428, width=180, height=40)
 
 
-        #Add Button - switch to Add Win
+        # Add Button - switch to Add Win
         self.bAdd = Button(self.wind, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Add_Win)
-        self.bAdd.place(x = 20, y = 228, width=190, height=40)
+        self.bAdd.place(x=20, y=228, width=190, height=40)
 
-        #dDelete Button - switch to Delete Win
+        # Delete Button - switch to Delete Win
         self.bdelete = Button(self.wind, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
-        self.bdelete.place(x = 20, y = 328, width=190, height=40)
+        self.bdelete.place(x=20, y=328, width=190, height=40)
 
-        #Add Category
+        # Add Category
         self.bCategory = Button(self.wind, text="Kategorie ändern", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combo_)
-        self.bCategory.place(x = 420, y = 428, width=190, height=40)
+        self.bCategory.place(x=420, y=428, width=190, height=40)
 
-        self.lbSearchByName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1) #Label for Name Searching (First Name)
+        self.lbSearchByName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)  # Label for Name Searching (First Name)
         self.lbSearchByName.place(x=200, y=60, width=200)
         self.entrySearchByName = Entry(self.wind)
         self.entrySearchByName.insert(0, "Vorname")
-        self.entrySearchByName.bind("<Return>", self.SearchByName) #define function for the name searching
+        self.entrySearchByName.bind("<Return>", self.SearchByName)  # define function for the name searching
         self.entrySearchByName.place(x=400, y=60, width=160, height=30)
 
-
-        self.lbSearchByLName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1) #Label for Name Searching (Last Name)
+        self.lbSearchByLName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)  # Label for Name Searching (Last Name)
         self.lbSearchByLName.place(x=200, y=60, width=200)
         self.entrySearchByLName = Entry(self.wind)
         self.entrySearchByLName.insert(0, "Nachname")
-        self.entrySearchByLName.bind("<Return>", self.SearchByName) #define function for the name searching
+        self.entrySearchByLName.bind("<Return>", self.SearchByName)  # define function for the name searching
         self.entrySearchByLName.place(x=580, y=60, width=160, height=30)
-
 
     def Delete_Win(self):
         """Switch to Delete Window"""
@@ -117,7 +116,6 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         win.Window_Main()
         win.win.mainloop()
 
-
     def Query_Win(self):
         """Switch to Query Window"""
         self.wind.withdraw()
@@ -125,7 +123,6 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         win = MainWinQuery()
         win.Window()
         win.win.mainloop()
-
 
     def query_contact(self):
         """Ask for a contact and get the records"""
@@ -135,19 +132,19 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
-
     def SearchByName(self, event):
         """Search for recrod by name"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         name = self.entrySearchByName.get()
         lname = self.entrySearchByLName.get()
+        if name == '' or lname == '':
+            messagebox.showwarning("Warning", "Bitte Vor- und Nachname eingeben!")
         self.askin_query(name, lname)
-        if not self.contact:
-            messagebox.showinfo("Error", "Eintrag nicht vorhanden!")
+        if not self.contact and not name == '' and not lname == '':
+            messagebox.showinfo("Info", "Eintrag nicht vorhanden!")
         for row in self.contact:
             self.tree.insert('', END, values=row)
-
 
     def run_query(self, query, parameters=()):
         """Let the query run"""
@@ -160,24 +157,21 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
     #------------------------------Edit-Category--------------------------------------------------#
 
-  
     def combo_(self):
         """Define the combo box"""
-        self.tree.item(self.tree.selection())['values'][0]#let set the record
-        self.GetFName_ = self.tree.item(self.tree.selection())['values'][1]#get the name
+        self.tree.item(self.tree.selection())['values'][0] # let set the record
+        self.GetFName_ = self.tree.item(self.tree.selection())['values'][1]  # get the name
         self.GetLName_ = self.tree.item(self.tree.selection())['values'][2]
-        self.GetKategorie = self.tree.item(self.tree.selection())['values'][8]#get the category
+        self.GetKategorie = self.tree.item(self.tree.selection())['values'][8]  # get the category
 
-
-        self.root = tk.Tk()#new window
+        self.root = tk.Tk()  # new window
         self.root.configure(background=self.co2)
         self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
         self.combo.pack()
-        self.combo.current(0) # setting default value
-        ok_button = tk.Button(self.root, bg = self.co2, fg = self.co0, text="OK", command=self.save_close)
+        self.combo.current(0)  # setting default value
+        ok_button = tk.Button(self.root, bg=self.co2, fg=self.co0, text="OK", command=self.save_close)
         ok_button.pack()
         self.root.mainloop()
-
 
     def save_close(self):
         """Save the updated category and close the window"""
@@ -189,7 +183,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.update_Category(self.selected, self.GetKategorie)
         self.connection.commit()
         self.root.destroy()
-   
+
     #----------------------Add-Second-Adress------------------------------------------#
 
     def add_adress(self):
@@ -204,27 +198,25 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.new.configure(background=self.co2)
         self.new.resizable(width=False, height=False)
 
-
-        #PLZ
+        # PLZ
         Label (self.new, text='PLZ: ', bg=self.co2, fg=self.co0).grid(row=3, column=1)
         self.postcode = Entry(self.new)
         self.postcode.grid(row=3, column=2)
 
-        #House Nr
+        # House Nr
         Label (self.new, text='Haus-Nr: ', bg=self.co2, fg=self.co0).grid(row=4, column=1)
         self.housenumber = Entry(self.new)
         self.housenumber.grid(row=4, column=2)
 
-        #City
+        # City
         Label (self.new, text='Ort: ', bg=self.co2, fg=self.co0).grid(row=5, column=1)
         self.CITY = Entry(self.new)
         self.CITY.grid(row=5, column=2)
 
-        #Straße
+        # Straße
         Label (self.new, text='Straße: ', bg=self.co2, fg=self.co0).grid(row=6, column=1)
         self.STREET = Entry(self.new)
         self.STREET.grid(row=6, column=2)
-
 
         Button(self.new, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_adress).grid(row=8, column=2, sticky=W)
         self.new.mainloop()
@@ -243,9 +235,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.add_adress_(str(plz), str(street), str(city), str(housenr))
         self.new.destroy()
 
-
     #------------------------Add-Second-TelefoneNumber------------------------------------#    
-
     def add_tel(self):
         """Add another telefone to contact"""
         self.tree.item(self.tree.selection())['values'][0]#let the record select
@@ -258,11 +248,10 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.window.configure(background=self.co2)
         self.window.resizable(width=False, height=False)
 
-        #Tel.:
+        # Tel.:
         Label (self.window, text='Tel.: ', bg=self.co2, fg=self.co0).grid(row=7, column=1)
         self.get_phone = Entry(self.window)
         self.get_phone.grid(row=7, column=2)
-
 
         Button(self.window, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_tel).grid(row=8, column=2, sticky=W)
         self.window.mainloop()
@@ -279,9 +268,9 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
     def editing(self):
         """Edit records in database"""
-        self.tree.item(self.tree.selection())['values'][0]#let the record select
+        self.tree.item(self.tree.selection())['values'][0]  # let the record select
 
-        #select records like Name, Adress, Telefone
+        # select records like Name, Adress, Telefone
         self.F_Name = self.tree.item(self.tree.selection())['values'][1]
         self.L_Name = self.tree.item(self.tree.selection())['values'][2]
         self.PLZ = self.tree.item(self.tree.selection())['values'][3]
@@ -296,46 +285,46 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.edit_wind.configure(background=self.co2)
         self.edit_wind.resizable(width=False, height=False)
 
-        #FirstName
+        # FirstName
         Label (self.edit_wind, text='Vorname: ', bg=self.co2, fg=self.co0).grid(row=1, column=1)
         self.new_name = Entry(self.edit_wind)
-        self.new_name.insert(0, "%s" %(self.F_Name))
+        self.new_name.insert(0, "%s" % (self.F_Name))
         self.new_name.grid(row=1, column=2)
 
-        #Nachname
+        # Nachname
         Label (self.edit_wind, text='Nachname: ', bg=self.co2, fg=self.co0).grid(row=2, column=1)
         self.lname = Entry(self.edit_wind)
-        self.lname.insert(0, "%s" %(self.L_Name))
+        self.lname.insert(0, "%s" % (self.L_Name))
         self.lname.grid(row=2, column=2)
 
-        #PLZ
+        # PLZ
         Label (self.edit_wind, text='PLZ: ', bg=self.co2, fg=self.co0).grid(row=3, column=1)
         self.plz_ = Entry(self.edit_wind)
-        self.plz_.insert(0, "%s" %(self.PLZ))
+        self.plz_.insert(0, "%s" % (self.PLZ))
         self.plz_.grid(row=3, column=2)
 
-        #House Nr
+        # House Nr
         Label (self.edit_wind, text='Haus-Nr: ', bg=self.co2, fg=self.co0).grid(row=4, column=1)
         self.hNR = Entry(self.edit_wind)
-        self.hNR.insert(0, "%s" %(self.house_nr))
+        self.hNR.insert(0, "%s" % (self.house_nr))
         self.hNR.grid(row=4, column=2)
 
-        #City
+        # City
         Label (self.edit_wind, text='Ort: ', bg=self.co2, fg=self.co0).grid(row=5, column=1)
         self.city = Entry(self.edit_wind)
-        self.city.insert(0, "%s" %(self.ort))
+        self.city.insert(0, "%s" % (self.ort))
         self.city.grid(row=5, column=2)
 
-        #Straße
+        # Straße
         Label (self.edit_wind, text='Straße: ', bg=self.co2, fg=self.co0).grid(row=6, column=1)
         self.street_ = Entry(self.edit_wind)
-        self.street_.insert(0, "%s" %(self.street))
+        self.street_.insert(0, "%s" % (self.street))
         self.street_.grid(row=6, column=2)
 
-        #Tel.:
+        # Tel.:
         Label (self.edit_wind, text='Tel.: ', bg=self.co2, fg=self.co0).grid(row=7, column=1)
         self.phone_ = Entry(self.edit_wind)
-        self.phone_.insert(0, "%s" %(self.telefone))
+        self.phone_.insert(0, "%s" % (self.telefone))
         self.phone_.grid(row=7, column=2)
 
 

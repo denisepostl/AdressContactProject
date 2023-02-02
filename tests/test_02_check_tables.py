@@ -26,8 +26,9 @@ def test_if_tables_exists():
     conn.close()
     return ret
 
+
 def test_if_tables_exists_category():
-    """Test if the Tables exist in adress.db"""
+    """Test if the Tables exist in adress_cat.db"""
 
     conn = sqlite3.connect('database/adress_cat.db')
     c = conn.cursor()

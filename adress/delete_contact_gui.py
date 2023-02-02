@@ -10,10 +10,12 @@ import sqlite3
 from adress.gui_query import MainWinQuery
 from adress.delete_for_gui import Delete_Contact
 
-#load the image
+# load the image
 Profile = {1: ""}
 
+
 class MainWinDelete(QuerySearchBy, Delete_Contact):
+    """Create the window for Delete Option"""
 
     def __init__(self):
         """Initialize the database Connection and define Settings for the Window like color, geometry or Title"""
@@ -26,7 +28,7 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
         self.co2 = "#20214f"
         self.win.configure(background=self.co0)
         self.win.resizable(width=False, height=False)
-    
+ 
     def delete_contact(self):
         """Delete the Contact by selecting of Contact-Record"""
         self.idSelect = self.tree.item(self.tree.selection())['values'][0]
@@ -40,13 +42,12 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
         con.commit()
         self.tree.delete(self.tree.selection())
 
-
     def get_name_id(self, first_name, last_name):
         """Get the ID from the Contact by first and last name"""
         cur = self.connection.cursor()
         query = """
-            SELECT 
-	            c.ID 
+            SELECT
+	            c.ID
             from Contact c
             join PhoneNumber a
                 on c.ID=a.ID
@@ -55,14 +56,13 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
             join Kategorie d
                 on c.ID = d.ID
             where First_Name like "%s" and LastName like "%s"
-        """ %(first_name, last_name)
+        """ % (first_name, last_name)
         cur.execute(query)
         ID = cur.fetchall()
         tup = ID[0]
-        self.name_id  = int(tup[0])
+        self.name_id = int(tup[0])
         self.connection.commit()
         return self.name_id
-    
 
     def query_contact(self):
         """Insert founded Records in treeview"""
@@ -72,23 +72,23 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
-
     def SearchByName(self, event):
         """Search for records by name"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         self.name = self.entrySearchByName.get()
         self.lname = self.entrySearchByLName.get()
+        if self.name == '' or self.lname == '':
+            messagebox.showwarning("Warning", "Bitte Vor- u. Nachname eingeben!")
         self.askin_query(self.name, self.lname)
-        if not self.contact:
-            messagebox.showinfo("Error", "Eintrag nicht vorhanden!")
+        if not self.contact and not self.name == '' and not self.lname == '':
+            messagebox.showinfo("Info", "Eintrag nicht vorhanden!")
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
-
     def Add_Win(self):
         """Switch to Add Window"""
-        self.win.withdraw()#destroy actual window
+        self.win.withdraw()  # destroy actual window
         from add_contact_gui import MainWin
         win = MainWin()
         win.Window_Main()
@@ -96,7 +96,7 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
 
     def Query_Win(self):
         """Switch to Query Window"""
-        self.win.withdraw()#destroy actual window
+        self.win.withdraw()  # destroy actual window
         from gui_query import MainWinQuery
         win = MainWinQuery()
         win.Window()
@@ -104,12 +104,11 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
 
     def Update_Win(self):
         """Switch to Update Window"""
-        self.win.withdraw()#destroy actual window
+        self.win.withdraw()  # destroy actual window
         from gui_update_record import MainWinUpdate
         wind = MainWinUpdate()
         wind.MainWinUpdate()
         wind.wind.mainloop()
-
 
     def Window(self):
         """Create the main window for the Delete Window Option"""
@@ -128,36 +127,35 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
         self.entrySearchByName = Entry(self.win)
         self.entrySearchByName.insert(0, "Vorname")
         self.entrySearchByName.bind("<Return>", self.SearchByName)
-        self.entrySearchByName.place(x=400, y=60, width=160, height=30) #search for a record by First Name
-
+        self.entrySearchByName.place(x=400, y=60, width=160, height=30)  # search for a record by First Name
 
         self.lbSearchByLName = Label(self.win, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)
         self.lbSearchByLName.place(x=200, y=60, width=200)
         self.entrySearchByLName = Entry(self.win)
         self.entrySearchByLName.insert(0, "Nachname")
         self.entrySearchByLName.bind("<Return>", self.SearchByName)
-        self.entrySearchByLName.place(x=580, y=60, width=160, height=30) #search for a record by Last Name
-        
-        #Delete Contact Button
+        self.entrySearchByLName.place(x=580, y=60, width=160, height=30)  # search for a record by Last Name
+    
+        # Delete Contact Button
         self.bAdd = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.delete_contact)
-        self.bAdd.place(x = 480, y = 370, width=255, height=40)
+        self.bAdd.place(x=480, y=370, width=255, height=40)
 
-        #Update
+        # Update
         self.bAdd = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Update_Win)
-        self.bAdd.place(x = 20, y = 128, width=190, height=40)
+        self.bAdd.place(x=20, y=128, width=190, height=40)
 
-        #Add
+        # Add
         self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Add_Win)
-        self.bAdd.place(x = 20, y = 228, width=190, height=40)
+        self.bAdd.place(x=20, y=228, width=190, height=40)
 
-        #query
+        # query
         self.bquery = Button(self.win, text="Kontakt abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Query_Win)
-        self.bquery.place(x = 20, y = 328, width=190, height=40)
+        self.bquery.place(x=20, y=328, width=190, height=40)
 
-        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,9,), height= 5, show="headings") #treeview
+        self.tree = ttk.Treeview(self.win, columns=(1, 2, 3, 4, 5, 6, 7, 8, 9,), height=5, show="headings")  # treeview
         self.tree.place(x=220, y=140, width=520, height=220)
 
-        #Add headings
+        # Add headings
         self.tree.heading(1, text="ID")
         self.tree.heading(2, text="Vorname")
         self.tree.heading(3, text="Nachname")
@@ -168,8 +166,7 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
         self.tree.heading(8, text="Tel.-Nr.")
         self.tree.heading(9, text="Kategorie")
 
-
-        #define column width
+        # define column width
         self.tree.column(1, width=2)
         self.tree.column(2, width=40)
         self.tree.column(3, width=48)
@@ -186,6 +183,6 @@ def main():
     win.Window()
     win.win.mainloop()
 
+
 if __name__ == "__main__":
     main()
-

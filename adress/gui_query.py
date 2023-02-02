@@ -32,9 +32,11 @@ class MainWinQuery(QuerySearchBy):
         for x in self.tree.get_children():
             self.tree.delete(x)
         phone = self.entrySearchByPhone.get()
+        if phone == '':
+            messagebox.showwarning("Warning", "Bitte Tel.-Nr. eingeben") #raise messagebox if user ask without phonenumber
         self.askin_phone_query(phone,)  
-        if not self.contact:
-            messagebox.showinfo("Error", "Telefonnummer nicht vorhanden!") #raise messagebox if the specific record is not in db
+        if not self.contact and not phone == '':
+            messagebox.showinfo("Info", "Telefonnummer nicht vorhanden!") #raise messagebox if the specific record is not in db
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
@@ -44,7 +46,7 @@ class MainWinQuery(QuerySearchBy):
             self.tree.delete(x)
         self.askin_all_query()
         if not self.contact:
-            messagebox.showwarning("Error", "Keine Datensätze vorhanden") #raise messagebox if db is empty
+            messagebox.showwarning("Warning", "Keine Datensätze vorhanden") #raise messagebox if db is empty
         for row in self.contact:
             self.tree.insert('', END, values=row)
 
@@ -55,9 +57,11 @@ class MainWinQuery(QuerySearchBy):
             self.tree.delete(x)
         name = self.entrySearchByName.get()
         lname = self.entrySearchByLName.get()
+        if name == '' or lname == '':
+            messagebox.showwarning("Warning", "Bitte Vor- u. Nachname eingeben!") #raise messagebox if user only insert one name
         self.askin_query(name, lname)
-        if not self.contact:
-            messagebox.showinfo("Error", "Eintrag nicht vorhanden!") #raise messagebox if specific record isn't in db
+        if not self.contact and not name == '' and not lname == '':
+            messagebox.showinfo("Info", "Eintrag nicht vorhanden!") #raise messagebox if specific record isn't in db
         else:
             for row in self.contact:
                 self.tree.insert('', END, values=row)
@@ -85,7 +89,6 @@ class MainWinQuery(QuerySearchBy):
         wind = MainWinUpdate()
         wind.MainWinUpdate()
         wind.wind.mainloop()
-
 
     def Window(self):
         """Create the Window for the Query Option Window"""
@@ -121,28 +124,27 @@ class MainWinQuery(QuerySearchBy):
         self.entrySearchByPhone.bind("<Return>", self.SearchByPhone)
         self.entrySearchByPhone.place(x=400, y=90, width=160, height=30)
 
-        
         # Add Contact Button
         self.bAdd = Button(self.win, text="Alle Kontakte abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.query_contact)
-        self.bAdd.place(x = 480, y = 370, width=255, height=40)
+        self.bAdd.place(x=480, y=370, width=255, height=40)
 
-        #Update
+        # Update
         self.bAdd = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Update_Win)
-        self.bAdd.place(x = 20, y = 128, width=190, height=40)
+        self.bAdd.place(x=20, y=128, width=190, height=40)
 
-        #Add
+        # Add
         self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Add_Win)
-        self.bAdd.place(x = 20, y = 228, width=190, height=40)
+        self.bAdd.place(x=20, y=228, width=190, height=40)
 
-        #delete
-        self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command= self.Delete_Win)
-        self.bdelete.place(x = 20, y = 328, width=190, height=40)
+        # delete
+        self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
+        self.bdelete.place(x=20, y=328, width=190, height=40)
 
-        self.tree = ttk.Treeview(self.win, columns=(1,2,3,4,5,6,7,8,9,), height= 5, show="headings")
+        self.tree = ttk.Treeview(self.win, columns=(1, 2, 3, 4, 5, 6, 7, 8, 9,), height=5, show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)
         self.tree.bind("<<TreeviewSelect>>", self.treeActionSelect)
 
-        #Add headings
+        # Add headings
         self.tree.heading(1, text="ID")
         self.tree.heading(2, text="Vorname")
         self.tree.heading(3, text="Nachname")
@@ -153,8 +155,7 @@ class MainWinQuery(QuerySearchBy):
         self.tree.heading(8, text="Tel.-Nr.")
         self.tree.heading(9, text="Kategorie")
 
-
-        #define column width
+        # define column width
         self.tree.column(1, width=2)
         self.tree.column(2, width=40)
         self.tree.column(3, width=48)
@@ -171,9 +172,10 @@ class MainWinQuery(QuerySearchBy):
         #self.label_image = Label(self.win, image=self.photo)  
         #self.label_image.place(x=40, y=400)
 
-       
+
     def treeActionSelect(self, event):
-        #self.label_image.destroy()
+        """Select Items of Treeview"""
+        # self.label_image.destroy()
         self.idSelect = self.tree.item(self.tree.selection())['values'][0]
         self.first_name = self.tree.item(self.tree.selection())['values'][1]
         self.last_name = self.tree.item(self.tree.selection())['values'][2]
@@ -202,6 +204,6 @@ def main():
     win.Window()
     win.win.mainloop()
 
+
 if __name__ == "__main__":
     main()
-

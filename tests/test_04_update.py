@@ -57,7 +57,7 @@ def test_update_City(setup_database):
     """Test if user can update the City"""
     updater = adress.Updating()
     updater.connection = setup_database
-    updater.update_City('Test', 1)
+    updater.update_City('Test', 1, 'Test City')
     cursor = setup_database.cursor()
     cursor.execute("SELECT City FROM Adress")
     result = cursor.fetchone()
@@ -68,18 +68,27 @@ def test_update_HNR(setup_database):
     """Test if user can update the housenumber"""
     updater = adress.Updating()
     updater.connection = setup_database
-    updater.update_HNR('2', 1)
+    updater.update_HNR('2', 1, '1')
     cursor = setup_database.cursor()
     cursor.execute("SELECT HouseNumber FROM Adress")
     result = cursor.fetchone()
     assert result[0] == '2'
 
+def test_update_tel(setup_database):
+    """Test if user can update the housenumber"""
+    updater = adress.Updating()
+    updater.connection = setup_database
+    updater.update_Tel('012', 1, '1234567890')
+    cursor = setup_database.cursor()
+    cursor.execute("SELECT PhoneNumber FROM PhoneNumber")
+    result = cursor.fetchone()
+    assert result[0] == '012'
 
 def test_update_Street(setup_database):
     """Test if user can update the street"""
     updater = adress.Updating()
     updater.connection = setup_database
-    updater.update_Street('Test', 1)
+    updater.update_Street('Test', 1, 'Test Street')
     cursor = setup_database.cursor()
     cursor.execute("SELECT Street FROM Adress")
     result = cursor.fetchone()
@@ -90,7 +99,7 @@ def test_update_PostCode(setup_database):
     """Test if user can update the PostCode"""
     updater = adress.Updating()
     updater.connection = setup_database
-    updater.update_PostCode('54321', 1)
+    updater.update_PostCode('54321', 1, '12345')
 
     cursor = setup_database.cursor()
     cursor.execute("SELECT PostCode FROM Adress")

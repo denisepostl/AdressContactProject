@@ -37,29 +37,29 @@ class Updating():
         cur.execute("UPDATE Contact SET LastName = ? WHERE ID = ?" , (newLName, id))
         self.connection.commit()
 
-    def update_PostCode(self, NewPLZ, contact_id):
+    def update_PostCode(self, NewPLZ, contact_id, plz):
         cur = self.connection.cursor()
-        cur.execute("UPDATE Adress SET PostCode = ? WHERE Contact_ID = ?" , (NewPLZ, contact_id))
+        cur.execute("UPDATE Adress SET PostCode = ? WHERE Contact_ID = ? and PostCode = ?" , (NewPLZ, contact_id, plz))
         self.connection.commit()
     
-    def update_City(self, NewCity, contact_id):
+    def update_City(self, NewCity, contact_id, city):
         cur = self.connection.cursor()
-        cur.execute("UPDATE Adress SET City = ? WHERE Contact_ID = ?" , (NewCity, contact_id))
+        cur.execute("UPDATE Adress SET City = ? WHERE Contact_ID = ? and City = ?" , (NewCity, contact_id, city))
         self.connection.commit()
 
-    def update_Street(self, NewStreet, contact_id):
+    def update_Street(self, NewStreet, contact_id, street):
         cur = self.connection.cursor()
-        cur.execute("UPDATE Adress SET Street = ? WHERE Contact_ID = ?" , (NewStreet, contact_id))
+        cur.execute("UPDATE Adress SET Street = ? WHERE Contact_ID = ? and Street = ?" , (NewStreet, contact_id, street))
         self.connection.commit()
 
-    def update_HNR(self, newhnr, contact_id):
+    def update_HNR(self, newhnr, contact_id, housenr):
         cur = self.connection.cursor()
-        cur.execute("UPDATE Adress SET HouseNumber = ? WHERE Contact_ID = ?"  , (newhnr, contact_id))
+        cur.execute("UPDATE Adress SET HouseNumber = ? WHERE Contact_ID = ? and HouseNumber = ?"  , (newhnr, contact_id, housenr))
         self.connection.commit()
 
-    def update_Tel(self, newtel, contact_id):
+    def update_Tel(self, newtel, contact_id, tel):
         cur = self.connection.cursor()
-        cur.execute("UPDATE PhoneNumber SET PhoneNumber = ? WHERE Contact_ID = ?"  , (newtel, contact_id))
+        cur.execute("UPDATE PhoneNumber SET PhoneNumber = ? WHERE Contact_ID = ? and PhoneNumber = ?"  , (newtel, contact_id, tel))
         self.connection.commit()
 
     def update_Category(self, Cat, contact_id):

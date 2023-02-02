@@ -64,6 +64,7 @@ Beim Ausführen von [main_contact.py](https://github.com/denisepostl/AdressConta
 | 04 | Es soll getestet werden, ob das Aktualisieren von Datensätzen mit einer spezifischen Methode möglich ist.  |
 | 05 | Es soll getestet werden, ob das Löschen von Datensätzen mit einer spezifischen Methode möglich ist.  |
 | 06 | Es soll getestet werden, ob das Abfragen von Datensätzen mit einer spezifischen Methode möglich ist.  |
+| 07 | Es soll getestet werden, ob die richtige Conact_ID der get_contact_id Methode returned wird.  |
 
 Stand (28.01.2023)
 

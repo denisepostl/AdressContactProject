@@ -162,7 +162,6 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.tree.item(self.tree.selection())['values'][0] # let set the record
         self.GetFName_ = self.tree.item(self.tree.selection())['values'][1]  # get the name
         self.GetLName_ = self.tree.item(self.tree.selection())['values'][2]
-        self.GetKategorie = self.tree.item(self.tree.selection())['values'][8]  # get the category
 
         self.root = tk.Tk()  # new window
         self.root.configure(background=self.co2)
@@ -180,7 +179,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
         self.selected = self.combo.get()
         self.get_name_id(FirstName, LastName)
-        self.update_Category(self.selected, self.GetKategorie)
+        self.update_Category(self.selected, self.name_id)
         self.connection.commit()
         self.root.destroy()
 
@@ -332,14 +331,16 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.edit_wind.mainloop()
 
     def update_records(self):  
-        """Update the records"""      
-        self.update_FName(str(self.new_name.get()), str(self.F_Name))
-        self.update_LName(str(self.lname.get()), str(self.L_Name))
-        self.update_PostCode(str(self.plz_.get()), str(self.PLZ))
-        self.update_City(str(self.city.get()), str(self.ort))
-        self.update_Street(str(self.street_.get()), str(self.street))
-        self.update_HNR(str(self.hNR.get()), str(self.house_nr))
-        self.update_Tel(str(self.phone_.get()), str(self.telefone))
+        """Update the records"""     
+        self.get_name_id(self.F_Name, self.L_Name) 
+        self.get_id(self.F_Name, self.L_Name)
+        self.update_FName(str(self.new_name.get()), self.My_ID)
+        self.update_LName(str(self.lname.get()), self.My_ID)
+        self.update_PostCode(str(self.plz_.get()), self.name_id)
+        self.update_City(str(self.city.get()), self.name_id)
+        self.update_Street(str(self.street_.get()), self.name_id)
+        self.update_HNR(str(self.hNR.get()), self.name_id)
+        self.update_Tel(str(self.phone_.get()), self.name_id)
         self.edit_wind.destroy()
         self.viewing_records()
 

@@ -42,10 +42,31 @@ class MainWin(Insert):
         self.HNR = self.entryHNR.get()
         self.Str = self.entryStr.get()
         self.Phone = self.entryPhone.get()
-        if type(self.FName) != str or type(self.LName) != str or type(self.Ort) != str or type(self.Str) != str:
-            messagebox.showerror("Fehler", "Falscher Datentyp")
+
+        if self.FName == '' or self.LName == '' or self.PLZ == '' or self.Ort == '' or self.Str == '' or self.HNR == '' or self.Phone == '':
+            messagebox.showwarning("Warning", "Feld darf nicht leer sein")  # raise messagebox if entry is empty
+
         elif not re.search(r'^\d{4}$', self.PLZ):
-            messagebox.showerror("Error", "Bitte geben Sie eine gültige PLZ ein.")
+            messagebox.showerror("Error", "Bitte geben Sie eine gültige PLZ ein.")  # raise messagebox if user uses wrong PostCode
+
+        elif not self.FName.strip().isalpha():
+            messagebox.showwarning("Warning", "Datentyp bei Vorname beachten!")  # raise messagebox if user uses wrong Datatype
+
+        elif not self.LName.strip().isalpha(): 
+            messagebox.showwarning("Warning", "Datentyp bei Nachname beachten!")
+
+        elif not self.Ort.strip().isalpha():
+            messagebox.showwarning("Warning", "Datentyp bei Ort beachten!")
+
+        elif not self.Str.isalpha():
+            messagebox.showwarning("Warning", "Datentyp bei Straße beachten!")
+
+        elif not self.HNR.strip().isnumeric(): 
+            messagebox.showwarning("Warning", "Datentyp bei Haus-Nr. beachten!")
+        
+        elif not self.Phone.strip().isnumeric():
+            messagebox.showwarning("Warning", "Datentyp bei Tel.-Nr. beachten!")
+
         else:
             self.insert_Name(self.FName, self.LName)  # methods which allow to save data
             self.insert_Address(self.PLZ, self.Str, self.Ort, self.HNR)

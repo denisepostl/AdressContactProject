@@ -1,6 +1,5 @@
 import sqlite3
 
-
 class QuerySearchBy():
     """Class for Searching Records by Name | Phonenumber or askin all"""
 
@@ -82,6 +81,34 @@ class QuerySearchBy():
 	            on a.ID = c.Contact_ID
             join Kategorie d
                 on a.ID = d.Contact_ID """
+
+        cur.execute(query)
+        self.contact = cur.fetchall()
+        self.connection.commit()
+
+    def askin_by_id(self, id):
+        """Asking for a contact by id"""
+        cur = self.connection.cursor()
+        query = """
+            SELECT
+                a.ID,
+	            a.First_Name,
+	            a.LastName,
+                b.PostCode,
+                b.City,
+	            b.Street,
+	            b.HouseNumber,
+	            c.PhoneNumber,
+                d.Kategorie
+            from Contact a
+            join Adress b
+	            on a.ID = b.Contact_ID
+            join PhoneNumber c
+	            on a.ID = c.Contact_ID
+            join Kategorie d
+                on a.ID = d.Contact_ID
+            where a.ID = %d
+            """ % (id)
 
         cur.execute(query)
         self.contact = cur.fetchall()

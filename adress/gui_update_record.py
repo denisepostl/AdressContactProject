@@ -3,6 +3,7 @@ from tkinter import ttk
 import tkinter as tk
 from tkinter import messagebox
 import sqlite3
+import re
 from adress.query_search_by import QuerySearchBy
 from adress.update_for_gui import Updating
 from adress.add_second import AddSecondRecord
@@ -133,7 +134,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
             self.tree.insert('', END, values=row)
 
     def SearchByName(self, event):
-        """Search for recrod by name"""
+        """Search for record by name"""
         for x in self.tree.get_children():
             self.tree.delete(x)
         name = self.entrySearchByName.get()
@@ -331,24 +332,37 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.edit_wind.mainloop()
 
     def update_records(self):  
-        """Update the records"""     
-        self.get_name_id(self.F_Name, self.L_Name) 
-        self.get_id(self.F_Name, self.L_Name)
-        self.update_FName(str(self.new_name.get()), self.My_ID)
-        self.update_LName(str(self.lname.get()), self.My_ID)
-        self.update_PostCode(str(self.plz_.get()), self.name_id, str(self.PLZ))
-        self.update_City(str(self.city.get()), self.name_id, str(self.ort))
-        self.update_Street(str(self.street_.get()), self.name_id, str(self.street))
-        self.update_HNR(str(self.hNR.get()), self.name_id, str(self.house_nr))
-        self.update_Tel(str(self.phone_.get()), self.name_id, str(self.telefone))
-        self.edit_wind.destroy()
-        self.viewing_records()
+        """Update the records"""   
+        if self.new_name.get() == '' or self.lname.get() == '' or self.plz_.get() == '' or self.city.get() == '' or self.street_.get() == '' or self.hNR.get() == '' or self.phone_.get() == '':
+            messagebox.showwarning("Warning", "Feld darf nicht leer sein")  # raise messagebox if entry is empty
+            self.edit_wind.destroy()
+        elif not re.search(r'^\d{4}$', self.plz_.get()):
+            messagebox.showerror("Error", "Bitte geben Sie eine gültige PLZ ein.")  # raise messagebox if user uses wrong PostCode
+            self.edit_wind.destroy()
+        elif not self.new_name.get().strip().isalpha() or not self.lname.get().strip().isalpha() or not self.city.get().strip().isalpha() or not self.street_.get().isalpha():
+            messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
+            self.edit_wind.destroy()
+        elif not self.hNR.get().strip().isnumeric() or not self.phone_.get().strip().isnumeric():
+            messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
+            self.edit_wind.destroy()
+        else: 
+            self.get_name_id(self.F_Name, self.L_Name) 
+            self.get_id(self.F_Name, self.L_Name)
+            self.update_FName(str(self.new_name.get()), self.My_ID)
+            self.update_LName(str(self.lname.get()), self.My_ID)
+            self.update_PostCode(str(self.plz_.get()), self.name_id, str(self.PLZ))
+            self.update_City(str(self.city.get()), self.name_id, str(self.ort))
+            self.update_Street(str(self.street_.get()), self.name_id, str(self.street))
+            self.update_HNR(str(self.hNR.get()), self.name_id, str(self.house_nr))
+            self.update_Tel(str(self.phone_.get()), self.name_id, str(self.telefone))
+            self.edit_wind.destroy()
+            self.viewing_records()
 
     def viewing_records(self):
         """Show the records"""
         for x in self.tree.get_children():
             self.tree.delete(x)
-        self.askin_all_query()
+        self.askin_by_id(self.My_ID)
         for row in self.contact:
             self.tree.insert('', END, values=row)
 

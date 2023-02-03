@@ -41,5 +41,5 @@ __exports__ = [
     Insert,
     Updating,
     AddSecondRecord,
-    Delete_Contact,
+    Delete_Contact
 ]

@@ -93,3 +93,11 @@ def test_askin_all(setup_memory_db):
         (1, 'John', 'Doe', '12345', 'City A', 'Street A', '1', '0664201202', 'Familie'),
         (2, 'Jane', 'Doe', '54321', 'City B', 'Street B', '2', '0620121212', 'Freunde')
     ]
+
+def test_askin_by_id(setup_memory_db):
+    """Test if right records returned if user search for all contacts"""
+    query = adress.QuerySearchBy()
+    query.connection = setup_memory_db
+    query.askin_by_id(1)
+    result = query.contact
+    assert result == [(1, 'John', 'Doe', '12345', 'City A', 'Street A', '1', '0664201202', 'Familie')]

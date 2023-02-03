@@ -17,6 +17,10 @@ Ein Benutzer kann
 ### User-Stories
 Die User-Stories befinden sich unter: [doc](https://github.com/denisepostl/AdressContactProject/blob/main/doc/UserStory.md)
 
+### Tests
+
+Die dokumentierten Testfälle befinden sich unter: [doc](https://github.com/denisepostl/AdressContactProject/blob/main/doc/TestCases.md)
+
 ### Feature
 
     - Kontakt gehört zur Familie/Freunde (Eigene Tabelle: Roles notwendig, die zur Contact-Tabelle referenziert)
@@ -54,21 +58,3 @@ Das SQL-File mit den CREATE Table Statements und die Datenbank befinden sich unt
 
 Beim Ausführen von [main_contact.py](https://github.com/denisepostl/AdressContactProject/tree/main/adress/main_contact.py) kann ein kleines Kommandozeilenprogramm ausprobiert werden, dass den Benutzern erlaubt einen Kontakt hinzuzufügen, abfragen, Kontaktdaten ändern und zu löschen. 
 
-### Tests
-
-| Test-Nr. | Testname | Beschreibung | Input | Erwartetes Ergebnis |
-| --- | --- | --- | --- | --- | 
-| 00 | test_import_successful | Es soll getestet werden, ob der Import des Moduls adress möglich ist.  | -//- | Der Import soll erfolgreich sein|
-| 00 | test_*name of class* class_present | Es soll getestet werden, ob die jeweilige Klasse im Modul adress vorhanden ist.  | -//- | Die Klasse sollte im Modul adress vorhanden sein. |
-| 00 | test_class_methods_present | Es soll getestet werden, ob notwendige Methoden in der jeweiligen Klasse implementiert wurden.  | -//- | Die Methoden sollten in der jeweiligen Klasse implementiert sein. | 
-| 01 | test_create_Phonenumber | Es soll getestet werden ob sich die Tabelle PhoneNumber mit der Methode **create_PhoneNumber**, die in der Create Klasse implementiert wurde in der Datenbank erstellen lässt. | -//- | Die Tabelle PhoneNumber sollte erfolgreich erstellt worden sein|
-| 01 | test_create_Contact | Es soll getestet werden ob sich die Tabelle Contact mit der Methode **create_Contact**, die in der Create Klasse implementiert wurde erstellen lässt. | -//- | Die Tabelle Contact sollte erfolgreich erstellt worden sein |
-| 01 | test_create_Adress | Es soll getestet werden ob sich die Tabelle Adress mit der Methode **create_Adress**, die in der Create Klasse implementiert wurde erstellen lässt. | -//- | Die Tabelle Adress sollte erfolgreich erstellt worden sein |
-| 01 | test_create_Category | Es soll getestet werden ob sich die Tabelle Category mit der Methode **create_Category**, die in der Create Klasse implementiert wurde erstellen lässt. | -//- | Die Tabelle Category sollte erfolgreich erstellt worden sein |
-| 02 | test_if_tables_exists | Es soll getestet werden ob die Tabellen in der Datenbank erfolgreich erstellt worden sind, sowie alle Attribute vorhanden sind. | -//- | Die Tabellen sowie die einzelnen Attribute der Tabellen sollten in der Datenbank (die in der Connection definiert ist) erfolgreich erstellt worden sein |
-| 03 | test_insert_name | Es soll getestet werden ob sich Vor- u. Nachname in die Tabelle Contact mit der Methode **insert_Name**, welche in der Klasse Insert implementiert wurde, einfügen lassen. Als Test-Datenbank wird eine :memory: db verwendet | Testdaten: Vor- u. Nachname | Die Testdaten sollten erfolgreich in die Tabelle Contact der :memory: db eingefügt worden sein |
-
-| 03 | test_insert_adress | Es soll getestet werden ob sich PLZ, Haus-Nr., Straße u. Ort in die Tabelle Adress mit der Methode **insert_Adress**, welche in der Klasse Insert implementiert wurde, einfügen lassen. Als Test-Datenbank wird eine :memory: db verwendet | Testdaten: PLZ, Haus-Nr, Straße, Ort, Contact_ID | Die Testdaten sollten erfolgreich in die Tabelle Adress der :memory: db eingefügt worden sein |
-
-
-| 03 | test_insert_phone_number | Es soll getestet werden ob sich eine Tel.-Nr. in die Tabelle PhoneNumber mit der Methode **insert_PhoneNumber**, welche in der Klasse Insert implementiert wurde, einfügen lässt. Als Test-Datenbank wird eine :memory: db verwendet | Testdaten: Tel.-Nr., Contact_ID | Die Testdaten sollten erfolgreich in die Tabelle PhoneNumber der :memory: db eingefügt worden sein |

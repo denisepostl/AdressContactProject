@@ -70,6 +70,5 @@ Beim Ausführen von [main_contact.py](https://github.com/denisepostl/AdressConta
 
 | 03 | test_insert_adress | Es soll getestet werden ob sich PLZ, Haus-Nr., Straße u. Ort in die Tabelle Adress mit der Methode **insert_Adress**, welche in der Klasse Insert implementiert wurde, einfügen lassen. Als Test-Datenbank wird eine :memory: db verwendet | Testdaten: PLZ, Haus-Nr, Straße, Ort, Contact_ID | Die Testdaten sollten erfolgreich in die Tabelle Adress der :memory: db eingefügt worden sein |
 
-| 03 | test_insert_category | Es soll getestet werden ob sich eine Kategorie in die Tabelle Kategorie mit der Methode **insert_Category**, welche in der Klasse Insert implementiert wurde, einfügen lässt. Als Test-Datenbank wird eine :memory: db verwendet | Testdaten: Kategorie, Contact_ID | Die Testdaten sollten erfolgreich in die Tabelle Kategorie der :memory: db eingefügt worden sein |
 
 | 03 | test_insert_phone_number | Es soll getestet werden ob sich eine Tel.-Nr. in die Tabelle PhoneNumber mit der Methode **insert_PhoneNumber**, welche in der Klasse Insert implementiert wurde, einfügen lässt. Als Test-Datenbank wird eine :memory: db verwendet | Testdaten: Tel.-Nr., Contact_ID | Die Testdaten sollten erfolgreich in die Tabelle PhoneNumber der :memory: db eingefügt worden sein |

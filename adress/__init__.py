@@ -19,6 +19,7 @@ from .add_for_gui import Insert
 from .update_for_gui import Updating
 from .add_second import AddSecondRecord
 from .delete_for_gui import Delete_Contact
+from .check_entry import Check_Entry
 
 
 """Export the classes of the adress-module"""
@@ -41,5 +42,6 @@ __exports__ = [
     Insert,
     Updating,
     AddSecondRecord,
-    Delete_Contact
+    Delete_Contact,
+    Check_Entry
 ]

@@ -168,14 +168,15 @@ class MainWinQuery(QuerySearchBy):
 
 
         #self.load = Image.open("img/profile.png")
-        #self.photo = ImageTk.PhotoImage(self.load)
+        #self.photo = ImageTk.PhotoImage(self.load, master=self.win)
         #self.label_image = Label(self.win, image=self.photo)  
-        #self.label_image.place(x=40, y=400)
+        #self.label_image.place(x=40, y=380)
+
 
 
     def treeActionSelect(self, event):
         """Select Items of Treeview"""
-        # self.label_image.destroy()
+        #self.label_image.destroy()
         self.idSelect = self.tree.item(self.tree.selection())['values'][0]
         self.first_name = self.tree.item(self.tree.selection())['values'][1]
         self.last_name = self.tree.item(self.tree.selection())['values'][2]
@@ -184,16 +185,16 @@ class MainWinQuery(QuerySearchBy):
         self.street = self.tree.item(self.tree.selection())['values'][5]
         self.house_nr = self.tree.item(self.tree.selection())['values'][6]
         self.tel = self.tree.item(self.tree.selection())['values'][7]
-        #self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg"
-        #self.load = Image.open(self.imgProfile)
-        #self.load.thumbnail((100, 100))
-        #self.photo = ImageTk.PhotoImage(self.load)
-        #Profile[1] = self.photo
-        #self.lblImage = Label(self.win, bg= "blue",image=self.photo)
-        #self.lblImage.place(x=40, y=400)
+        self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg"
+        self.load = Image.open(self.imgProfile)
+        self.load.thumbnail((90, 120))
+        self.photo = ImageTk.PhotoImage(self.load, master=self.win)
+        Profile[1] = self.photo
+        self.lblImage = Label(self.win, bg= "black",image=self.photo)
+        self.lblImage.place(x=40, y=380)
         self.lname = Label(self.win, width=40, anchor="w", text="Name: " + str(self.first_name) + " " +str(self.last_name), bg=self.co0)
         self.lname.place(x=148, y=400)
-        self.ladr = Label(self.win, width=40, anchor="w", text="Adresse: " + str(self.street) + " " +str(self.house_nr) + " " + str(self.ort) + " " + str(self.plz), bg=self.co0)
+        self.ladr = Label(self.win, width=40, anchor="w", text="Adresse: " + str(self.street) + " " +str(self.house_nr) + " " + str(self.plz) + " " + str(self.ort), bg=self.co0)
         self.ladr.place(x=148, y=430)
         self.lphone = Label(self.win, width=40, anchor="w", text="Tel.-Nr: " + str(self.tel), bg=self.co0)
         self.lphone.place(x=148, y=460)

@@ -2,11 +2,14 @@ from tkinter import *
 from tkinter import ttk 
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import filedialog
 import sqlite3
 import re
+from PIL import Image, ImageTk
 from adress.query_search_by import QuerySearchBy
 from adress.update_for_gui import Updating
 from adress.add_second import AddSecondRecord
+import os
 
 Profile = {1: ""}
 
@@ -37,7 +40,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         header.place(x=280, y=2)  # define header
 
         self.tree = ttk.Treeview(self.wind, height=10,columns=(1, 2, 3, 4, 5, 6, 7, 8, 9,),show="headings")  # treeview for records
-        self.tree.place(x=220, y=140, width=520, height=220)  # place the treeview
+        self.tree.place(x=220, y=140, width=574, height=220)  # place the treeview
         self.tree.heading(1, text="ID")  # define headers of treeview
         self.tree.heading(2, text="Vorname")
         self.tree.heading(3, text="Nachname")
@@ -60,7 +63,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
         # Update Contact Button
         self.bUpdate = Button(self.wind, text="Kontaktdaten aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.editing)
-        self.bUpdate.place(x=480, y=370, width=255, height=40)
+        self.bUpdate.place(x=538, y=370, width=255, height=40)
 
         # Query Button - switch to Query Win
         self.bQuery = Button(self.wind, text="Kontakt abfragen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Query_Win)
@@ -68,11 +71,11 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
         # Add 2nd Tel.-Nr. Button
         self.bTel = Button(self.wind, text="Tel.-Nr. hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_tel)
-        self.bTel.place(x=20, y=428, width=180, height=40)
+        self.bTel.place(x=20, y=428, width=174, height=40)
 
         # Add 2nd Adress Button
         self.bTel = Button(self.wind, text="Adresse hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.add_adress)
-        self.bTel.place(x=220, y=428, width=180, height=40)
+        self.bTel.place(x=220, y=428, width=174, height=40)
 
 
         # Add Button - switch to Add Win
@@ -85,7 +88,12 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
         # Add Category
         self.bCategory = Button(self.wind, text="Kategorie ändern", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combo_)
-        self.bCategory.place(x=420, y=428, width=190, height=40)
+        self.bCategory.place(x=420, y=428, width=174, height=40)
+
+        # Add Category
+        self.bCategory = Button(self.wind, text="Photo ändern", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.photo_update)
+        self.bCategory.place(x=620, y=428, width=174, height=40)
+
 
         self.lbSearchByName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)  # Label for Name Searching (First Name)
         self.lbSearchByName.place(x=200, y=60, width=200)
@@ -154,7 +162,42 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
             query_result = cursor.execute(query, parameters)
             conn.commit()
         return query_result
+    
+    #------------------------------Edit-Photo--------------------------------------------------#
 
+    def photo_update(self):
+        """Update the Photo."""
+        self.root = tk.Tk()  # new window
+        self.root.configure(background=self.co2)
+        self.lblPhoto = Label(self.root, text="Photo: ",  font=("Calibri 14 bold"), bg=self.co2, fg=self.co0)
+        self.lblPhoto.place(x=2, y=10, width=60, height=20)
+        self.entryPhoto = Entry(self.root)
+        self.entryPhoto.place(x=2, y=40, width=180, height=22)
+        button = Button(self.root, text="Browse", command=self.BrowsePhoto, bg=self.co2, fg=self.co0)
+        button.place(x=2, y=80, width= 180, height=22)
+        button1 = Button(self.root, text="Übernehmen", command=self.ok, bg=self.co2, fg=self.co0)
+        button1.place(x=2, y=120, width= 180, height=22)
+       
+
+    def ok(self):
+        self.idSelect =  self.tree.item(self.tree.selection())['values'][0] # let set the record
+        self.GetFN = self.tree.item(self.tree.selection())['values'][1]  # get the name
+        self.GetLN = self.tree.item(self.tree.selection())['values'][2]
+        self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg"
+        os.remove(self.imgProfile)
+        id = self.get_name_id(self.GetFN, self.GetLN)
+        filename = self.entryPhoto.get()
+        im = Image.open(filename)
+        rgb_im = im.convert('RGB')
+        rgb_im.save(("img/img_/profile_" + str(id) + "." + "jpg"))  # save the selected image
+        self.root.destroy()
+        
+
+    def BrowsePhoto(self):
+        """Allows to search for a photo"""
+        self.entryPhoto.delete(0, END)
+        filename = filedialog.askopenfilename(initialdir="/", title="Select File")
+        return self.entryPhoto.insert(END, filename)
 
     #------------------------------Edit-Category--------------------------------------------------#
 
@@ -183,6 +226,9 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.update_Category(self.selected, self.name_id)
         self.connection.commit()
         self.root.destroy()
+        self.get_id(FirstName, LastName)
+        self.viewing_records()
+
 
     #----------------------Add-Second-Adress------------------------------------------#
 
@@ -221,6 +267,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         Button(self.new, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_adress).grid(row=8, column=2, sticky=W)
         self.new.mainloop()
 
+    
     def adding_adress(self):
         """Add another Adress to Contact"""
         FirstName = self.GetFName
@@ -231,9 +278,18 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         city = self.CITY.get()
         street = self.STREET.get()
 
-        self.get_name_id(FirstName, LastName)
-        self.add_adress_(str(plz), str(street), str(city), str(housenr))
-        self.new.destroy()
+        if plz == '' or city == '' or street == '' or housenr == '':
+            messagebox.showwarning("Warning", "Feld darf nicht leer sein")  # raise messagebox if entry is empty
+        elif not re.search(r'^\d{4}$', plz):
+            messagebox.showerror("Error", "Bitte geben Sie eine gültige PLZ ein.")  # raise messagebox if user uses wrong PostCode
+        elif not city.strip().isalpha() or not street.isalpha():
+            messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
+        elif not housenr.strip().isnumeric():
+            messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
+        else: 
+            self.get_name_id(FirstName, LastName)
+            self.add_adress_(str(plz), str(street), str(city), str(housenr))
+            self.new.destroy()
 
     #------------------------Add-Second-TelefoneNumber------------------------------------#    
     def add_tel(self):
@@ -256,13 +312,20 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         Button(self.window, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_tel).grid(row=8, column=2, sticky=W)
         self.window.mainloop()
 
+        
+
     def adding_tel(self):
         Fname = self.Get_FName
         Lname = self.Get_LName
         phone = self.get_phone.get()
-        self.get_name_id(Fname, Lname)
-        self.add_phone(str(phone))
-        self.window.destroy()
+        if phone == '':
+            messagebox.showwarning("Warning", "Feld darf nicht leer sein")  # raise messagebox if entry is empty
+        elif not phone.strip().isnumeric():
+            messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
+        else:
+            self.get_name_id(Fname, Lname)
+            self.add_phone(str(phone))
+            self.window.destroy()
 
     #---------------------------------------------Edit-Entry----------------------------------------------------#
 

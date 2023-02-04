@@ -9,12 +9,13 @@ from adress.query_search_by import QuerySearchBy
 import sqlite3
 from adress.gui_query import MainWinQuery
 from adress.delete_for_gui import Delete_Contact
+from adress.update_for_gui import Updating
 
 # load the image
 Profile = {1: ""}
 
 
-class MainWinDelete(QuerySearchBy, Delete_Contact):
+class MainWinDelete(QuerySearchBy, Delete_Contact, Updating):
     """Create the window for Delete Option"""
 
     def __init__(self):
@@ -32,7 +33,31 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
     def delete_contact(self):
         """Delete the Contact by selecting of Contact-Record"""
         self.idSelect = self.tree.item(self.tree.selection())['values'][0]
+
+        self.deleting = tk.Tk()  # new window
+        self.deleting.configure(background=self.co0)
+        self.lbl = Label(self.deleting, text="Kontakt löschen? ", font=("Calibri 14"), bg=self.co0, fg=self.co1)
+        self.lbl.place(x=2, y=28, width=200, height=20)
+        self.lbl1 = Label(self.deleting, text="✗", font=("Arial 20"), bg=self.co0, fg="red")
+        self.lbl1.place(x=107, y=110, width=20, height=20)
+        self.lb = Label(self.deleting, text="✓", font=("Arial 20"), bg=self.co0, fg="green")
+        self.lb.place(x=60, y=110, width=20, height=20)
+        self.lbl2 = Label(self.deleting, bg=self.co2)
+        self.lbl2.place(x=0, y=0, width=400, height=20)
+        self.lbl3 = Label(self.deleting, bg=self.co2)
+        self.lbl3.place(x=0, y=160, width=400, height=40)
+        button = Button(self.deleting, text="Ja", font=("Calibri 12"), command=self.delete_c, bg=self.co2, fg=self.co0)
+        button.place(x=50, y=80, width= 40, height=22)
+        button1 = Button(self.deleting, text="Nein", font=("Calibri 12"), command=self.breaking, bg=self.co2, fg=self.co0)
+        button1.place(x=100, y=80, width= 40, height=22)
+        self.deleting.mainloop()
+    
+    def breaking(self):
+        self.deleting.destroy()
+
+    def delete_c(self):
         self.get_id_ = self.get_name_id(self.name, self.lname)
+        self.get_id(self.name, self.lname)
         con = self.connection
         cur = con.cursor()
         cur.execute("delete from Contact where ID = {}".format(self.idSelect))
@@ -40,7 +65,18 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
         self.delete_phonenumber(self.get_id_)
         self.delete_category(self.get_id_)
         con.commit()
-        self.tree.delete(self.tree.selection())
+        self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg" # delete the image
+        os.remove(self.imgProfile)
+        self.deleting.destroy()
+        self.viewing_records()
+        
+    def viewing_records(self):
+        """Show the records"""
+        for x in self.tree.get_children():
+            self.tree.delete(x)
+        self.askin_by_id(self.My_ID)
+        for row in self.contact:
+            self.tree.insert('', END, values=row)
 
     def get_name_id(self, first_name, last_name):
         """Get the ID from the Contact by first and last name"""
@@ -137,12 +173,12 @@ class MainWinDelete(QuerySearchBy, Delete_Contact):
         self.entrySearchByLName.place(x=580, y=60, width=160, height=30)  # search for a record by Last Name
     
         # Delete Contact Button
-        self.bAdd = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.delete_contact)
-        self.bAdd.place(x=480, y=370, width=255, height=40)
+        self.bDel = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.delete_contact)
+        self.bDel.place(x=480, y=370, width=255, height=40)
 
         # Update
-        self.bAdd = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Update_Win)
-        self.bAdd.place(x=20, y=128, width=190, height=40)
+        self.bUpdate = Button(self.win, text="Kontakt aktualisieren", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Update_Win)
+        self.bUpdate.place(x=20, y=128, width=190, height=40)
 
         # Add
         self.bAdd = Button(self.win, text="Kontakt hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Add_Win)

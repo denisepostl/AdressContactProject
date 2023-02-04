@@ -5,7 +5,7 @@ Beim Auführen von [main_gui](https://github.com/denisepostl/AdressContactProjec
 Hier kann der User eine beliebige Auswahl treffen. 
 
 # Kontakt hinzufügen
-![Add]https://github.com/denisepostl/AdressContactProject/blob/main/img/add.png
+![Add](https://github.com/denisepostl/AdressContactProject/blob/main/img/add.png) <br><br>
 Möchte der User einen Kontakt hinzufügen, so müssen alle Datensätze im richtigen Datentyp 
 eingegeben werden. Ansonsten gibt es folgende Warnung: ![Warning](https://github.com/denisepostl/AdressContactProject/blob/main/img/Datentypwarning.png)
 

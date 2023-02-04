@@ -69,7 +69,7 @@ Eine weitere Möglichkeit wäre die Aktualisierung der Kategorie:
 Allgemeine Daten können aktualisiert werden:
 ![UpdateData](https://github.com/denisepostl/AdressContactProject/blob/main/img/Edit.png)
 
-Es können auch noch weitere Tel.-Nummern oder Adressen hinzugefügt werden:
+Es können auch noch weitere Tel.-Nummern oder Adressen hinzugefügt werden: <br>
 ![Tel](https://github.com/denisepostl/AdressContactProject/blob/main/img/telhinzuf%C3%BCgen.png)
 ![Adress](https://github.com/denisepostl/AdressContactProject/blob/main/img/adresseHinzuf%C3%BCge.png)
 

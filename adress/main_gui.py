@@ -4,12 +4,13 @@ from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
 import sqlite3
+from adress.count_screen import Counting
 
-
-class Win():
+class Win(Counting):
     """Class for Main Window."""
 
     def __init__(self):
+        self.connection = sqlite3.connect("database/adress_cat.db")
         self.win = Tk()
         self.win.title=("Adress-Management")
         self.win.geometry('800x600')
@@ -79,6 +80,32 @@ class Win():
         # Delete Button
         self.bDelete = Button(self.win, text="Kontakt Löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
         self.bDelete.place(x=290, y=320, width=260, height=40)
+
+        frame = Frame(self.win, bg=self.co1, width=70, height=70)
+        frame.place(x=230, y=390)
+        label = Label(frame, text="Name: " + str(self.school) , font=("Calibri", 18), bg="white")
+        label.place(x=4, y=4, width=62, height=62)
+
+        frame = Frame(self.win, bg=self.co1, width=70, height=70)
+        frame.place(x=330, y=390)
+        label = Label(frame, text="Name: " + str(self.family) , font=("Calibri", 18), bg="white")
+        label.place(x=4, y=4, width=62, height=62)
+
+        frame = Frame(self.win, bg=self.co1, width=70, height=70)
+        frame.place(x=430, y=390)
+        label = Label(frame, text="Name: " + str(self.friend) , font=("Calibri", 18), bg="white")
+        label.place(x=4, y=4, width=62, height=62)
+
+        frame = Frame(self.win, bg=self.co1, width=70, height=70)
+        frame.place(x=530, y=390)
+        label = Label(frame, text="Name: " + str(self.work) , font=("Calibri", 18), bg="white")
+        label.place(x=4, y=4, width=62, height=62)
+
+    
+
+
+
+
 
 
 def main():

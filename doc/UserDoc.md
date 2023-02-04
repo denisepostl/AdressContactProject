@@ -1,5 +1,5 @@
 # StartScreen
-Beim Auführen von [main_gui]([https://github.com/denisepostl/AdressContactProject/blob/main/doc/UserDoc.md](https://github.com/denisepostl/AdressContactProject/blob/main/adress/main_gui.py)) erscheint folgender Start Screen:
+Beim Auführen von [main_gui](https://github.com/denisepostl/AdressContactProject/blob/main/adress/main_gui.py)) erscheint folgender Start Screen:
 ![Screen](https://github.com/denisepostl/AdressContactProject/blob/main/img/StartScreen.png)
 
 Hier kann der User eine beliebige Auswahl treffen. 

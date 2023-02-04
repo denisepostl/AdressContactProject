@@ -72,6 +72,7 @@ Nach erfolgreicher Suchde des Kontakts können mit anschließender Auswahl belie
 ![Update](https://github.com/denisepostl/AdressContactProject/blob/main/img/Update.png)
 
 Beispielsweise kann das Foto aktualisiert werden: 
+<br><br>
 ![Photo](https://github.com/denisepostl/AdressContactProject/blob/main/img/updatephoto.png)
 
 Eine weitere Möglichkeit wäre die Aktualisierung der Kategorie:

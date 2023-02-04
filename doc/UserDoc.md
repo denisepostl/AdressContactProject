@@ -78,11 +78,12 @@ Eine weitere Möglichkeit wäre die Aktualisierung der Kategorie:
 ![Kategorie](https://github.com/denisepostl/AdressContactProject/blob/main/img/updatekategorie.png)
 
 Allgemeine Daten können aktualisiert werden:
+<br><br><br><br><br><br><br><br>
 ![UpdateData](https://github.com/denisepostl/AdressContactProject/blob/main/img/Edit.png)
 
 Es können auch noch weitere Tel.-Nummern oder Adressen hinzugefügt werden: <br>
 ![Tel](https://github.com/denisepostl/AdressContactProject/blob/main/img/telhinzuf%C3%BCgen.png)
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
 ![Adress](https://github.com/denisepostl/AdressContactProject/blob/main/img/adresseHinzuf%C3%BCge.png)
 
 Im Hintergrund wird z.B.: eine Tel.-Nr. in die Datenbank eingefügt und die dementsprechende ID des Contacts wird hinzugegeben:

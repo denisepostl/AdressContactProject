@@ -168,15 +168,22 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
     def photo_update(self):
         """Update the Photo."""
         self.root = tk.Tk()  # new window
-        self.root.configure(background=self.co2)
-        self.lblPhoto = Label(self.root, text="Photo: ",  font=("Calibri 14 bold"), bg=self.co2, fg=self.co0)
-        self.lblPhoto.place(x=2, y=10, width=60, height=20)
+        self.root.configure(background=self.co0)
+        self.root.resizable(False, False)
+        self.lblPhoto = Label(self.root, text="Photo: ",  font=("Calibri 14 bold"), bg=self.co0, fg=self.co1)
+        self.lblPhoto.place(x=10, y=20, width=60, height=20)
+        self.l = Label(self.root, bg=self.co2)
+        self.l.place(x=0, y=0, width=200, height=20)
+        self.lb = Label(self.root, bg=self.co2)
+        self.lb.place(x=0, y=180, width=200, height=40)
+        self.lbl = Label(self.root, text="📸",  font=("Calibri 40"), bg=self.co0)
+        self.lbl.place(x=66, y=80, width=60, height=48)
         self.entryPhoto = Entry(self.root)
-        self.entryPhoto.place(x=2, y=40, width=180, height=22)
+        self.entryPhoto.place(x=10, y=40, width=170, height=22)
         button = Button(self.root, text="Browse", command=self.BrowsePhoto, bg=self.co2, fg=self.co0)
-        button.place(x=2, y=80, width= 180, height=22)
+        button.place(x=10, y=128, width= 170, height=22)
         button1 = Button(self.root, text="Übernehmen", command=self.ok, bg=self.co2, fg=self.co0)
-        button1.place(x=2, y=120, width= 180, height=22)
+        button1.place(x=10, y=148, width= 170, height=22)
        
 
     def ok(self):
@@ -208,12 +215,18 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.GetLName_ = self.tree.item(self.tree.selection())['values'][2]
 
         self.root = tk.Tk()  # new window
-        self.root.configure(background=self.co2)
+        self.root.configure(background=self.co0)
+        self.root.geometry("180x120")
+        self.root.resizable(False, False)
         self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
-        self.combo.pack()
+        self.combo.place(x=20, y=20, width= 140, height=22)
         self.combo.current(0)  # setting default value
         ok_button = tk.Button(self.root, bg=self.co2, fg=self.co0, text="OK", command=self.save_close)
-        ok_button.pack()
+        ok_button.place(x=50, y=70, width= 70, height=22)
+        self.l = Label(self.root, bg=self.co2)
+        self.l.place(x=0, y=0, width=200, height=10)
+        self.lbl = Label(self.root, bg=self.co2)
+        self.lbl.place(x=0, y=110, width=200, height=10)
         self.root.mainloop()
 
     def save_close(self):
@@ -241,30 +254,41 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.new = Tk()
         self.new.title("Add-Second Tel.-Nr")
         self.new.geometry('220x180')
-        self.new.configure(background=self.co2)
+        self.new.configure(background=self.co0)
         self.new.resizable(width=False, height=False)
 
         # PLZ
-        Label (self.new, text='PLZ: ', bg=self.co2, fg=self.co0).grid(row=3, column=1)
+        label = Label (self.new, text='PLZ: ', bg=self.co0, fg=self.co1)
+        label.place(x=10, y=20, width= 40, height=22)
         self.postcode = Entry(self.new)
-        self.postcode.grid(row=3, column=2)
+        self.postcode.place(x=60, y=20, width= 128, height=22)
 
         # House Nr
-        Label (self.new, text='Haus-Nr: ', bg=self.co2, fg=self.co0).grid(row=4, column=1)
+        l = Label (self.new, text='Haus-Nr: ', bg=self.co0, fg=self.co1)
+        l.place(x=6, y=50, width= 60, height=22)
         self.housenumber = Entry(self.new)
-        self.housenumber.grid(row=4, column=2)
+        self.housenumber.place(x=60, y=50, width= 128, height=22)
 
         # City
-        Label (self.new, text='Ort: ', bg=self.co2, fg=self.co0).grid(row=5, column=1)
+        lb = Label (self.new, text='Ort: ', bg=self.co0, fg=self.co1)
+        lb.place(x=10, y=80, width= 40, height=22)
         self.CITY = Entry(self.new)
-        self.CITY.grid(row=5, column=2)
+        self.CITY.place(x=60, y=80, width= 128, height=22)
 
         # Straße
-        Label (self.new, text='Straße: ', bg=self.co2, fg=self.co0).grid(row=6, column=1)
+        lbl = Label (self.new, text='Straße: ', bg=self.co0, fg=self.co1)
+        lbl.place(x=10, y=110, width= 40, height=22)
         self.STREET = Entry(self.new)
-        self.STREET.grid(row=6, column=2)
+        self.STREET.place(x=60, y=110, width= 128, height=22)
 
-        Button(self.new, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_adress).grid(row=8, column=2, sticky=W)
+        self.l = Label(self.new, bg=self.co2)
+        self.l.place(x=0, y=0, width=280, height=10)
+        self.lbl = Label(self.new, bg=self.co2)
+        self.lbl.place(x=0, y=170, width=280, height=10)
+
+        button = Button(self.new, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_adress)
+        button.place(x=60, y=140, width= 128, height=22)
+
         self.new.mainloop()
 
     
@@ -300,16 +324,23 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
         self.window = Tk()
         self.window.title("Add-Second Tel.-Nr")
-        self.window.geometry('220x80')
-        self.window.configure(background=self.co2)
+        self.window.geometry('220x120')
+        self.window.configure(background=self.co0)
         self.window.resizable(width=False, height=False)
 
         # Tel.:
-        Label (self.window, text='Tel.: ', bg=self.co2, fg=self.co0).grid(row=7, column=1)
+        lb = Label (self.window, text='Tel.: ', bg=self.co0, fg=self.co1)
+        lb.place(x=10, y=28, width= 28, height=22)
         self.get_phone = Entry(self.window)
-        self.get_phone.grid(row=7, column=2)
+        self.get_phone.place(x=40, y=28, width= 140, height=22)
 
-        Button(self.window, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_tel).grid(row=8, column=2, sticky=W)
+        self.l = Label(self.window, bg=self.co2)
+        self.l.place(x=0, y=0, width=280, height=10)
+        self.lbl = Label(self.window, bg=self.co2)
+        self.lbl.place(x=0, y=110, width=280, height=10)
+
+        button = Button(self.window, text='Änderungen speichern', bg=self.co2, fg=self.co0, command=self.adding_tel)
+        button.place(x=40, y=80, width= 138, height=22)
         self.window.mainloop()
 
         

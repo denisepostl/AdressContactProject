@@ -1,17 +1,62 @@
-# User story Kontakt hinzufügen
-Als Benutzer möchte ich einen neuen Kontakt in das System hinzufügen können. Ein Bild von einem Kontakt möchte ich auch hinzufügen.
-Als Entwickler brauche ich folgende Inputs: Vorname, Nachname, Tel. und Adresse. Und Bild.
+# StartScreen
+Beim Auführen von main_gui erscheint folgender Start Screen:
 
-**Actors**  <br>
-Benutzer
 
-**Input**  <br>
-Eingabe von Vorname (Typ: VARCHAR), Nachname (Typ: VARCHAR), Tel. (Typ: VARCHAR) und Adresse (Ort u. Straße Typ: VARCHAR | PLZ (VARCHAR)u. Hausnummer Typ: NVARCHAR - wegen der führenden Nullen die möglich sein könnten (international)) in einzelnen Textfeldern. 
-Hinzufügen des neuen Kontaktes funktioniert dann über einen Button.
-Hinzufügen eines Bildes (Format: jpg oder png) soll auch über einen Button funktionieren.
+Hier kann der User eine beliebige Auswahl treffen. 
 
-**Background** <br>
-Die eingegebenen Daten werden in einer Datenbank gespeichert.
-Ich werde eine eigene Methode schreiben, die es mir mithilfe eines INSERT - Querys ermöglicht die Datensätze in der DB zu speichern.
-Mithilfe eines SELECT-Querys (ich mache eine eigene Methode dafür) frage ich die Datenbank nach den neu hinzugefügten Namen ab (eigene Variablen werden benötigt (für die Inputs des Benutzers in den Textfeldern) die ich dann bei der SELECT-Methode verwende) und gebe den hinzugefügten Datensatz aus.
-Über einen Button soll der Benutzer nach Bildern lokal im Explorer suchen können. Ich werde für den Image import Pillow verwenden. Das Bild werde ich dann in einem Ordner abspeichern.
+# Kontakt hinzufügen
+
+Möchte der User einen Kontakt hinzufügen, so müssen alle Datensätze im richtigen Datentyp 
+eingegeben werden. Darüber hinaus wird bei der Postleitzahl nur eine vierstellige Nummernfolge akzeptiert.
+
+**Bild hinzufügen**
+Mit Klick auf *Browse* wird Zugriff auf den Explorer des PC's gewährleistet. Der User kann nun nach einem Bild suchen und dieses auswählen.
+
+**Kategorie hinzufügen**
+Mit Klick auf *Kategorie hinzufügen* kann der User einen Kontakt einer Kategorie zuweisen.
+
+# Kontakt abfragen
+
+Möchte der User Daten eines Kontaktes abfragen so kann er dies hier tun:
+
+
+Anhand Eingabe von Vor- u. Nachnamme oder Telefonnummer wird ein spezifischer Kontakt aufgelistet.
+Weiters kann der User alle Kontakte abfragen. Beim auswählen eines Kontaktes werden die spezifischen Informationen dargestellt.
+
+Wird keine Telefonnummer eingegeben und versucht nach einen Kontakt zu suchen so erscheind folgende Warnung:
+
+Auch wenn der User keinen Vor- u. Nachnamen verwendet erscheint eine Warnung: 
+
+Sind keine Datensätze gespeichert erscheint folgende Info:
+
+Vergisst der User eine Tel. oder Vor- u. Nachname als Suchkriterium so erscheint folgende Meldung:
+
+
+# Kontakt löschen
+
+Ein Kontakt kann durch Eingabe von Vor. - u. Nachname gesucht werden. Bei der Auswahl eines Kontakts mit Klick auf *Kontakt löschen* bekommt
+der User folgende Meldung:
+
+
+
+Mit betätigen des Ja Buttons wird der Kontakt aus der Datenbank gelöscht und ist somit nicht mehr im Management System vorhanden.
+
+
+# Kontakt aktualisieren
+
+Weiters hat der User die Möglichkeit verschiedene Daten eines Kontaktes zu aktualisieren. 
+Nach erfolgreicher Suchde des Kontakts können mit anschließender Auswahl beliebige Änderungen vorgenommen werden. 
+
+Beispielsweise kann das Foto aktualisiert werden: 
+
+
+Eine weitere Möglichkeit wäre die Aktualisierung der Kategorie:
+
+
+Allgemeine Daten können aktualisiert werden:
+
+
+Es können auch noch weitere Tel.-Nummern oder Adressen hinzugefügt werden:
+
+
+Im Hintergrund wird z.B.: eine Tel.-Nr. in die Datenbank eingefügt und die dementsprechende ID des Contacts wird hinzugegeben:

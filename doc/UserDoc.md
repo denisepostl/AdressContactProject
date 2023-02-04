@@ -75,10 +75,11 @@ Beispielsweise kann das Foto aktualisiert werden:
 ![Photo](https://github.com/denisepostl/AdressContactProject/blob/main/img/updatephoto.png)
 
 Eine weitere Möglichkeit wäre die Aktualisierung der Kategorie:
+<br><br>
 ![Kategorie](https://github.com/denisepostl/AdressContactProject/blob/main/img/updatekategorie.png)
 
 Allgemeine Daten können aktualisiert werden:
-<br><br><br><br><br><br>
+<br><br>
 ![UpdateData](https://github.com/denisepostl/AdressContactProject/blob/main/img/Edit.png)
 
 Es können auch noch weitere Tel.-Nummern oder Adressen hinzugefügt werden: <br>

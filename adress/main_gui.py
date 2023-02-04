@@ -81,31 +81,39 @@ class Win(Counting):
         self.bDelete = Button(self.win, text="Kontakt Löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
         self.bDelete.place(x=290, y=320, width=260, height=40)
 
-        frame = Frame(self.win, bg=self.co1, width=70, height=70)
+
+        self.get_school()
+        frame = Frame(self.win, bg="blue", width=80, height=80)
         frame.place(x=230, y=390)
-        label = Label(frame, text="Name: " + str(self.school) , font=("Calibri", 18), bg="white")
-        label.place(x=4, y=4, width=62, height=62)
+        school_text = Label(self.win, text="Schulkollegen", fg=self.co1, bg=self.co0)
+        school_text.place(x=230, y= 368)
+        label = Label(frame, text="🏫" +"\n" + str(self.school) , font=("Arial", 22), bg="white")
+        label.place(x=4, y=4, width=72, height=72)
 
-        frame = Frame(self.win, bg=self.co1, width=70, height=70)
+
+        self.get_family()
+        frame = Frame(self.win, bg="green", width=80, height=80)
         frame.place(x=330, y=390)
-        label = Label(frame, text="Name: " + str(self.family) , font=("Calibri", 18), bg="white")
-        label.place(x=4, y=4, width=62, height=62)
+        family_text = Label(self.win, text="Familie", fg=self.co1, bg=self.co0)
+        family_text.place(x=348, y= 368)
+        label = Label(frame, text="👨‍👩‍👧‍👦" +"\n" + str(self.family) , font=("Arial", 22), bg="white")
+        label.place(x=4, y=4, width=72, height=72)
 
-        frame = Frame(self.win, bg=self.co1, width=70, height=70)
+        self.get_work()
+        frame = Frame(self.win, bg="orange", width=80, height=80)
+        work_text = Label(self.win, text="Arbeitskollegen", fg=self.co1, bg=self.co0)
+        work_text.place(x=424, y= 368)
         frame.place(x=430, y=390)
-        label = Label(frame, text="Name: " + str(self.friend) , font=("Calibri", 18), bg="white")
-        label.place(x=4, y=4, width=62, height=62)
+        label = Label(frame, text="💼" +"\n"+ str(self.work) , font=("Arial", 22), bg="white")
+        label.place(x=4, y=4, width=72, height=72)
 
-        frame = Frame(self.win, bg=self.co1, width=70, height=70)
+        self.get_friends()
+        frame = Frame(self.win, bg="red", width=80, height=80)
+        friend_text = Label(self.win, text="Freunde", fg=self.co1, bg=self.co0)
         frame.place(x=530, y=390)
-        label = Label(frame, text="Name: " + str(self.work) , font=("Calibri", 18), bg="white")
-        label.place(x=4, y=4, width=62, height=62)
-
-    
-
-
-
-
+        friend_text.place(x=544, y= 368)
+        label = Label(frame, text="🧍" + "\n" + str(self.friend) , font=("Arial", 22), bg="white")
+        label.place(x=4, y=4, width=72, height=72)
 
 
 def main():

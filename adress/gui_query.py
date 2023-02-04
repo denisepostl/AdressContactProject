@@ -90,6 +90,30 @@ class MainWinQuery(QuerySearchBy):
         wind.MainWinUpdate()
         wind.wind.mainloop()
 
+    def combobox(self):
+        """Create a Combo Box for Kategorie items"""
+        self.root = tk.Tk()
+        self.root.configure(background=self.co2)
+        self.root.resizable(width=False, height=False)  # don't allow resizeable window
+        self.combo = ttk.Combobox(self.root, values=["Familie", "Freunde", "Schule", "Arbeit"])
+        self.combo.pack()
+        self.combo.current(0)  # setting default value
+        ok_button = tk.Button(self.root, bg=self.co2, fg=self.co0, text="OK", command=self.searching)
+        ok_button.pack()
+        self.root.mainloop()
+
+    def searching(self):
+        """Save Kategory item in Database and Close the Combobox"""
+        self.selected = self.combo.get()
+        for x in self.tree.get_children():
+            self.tree.delete(x)
+        self.askin_category_query(self.selected)
+        if not self.contact:
+            messagebox.showwarning("Warning", "Keine Datensätze vorhanden") #raise messagebox if db is empty
+        for row in self.contact:
+            self.tree.insert('', END, values=row)
+        self.root.destroy()
+
     def Window(self):
         """Create the Window for the Query Option Window"""
         top = Frame(self.win, width=800, height=50, bg=self.co2)
@@ -139,6 +163,10 @@ class MainWinQuery(QuerySearchBy):
         # delete
         self.bdelete = Button(self.win, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
         self.bdelete.place(x=20, y=328, width=190, height=40)
+
+        #search by category
+        self.bCategory = Button(self.win, text="Nach Kategorie suchen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combobox)
+        self.bCategory.place(x=480, y=420, width=255, height=40)
 
         self.tree = ttk.Treeview(self.win, columns=(1, 2, 3, 4, 5, 6, 7, 8, 9,), height=5, show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)

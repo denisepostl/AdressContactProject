@@ -101,3 +101,10 @@ def test_askin_by_id(setup_memory_db):
     query.askin_by_id(1)
     result = query.contact
     assert result == [(1, 'John', 'Doe', '12345', 'City A', 'Street A', '1', '0664201202', 'Familie')]
+
+def test_askin_by_category(setup_memory_db):
+    query = adress.QuerySearchBy()
+    query.connection = setup_memory_db
+    query.askin_category_query('Familie')
+    result = query.contact
+    assert result == [(1, 'John', 'Doe', '12345', 'City A', 'Street A', '1', '0664201202', 'Familie')]

@@ -21,7 +21,7 @@ class Counting():
         self.school = int(tup[0])
         self.connection.commit()
 
-        print(self.school)
+        return self.school
 
     def get_family(self):
         """This method is used to cound all Members of Kategorie 'Familie'."""
@@ -39,7 +39,7 @@ class Counting():
         self.family = int(tup[0])
         self.connection.commit()
 
-        print(self.family)
+        return self.family
     
     def get_work(self):
         """This method is used to cound all Members of Kategorie 'Arbeit'."""
@@ -57,7 +57,7 @@ class Counting():
         self.work = int(tup[0])
         self.connection.commit()
 
-        print(self.work)
+        return self.work
 
     def get_friends(self):
         """This method is used to cound all Members of Kategorie 'Freunde'."""
@@ -75,4 +75,4 @@ class Counting():
         self.friend = int(tup[0])
         self.connection.commit()
 
-        print(self.friend)
+        return self.friend

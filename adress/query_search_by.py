@@ -60,6 +60,33 @@ class QuerySearchBy():
         self.contact = cur.fetchall()
         self.connection.commit()
 
+    def askin_category_query(self, category):
+        """Search for a contact by Kategorie."""
+        cur = self.connection.cursor()
+        query = """
+            SELECT
+                a.ID,
+	            a.First_Name,
+	            a.LastName,
+                b.PostCode,
+                b.City,
+	            b.Street,
+	            b.HouseNumber,
+	            c.PhoneNumber,
+                d.Kategorie
+            from Contact a
+            join Adress b
+	            on a.ID = b.Contact_ID
+            join PhoneNumber c
+	            on a.ID = c.Contact_ID
+            join Kategorie d
+                on a.ID = d.Contact_ID
+            where Kategorie like "%s" """ % (category,)
+
+        cur.execute(query)
+        self.contact = cur.fetchall()
+        self.connection.commit()
+
     def askin_all_query(self):
         """Search for all contacts."""
         cur = self.connection.cursor()

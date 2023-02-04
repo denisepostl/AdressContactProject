@@ -86,13 +86,13 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.bdelete = Button(self.wind, text="Kontakt löschen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.Delete_Win)
         self.bdelete.place(x=20, y=328, width=190, height=40)
 
-        # Add Category
+        # Update Category
         self.bCategory = Button(self.wind, text="Kategorie ändern", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combo_)
         self.bCategory.place(x=420, y=428, width=174, height=40)
 
-        # Add Category
-        self.bCategory = Button(self.wind, text="Photo ändern", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.photo_update)
-        self.bCategory.place(x=620, y=428, width=174, height=40)
+        # Update Photo
+        self.bPhoto = Button(self.wind, text="Photo ändern", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.photo_update)
+        self.bPhoto.place(x=620, y=428, width=174, height=40)
 
 
         self.lbSearchByName = Label(self.wind, text="Suche nach Name:", font=("Calibri 16 bold"), bg=self.co0, fg=self.co1)  # Label for Name Searching (First Name)

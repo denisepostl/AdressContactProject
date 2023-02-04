@@ -39,15 +39,6 @@ Wegen der möglicherweise führenden Nullen die bei Telefonnummer, PLZ u. Hausnu
 
 ![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/img/DatamodellExtension.png)
 
-
-### Beim Ausführen des Programms soll folgender Screen erscheinen: (Stand: 12.01.2023)
-
-![StartScreen](https://github.com/denisepostl/AdressContactProject/blob/main/img/StartScreen.png)
-
-### Bei der Auswahl des Buttons: Kontakt hinzufügen soll folgender Screen erscheinen: (Stand: 20.01.2023)
-
-![StartScreen](https://github.com/denisepostl/AdressContactProject/blob/main/img/Adress.png)
-
 ### Query SqLite
 
 Für die Erstellung der Datenbank kann [create_database.py](https://github.com/denisepostl/AdressContactProject/blob/main/adress/create_database.py) ausgeführt werden.
@@ -57,4 +48,9 @@ Das SQL-File mit den CREATE Table Statements und die Datenbank befinden sich unt
 ### Kommandozeilenprogramm
 
 Beim Ausführen von [main_contact.py](https://github.com/denisepostl/AdressContactProject/tree/main/adress/main_contact.py) kann ein kleines Kommandozeilenprogramm ausprobiert werden, dass den Benutzern erlaubt einen Kontakt hinzuzufügen, abfragen, Kontaktdaten ändern und zu löschen. 
+
+### Kleines Benutzerhandbuch
+
+Eine kurze Dokumentation über die Funktionalitäten befindet sich unter: [doc](https://github.com/denisepostl/AdressContactProject/blob/main/doc/UserDoc.md)
+
 

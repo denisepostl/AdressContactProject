@@ -20,6 +20,7 @@ from .update_for_gui import Updating
 from .add_second import AddSecondRecord
 from .delete_for_gui import Delete_Contact
 from .check_entry import Check_Entry
+from .count_screen import Counting
 
 
 """Export the classes of the adress-module"""
@@ -43,5 +44,6 @@ __exports__ = [
     Updating,
     AddSecondRecord,
     Delete_Contact,
-    Check_Entry
+    Check_Entry,
+    Counting
 ]

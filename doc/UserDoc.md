@@ -24,7 +24,7 @@ Mit Klick auf *Kategorie hinzufügen* kann der User einen Kontakt einer Kategori
 
 # Kontakt abfragen
 
-Möchte der User Daten eines Kontaktes abfragen so kann er dies hier tun:
+Möchte der User Daten eines Kontaktes abfragen so kann er dies hier tun: 
 ![Abfragen](https://github.com/denisepostl/AdressContactProject/blob/main/img/Query.png)
 
 Anhand Eingabe von Vor- u. Nachnamme oder Telefonnummer wird ein spezifischer Kontakt aufgelistet.
@@ -40,7 +40,7 @@ Wird keine Telefonnummer eingegeben und versucht nach einen Kontakt zu suchen so
 Auch wenn der User keinen Vor- u. Nachnamen verwendet erscheint eine Warnung: 
 ![Warnung](https://github.com/denisepostl/AdressContactProject/blob/main/img/Error.png)
 
-Sind keine Datensätze gespeichert erscheint folgende Info:
+Sind keine Datensätze gespeichert erscheint folgende Info: <br><br><br><br><br><br><br><br><br><br><br>
 
 ![Warnung](https://github.com/denisepostl/AdressContactProject/blob/main/img/keineDatens%C3%A4tze.png)
 

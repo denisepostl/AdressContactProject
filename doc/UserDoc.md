@@ -40,7 +40,7 @@ Wird keine Telefonnummer eingegeben und versucht nach einen Kontakt zu suchen so
 Auch wenn der User keinen Vor- u. Nachnamen verwendet erscheint eine Warnung: 
 ![Warnung](https://github.com/denisepostl/AdressContactProject/blob/main/img/Error.png)
 
-Sind keine Datensätze gespeichert erscheint folgende Info: <br><br><br><br><br><br><br><br><br><br><br>
+Sind keine Datensätze gespeichert erscheint folgende Info: 
 
 ![Warnung](https://github.com/denisepostl/AdressContactProject/blob/main/img/keineDatens%C3%A4tze.png)
 
@@ -82,6 +82,7 @@ Allgemeine Daten können aktualisiert werden:
 
 Es können auch noch weitere Tel.-Nummern oder Adressen hinzugefügt werden: <br>
 ![Tel](https://github.com/denisepostl/AdressContactProject/blob/main/img/telhinzuf%C3%BCgen.png)
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 ![Adress](https://github.com/denisepostl/AdressContactProject/blob/main/img/adresseHinzuf%C3%BCge.png)
 
 Im Hintergrund wird z.B.: eine Tel.-Nr. in die Datenbank eingefügt und die dementsprechende ID des Contacts wird hinzugegeben:

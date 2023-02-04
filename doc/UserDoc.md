@@ -17,10 +17,10 @@ Ansonsten gibt es eine Fehlermeldung:
 <br><br>
 ![Error](https://github.com/denisepostl/AdressContactProject/blob/main/img/PLZError.png)
 
-**Bild hinzufügen**
+**Bild hinzufügen**<br><br>
 Mit Klick auf *Browse* wird Zugriff auf den Explorer des PC's gewährleistet. Der User kann nun nach einem Bild suchen und dieses auswählen.
 
-**Kategorie hinzufügen**
+**Kategorie hinzufügen**<br><br>
 Mit Klick auf *Kategorie hinzufügen* kann der User einen Kontakt einer Kategorie zuweisen.
 <br><br>
 ![Kategorie](https://github.com/denisepostl/AdressContactProject/blob/main/img/Kategorie.png)

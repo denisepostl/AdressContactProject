@@ -8,11 +8,13 @@ Hier kann der User eine beliebige Auswahl treffen.
 ![Add](https://github.com/denisepostl/AdressContactProject/blob/main/img/add.png) <br><br>
 Möchte der User einen Kontakt hinzufügen, so müssen alle Datensätze im richtigen Datentyp 
 eingegeben werden. Ansonsten gibt es folgende Warnung: 
+<br><br>
 ![Warning](https://github.com/denisepostl/AdressContactProject/blob/main/img/Datentypwarning.png)
 
 
 Darüber hinaus wird bei der Postleitzahl nur eine vierstellige Nummernfolge akzeptiert.
 Ansonsten gibt es eine Fehlermeldung: 
+<br><br>
 ![Error](https://github.com/denisepostl/AdressContactProject/blob/main/img/PLZError.png)
 
 **Bild hinzufügen**
@@ -20,6 +22,7 @@ Mit Klick auf *Browse* wird Zugriff auf den Explorer des PC's gewährleistet. De
 
 **Kategorie hinzufügen**
 Mit Klick auf *Kategorie hinzufügen* kann der User einen Kontakt einer Kategorie zuweisen.
+<br><br>
 ![Kategorie](https://github.com/denisepostl/AdressContactProject/blob/main/img/Kategorie.png)
 
 # Kontakt abfragen
@@ -29,23 +32,25 @@ Möchte der User Daten eines Kontaktes abfragen so kann er dies hier tun:
 
 Anhand Eingabe von Vor- u. Nachnamme oder Telefonnummer wird ein spezifischer Kontakt aufgelistet.
 Weiters kann der User alle Kontakte abfragen. Beim auswählen eines Kontaktes werden die spezifischen Informationen dargestellt.
-
+<br><br>
 ![Ask](https://github.com/denisepostl/AdressContactProject/blob/main/img/QueryALL.png)
 
 Wird keine Telefonnummer eingegeben und versucht nach einen Kontakt zu suchen so erscheind folgende Warnung:
-<br><br><br><br><br><br><br><br><br>
+<br><br>
 ![Warnung](https://github.com/denisepostl/AdressContactProject/blob/main/img/telerror.png)
 
 
 Auch wenn der User keinen Vor- u. Nachnamen verwendet erscheint eine Warnung: 
+<br><br>
 ![Warnung](https://github.com/denisepostl/AdressContactProject/blob/main/img/Error.png)
 
 Sind keine Datensätze gespeichert erscheint folgende Info: 
-
+<br><br>
 ![Warnung](https://github.com/denisepostl/AdressContactProject/blob/main/img/keineDatens%C3%A4tze.png)
 
 
 Ist ein Eintrag nicht vorhanden so erscheint folgende Info:
+<br><br>
 ![Info](https://github.com/denisepostl/AdressContactProject/blob/main/img/EintragNichtVorhanden.png)
 
 

@@ -33,7 +33,7 @@ Weiters kann der User alle Kontakte abfragen. Beim auswählen eines Kontaktes we
 ![Ask](https://github.com/denisepostl/AdressContactProject/blob/main/img/QueryALL.png)
 
 Wird keine Telefonnummer eingegeben und versucht nach einen Kontakt zu suchen so erscheind folgende Warnung:
-
+<br><br><br><br><br><br><br><br><br>
 ![Warnung](https://github.com/denisepostl/AdressContactProject/blob/main/img/telerror.png)
 
 

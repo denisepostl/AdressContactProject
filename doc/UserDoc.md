@@ -52,6 +52,7 @@ Ist ein Eintrag nicht vorhanden so erscheint folgende Info:
 # Kontakt löschen
 
 Ein Kontakt kann durch Eingabe von Vor. - u. Nachname gesucht werden. 
+<br><br>
 ![Löschen](https://github.com/denisepostl/AdressContactProject/blob/main/img/delete.png)
 
 
@@ -59,6 +60,7 @@ Ein Kontakt kann durch Eingabe von Vor. - u. Nachname gesucht werden.
 
 Bei der Auswahl eines Kontakts mit Klick auf *Kontakt löschen* bekommt
 der User folgende Meldung:
+<br><br>
 ![Auswahl](https://github.com/denisepostl/AdressContactProject/blob/main/img/deleteask.png)
 
 

@@ -19,10 +19,14 @@ Ansonsten gibt es eine Fehlermeldung:
 
 **Error bei vorhandener Tel.-Nr.**
 Will der User eine Tel.-Nr hinzufügen die es schon gibt und einem anderen Kontakt zugefügt ist erscheint eine Fehlermeldung:
+<br><br>
+
 ![Error](https://github.com/denisepostl/AdressContactProject/blob/main/img/DOPPELTETEL.png)
 
 **Info bei vorhandenen Namen**
 Will der User einen Kontakt hinzufügen, dessen Vor- u. Nachname ident mit einem schon gespeicherten Kontakt ist, gibt es eine Info:
+<br><br>
+
 ![Info](https://github.com/denisepostl/AdressContactProject/blob/main/img/INFOGLEICHERNAME.png)
 
 Das Speichern des Kontaktes ist möglich.

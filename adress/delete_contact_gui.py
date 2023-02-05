@@ -32,6 +32,8 @@ class MainWinDelete(QuerySearchBy, Delete_Contact, Updating):
  
     def delete_contact(self):
         """Delete the Contact by selecting of Contact-Record"""
+        if not self.tree.selection():
+            messagebox.showerror("Kontakt auswählen", "Kontakt auswählen")
         self.idSelect = self.tree.item(self.tree.selection())['values'][0]
 
         self.deleting = tk.Tk()  # new window
@@ -125,6 +127,7 @@ class MainWinDelete(QuerySearchBy, Delete_Contact, Updating):
     def Add_Win(self):
         """Switch to Add Window"""
         self.win.withdraw()  # destroy actual window
+        self.win.destroy()
         from add_contact_gui import MainWin
         win = MainWin()
         win.Window_Main()
@@ -133,6 +136,7 @@ class MainWinDelete(QuerySearchBy, Delete_Contact, Updating):
     def Query_Win(self):
         """Switch to Query Window"""
         self.win.withdraw()  # destroy actual window
+        self.win.destroy()
         from gui_query import MainWinQuery
         win = MainWinQuery()
         win.Window()
@@ -141,10 +145,19 @@ class MainWinDelete(QuerySearchBy, Delete_Contact, Updating):
     def Update_Win(self):
         """Switch to Update Window"""
         self.win.withdraw()  # destroy actual window
+        self.win.destroy()
         from gui_update_record import MainWinUpdate
         wind = MainWinUpdate()
         wind.MainWinUpdate()
         wind.wind.mainloop()
+
+    def home_(self):
+        self.win.withdraw() #close actual window
+        self.win.destroy()
+        from main_gui import Win
+        win = Win()
+        win.Window()
+        win.win.mainloop()
 
     def Window(self):
         """Create the main window for the Delete Window Option"""
@@ -191,6 +204,11 @@ class MainWinDelete(QuerySearchBy, Delete_Contact, Updating):
         self.tree = ttk.Treeview(self.win, columns=(1, 2, 3, 4, 5, 6, 7, 8, 9,), height=5, show="headings")  # treeview
         self.tree.place(x=220, y=140, width=520, height=220)
 
+        # Home Button
+        self.bHome = Button(self.win, text="🏠", font=("Bahnschrift 40 bold"), bg=self.co0, command=self.home_)
+        self.bHome.place(x=722, y=60, width=60, height=60)
+
+   
         # Add headings
         self.tree.heading(1, text="ID")
         self.tree.heading(2, text="Vorname")

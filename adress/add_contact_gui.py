@@ -11,11 +11,12 @@ import re
 from PIL import Image, ImageTk
 import sqlite3
 from adress.add_for_gui import Insert
+from adress.add_check import Checking
 
 Profile = {1: ""}
 
 
-class MainWin(Insert):
+class MainWin(Insert, Checking):
     """Class for Adding a Contact in database."""
 
     def __init__(self):
@@ -67,7 +68,12 @@ class MainWin(Insert):
         elif not self.Phone.strip().isnumeric():
             messagebox.showwarning("Warning", "Datentyp bei Tel.-Nr. beachten!")
 
+        elif self.check_for_same_tel(self.Phone):
+            messagebox.showerror("Error", "Telefonnummer ist bereits vorhanden")
+
         else:
+            if self.check_for_same_name(self.FName, self.LName):
+                messagebox.showinfo("Info", "Kontakt mit selben Namen vorhanden! Kontakt wurde erfolgreich hinzugefügt!")
             self.insert_Name(self.FName, self.LName)  # methods which allow to save data
             self.insert_Address(self.PLZ, self.Str, self.Ort, self.HNR)
             self.insert_PhoneNumber(self.Phone)
@@ -108,6 +114,7 @@ class MainWin(Insert):
     def Delete_Win(self):
         """Switch to Delete Win"""
         self.win.withdraw()  # close actual window
+        self.win.destroy()
         from delete_contact_gui import MainWinDelete
         win = MainWinDelete()
         win.Window()
@@ -116,6 +123,7 @@ class MainWin(Insert):
     def Query_Win(self):
         """Switch to Query Win"""
         self.win.withdraw()  # close actual window
+        self.win.destroy()
         from gui_query import MainWinQuery
         win = MainWinQuery()
         win.Window()
@@ -124,10 +132,19 @@ class MainWin(Insert):
     def Update_Win(self):
         """Switch to Update Win"""
         self.win.withdraw()  # close actual window
+        self.win.destroy()
         from gui_update_record import MainWinUpdate
         wind = MainWinUpdate()
         wind.MainWinUpdate()
         wind.wind.mainloop()
+
+    def home_(self):
+        self.win.withdraw() #close actual window
+        self.win.destroy()
+        from main_gui import Win
+        win = Win()
+        win.Window()
+        win.win.mainloop()
 
     def Window_Main(self):
         """Create the Main Window of the Add Window"""
@@ -210,6 +227,9 @@ class MainWin(Insert):
         self.bCategory = Button(self.win, text="Kategorie hinzufügen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combo_)
         self.bCategory.place(x=280, y=410, width=180, height=40)
 
+        # Home Button
+        self.bHome = Button(self.win, text="🏠", font=("Bahnschrift 40 bold"), bg=self.co0, command=self.home_)
+        self.bHome.place(x=722, y=60, width=60, height=60)
 
 def main():
     win = MainWin()

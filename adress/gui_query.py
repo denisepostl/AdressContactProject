@@ -69,6 +69,7 @@ class MainWinQuery(QuerySearchBy):
     def Delete_Win(self):
         """Switch to delete window"""
         self.win.withdraw()#destroy actual window
+        self.win.destroy()
         from delete_contact_gui import MainWinDelete
         win = MainWinDelete()
         win.Window()
@@ -77,6 +78,7 @@ class MainWinQuery(QuerySearchBy):
     def Add_Win(self):
         """Switch to Add Window"""
         self.win.withdraw()#destroy actual Window
+        self.win.destroy()
         from add_contact_gui import MainWin
         win = MainWin()
         win.Window_Main()
@@ -85,6 +87,7 @@ class MainWinQuery(QuerySearchBy):
     def Update_Win(self):
         """Switch to Update Window"""
         self.win.withdraw()#destroy actual Window
+        self.win.destroy()
         from gui_update_record import MainWinUpdate
         wind = MainWinUpdate()
         wind.MainWinUpdate()
@@ -113,6 +116,14 @@ class MainWinQuery(QuerySearchBy):
         for row in self.contact:
             self.tree.insert('', END, values=row)
         self.root.destroy()
+
+    def home_(self):
+        self.win.withdraw() #close actual window
+        self.win.destroy()
+        from main_gui import Win
+        win = Win()
+        win.Window()
+        win.win.mainloop()
 
     def Window(self):
         """Create the Window for the Query Option Window"""
@@ -167,6 +178,10 @@ class MainWinQuery(QuerySearchBy):
         #search by category
         self.bCategory = Button(self.win, text="Nach Kategorie suchen", font=("Bahnschrift 14 bold"), bg=self.co2, fg=self.co0, command=self.combobox)
         self.bCategory.place(x=480, y=420, width=255, height=40)
+
+        # Home Button
+        self.bHome = Button(self.win, text="🏠", font=("Bahnschrift 40 bold"), bg=self.co0, command=self.home_)
+        self.bHome.place(x=722, y=60, width=60, height=60)
 
         self.tree = ttk.Treeview(self.win, columns=(1, 2, 3, 4, 5, 6, 7, 8, 9,), height=5, show="headings")
         self.tree.place(x=220, y=140, width=520, height=220)

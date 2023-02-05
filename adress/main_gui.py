@@ -22,6 +22,7 @@ class Win(Counting):
 
     def Delete_Win(self):
         self.win.withdraw()
+        self.win.destroy()
         from delete_contact_gui import MainWinDelete
         win = MainWinDelete()
         win.Window()
@@ -29,6 +30,7 @@ class Win(Counting):
 
     def Add_Win(self):
         self.win.withdraw()
+        self.win.destroy()
         from add_contact_gui import MainWin
         win = MainWin()
         win.Window_Main()
@@ -36,6 +38,7 @@ class Win(Counting):
 
     def Query_Win(self):
         self.win.withdraw()
+        self.win.destroy()
         from gui_query import MainWinQuery
         win = MainWinQuery()
         win.Window()
@@ -43,6 +46,7 @@ class Win(Counting):
 
     def Update_Win(self):
         self.win.withdraw()
+        self.win.destroy()
         from gui_update_record import MainWinUpdate
         wind = MainWinUpdate()
         wind.MainWinUpdate()

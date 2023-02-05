@@ -109,9 +109,22 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.entrySearchByLName.bind("<Return>", self.SearchByName)  # define function for the name searching
         self.entrySearchByLName.place(x=580, y=60, width=160, height=30)
 
+        # Home Button
+        self.bHome = Button(self.wind, text="🏠", font=("Bahnschrift 40 bold"), bg=self.co0, command=self.home_)
+        self.bHome.place(x=722, y=60, width=60, height=60)
+
+    def home_(self):
+        self.wind.withdraw() #close actual window
+        self.wind.destroy()
+        from main_gui import Win
+        win = Win()
+        win.Window()
+        win.win.mainloop()
+
     def Delete_Win(self):
         """Switch to Delete Window"""
         self.wind.withdraw()
+        self.wind.destroy()
         from delete_contact_gui import MainWinDelete
         win = MainWinDelete()
         win.Window()
@@ -120,6 +133,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
     def Add_Win(self): 
         """Switch to Add Window"""
         self.wind.withdraw()
+        self.wind.destroy()
         from add_contact_gui import MainWin
         win = MainWin()
         win.Window_Main()
@@ -128,6 +142,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
     def Query_Win(self):
         """Switch to Query Window"""
         self.wind.withdraw()
+        self.wind.destroy()
         from gui_query import MainWinQuery
         win = MainWinQuery()
         win.Window()
@@ -167,23 +182,26 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
     def photo_update(self):
         """Update the Photo."""
-        self.root = tk.Tk()  # new window
-        self.root.configure(background=self.co0)
-        self.root.resizable(False, False)
-        self.lblPhoto = Label(self.root, text="Photo: ",  font=("Calibri 14 bold"), bg=self.co0, fg=self.co1)
-        self.lblPhoto.place(x=10, y=20, width=60, height=20)
-        self.l = Label(self.root, bg=self.co2)
-        self.l.place(x=0, y=0, width=200, height=20)
-        self.lb = Label(self.root, bg=self.co2)
-        self.lb.place(x=0, y=180, width=200, height=40)
-        self.lbl = Label(self.root, text="📸",  font=("Calibri 40"), bg=self.co0)
-        self.lbl.place(x=66, y=80, width=60, height=48)
-        self.entryPhoto = Entry(self.root)
-        self.entryPhoto.place(x=10, y=40, width=170, height=22)
-        button = Button(self.root, text="Browse", command=self.BrowsePhoto, bg=self.co2, fg=self.co0)
-        button.place(x=10, y=128, width= 170, height=22)
-        button1 = Button(self.root, text="Übernehmen", command=self.ok, bg=self.co2, fg=self.co0)
-        button1.place(x=10, y=148, width= 170, height=22)
+        if not self.tree.selection():
+            messagebox.showerror("Kontakt auswählen", "Kontakt auswählen")
+        else:
+            self.root = tk.Tk()  # new window
+            self.root.configure(background=self.co0)
+            self.root.resizable(False, False)
+            self.lblPhoto = Label(self.root, text="Photo: ",  font=("Calibri 14 bold"), bg=self.co0, fg=self.co1)
+            self.lblPhoto.place(x=10, y=20, width=60, height=20)
+            self.l = Label(self.root, bg=self.co2)
+            self.l.place(x=0, y=0, width=200, height=20)
+            self.lb = Label(self.root, bg=self.co2)
+            self.lb.place(x=0, y=180, width=200, height=40)
+            self.lbl = Label(self.root, text="📸",  font=("Calibri 40"), bg=self.co0)
+            self.lbl.place(x=66, y=80, width=60, height=48)
+            self.entryPhoto = Entry(self.root)
+            self.entryPhoto.place(x=10, y=40, width=170, height=22)
+            button = Button(self.root, text="Browse", command=self.BrowsePhoto, bg=self.co2, fg=self.co0)
+            button.place(x=10, y=128, width= 170, height=22)
+            button1 = Button(self.root, text="Übernehmen", command=self.ok, bg=self.co2, fg=self.co0)
+            button1.place(x=10, y=148, width= 170, height=22)
        
 
     def ok(self):
@@ -210,6 +228,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
     def combo_(self):
         """Define the combo box"""
+        if not self.tree.selection():
+            messagebox.showerror("Kontakt auswählen", "Kontakt auswählen")
         self.tree.item(self.tree.selection())['values'][0] # let set the record
         self.GetFName_ = self.tree.item(self.tree.selection())['values'][1]  # get the name
         self.GetLName_ = self.tree.item(self.tree.selection())['values'][2]
@@ -247,6 +267,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
     def add_adress(self):
         """Window for adding another adress to Contact"""
+        if not self.tree.selection():
+            messagebox.showerror("Kontakt auswählen", "Kontakt auswählen")
         self.tree.item(self.tree.selection())['values'][0]#let set the contact
         self.GetFName = self.tree.item(self.tree.selection())['values'][1]#get the name
         self.GetLName = self.tree.item(self.tree.selection())['values'][2]
@@ -318,6 +340,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
     #------------------------Add-Second-TelefoneNumber------------------------------------#    
     def add_tel(self):
         """Add another telefone to contact"""
+        if not self.tree.selection():
+            messagebox.showerror("Kontakt auswählen", "Kontakt auswählen")
         self.tree.item(self.tree.selection())['values'][0]#let the record select
         self.Get_FName = self.tree.item(self.tree.selection())['values'][1]#get the name
         self.Get_LName = self.tree.item(self.tree.selection())['values'][2]
@@ -362,6 +386,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
 
     def editing(self):
         """Edit records in database"""
+        if not self.tree.selection():
+            messagebox.showerror("Kontakt auswählen", "Kontakt auswählen")
         self.tree.item(self.tree.selection())['values'][0]  # let the record select
 
         # select records like Name, Adress, Telefone

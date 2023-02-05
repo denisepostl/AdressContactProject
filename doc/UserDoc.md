@@ -97,3 +97,6 @@ Es können auch noch weitere Tel.-Nummern oder Adressen hinzugefügt werden: <br
 
 Im Hintergrund wird z.B.: eine Tel.-Nr. in die Datenbank eingefügt und die dementsprechende ID des Contacts wird hinzugegeben:
 ![Database](https://github.com/denisepostl/AdressContactProject/blob/main/img/phonenumberdatabase.png)
+
+Bei Betätigen von Aktualisierungs-Buttons, ohne einen Kontakt ausgewählt zu haben erscheint eine dementsprechende Fehlermeldung:
+![Error](https://github.com/denisepostl/AdressContactProject/blob/main/img/KONTAKTAUSW%C3%84HLEN.png)

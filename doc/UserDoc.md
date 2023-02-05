@@ -17,6 +17,16 @@ Ansonsten gibt es eine Fehlermeldung:
 <br><br>
 ![Error](https://github.com/denisepostl/AdressContactProject/blob/main/img/PLZError.png)
 
+**Error bei vorhandener Tel.-Nr.**
+Will der User eine Tel.-Nr hinzufügen die es schon gibt und einem anderen Kontakt zugefügt ist erscheint eine Fehlermeldung:
+![Error](https://github.com/denisepostl/AdressContactProject/blob/main/img/DOPPELTETEL.png)
+
+**Info bei vorhandenen Namen**
+Will der User einen Kontakt hinzufügen, dessen Vor- u. Nachname ident mit einem schon gespeicherten Kontakt ist, gibt es eine Info:
+![Info](https://github.com/denisepostl/AdressContactProject/blob/main/img/INFOGLEICHERNAME.png)
+
+Das Speichern des Kontaktes ist möglich.
+
 **Bild hinzufügen**<br><br>
 Mit Klick auf *Browse* wird Zugriff auf den Explorer des PC's gewährleistet. Der User kann nun nach einem Bild suchen und dieses auswählen.
 

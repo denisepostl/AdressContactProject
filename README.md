@@ -17,7 +17,7 @@ Ein Benutzer kann
 Ein Kontakt kann beliebig viele Adressen und Telefonnummern zugewiesen bekommen. In diesem Projekt wurde dies angenommen.
 Eine schönere Lösung hätte man allerdings wenn man den Benutzer eine begrenzte Anzahl an Telefonnummern und Adressen zuweisen lässt.
 Dieser Weg wurde implementiert und dafür wurde folgendes Datenmodell angenommen:
-![Datenmodell]()
+![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/img/datamodel_new.png)
 
 ### User-Stories
 Die User-Stories befinden sich unter: [doc](https://github.com/denisepostl/AdressContactProject/blob/main/doc/UserStory.md)

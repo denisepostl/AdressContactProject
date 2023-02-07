@@ -9,12 +9,13 @@ from PIL import Image, ImageTk
 from adress.query_search_by import QuerySearchBy
 from adress.update_for_gui import Updating
 from adress.add_second import AddSecondRecord
+from adress.add_check import Checking
 import os
 
 Profile = {1: ""}
 
 
-class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
+class MainWinUpdate(Checking, QuerySearchBy, Updating, AddSecondRecord):
     db_name = 'database/adress_cat.db'
 
     def __init__(self):
@@ -389,6 +390,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
             messagebox.showwarning("Warning", "Feld darf nicht leer sein")  # raise messagebox if entry is empty
         elif not phone.strip().isnumeric():
             messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
+        elif self.check_for_same_tel(phone):
+            messagebox.showerror("Error", "Telefonnummer ist bereits vorhanden")
         else:
             self.get_name_id(Fname, Lname, tel)
             self.add_phone(str(phone))
@@ -477,6 +480,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         elif not self.hNR.get().strip().isnumeric() or not self.phone_.get().strip().isnumeric():
             messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
             self.edit_wind.destroy()
+        elif self.check_for_same_tel(self.phone_.get()):
+            messagebox.showerror("Error", "Telefonnummer ist bereits vorhanden")
         else: 
             self.get_name_id(self.F_Name, self.L_Name, self.telefone) 
             self.get_id(self.F_Name, self.L_Name, self.telefone)

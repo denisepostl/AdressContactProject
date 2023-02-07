@@ -205,12 +205,15 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
        
 
     def ok(self):
+        """Method for updating the image"""
         self.idSelect =  self.tree.item(self.tree.selection())['values'][0] # let set the record
         self.GetFN = self.tree.item(self.tree.selection())['values'][1]  # get the name
         self.GetLN = self.tree.item(self.tree.selection())['values'][2]
+        self.telefone = self.tree.item(self.tree.selection())['values'][7]
+
         self.imgProfile="img/img_/profile_" + str(self.idSelect) + "." + "jpg"
         os.remove(self.imgProfile)
-        id = self.get_name_id(self.GetFN, self.GetLN)
+        id = self.get_name_id(self.GetFN, self.GetLN, self.telefone)
         filename = self.entryPhoto.get()
         im = Image.open(filename)
         rgb_im = im.convert('RGB')
@@ -233,6 +236,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.tree.item(self.tree.selection())['values'][0] # let set the record
         self.GetFName_ = self.tree.item(self.tree.selection())['values'][1]  # get the name
         self.GetLName_ = self.tree.item(self.tree.selection())['values'][2]
+        self.telefone = self.tree.item(self.tree.selection())['values'][7]
+
 
         self.root = tk.Tk()  # new window
         self.root.configure(background=self.co0)
@@ -253,13 +258,14 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         """Save the updated category and close the window"""
         FirstName = self.GetFName_
         LastName = self.GetLName_
+        tel = self.telefone
 
         self.selected = self.combo.get()
-        self.get_name_id(FirstName, LastName)
+        self.get_name_id(FirstName, LastName, tel)
         self.update_Category(self.selected, self.name_id)
         self.connection.commit()
         self.root.destroy()
-        self.get_id(FirstName, LastName)
+        self.get_id(FirstName, LastName, tel)
         self.viewing_records()
 
 
@@ -272,6 +278,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.tree.item(self.tree.selection())['values'][0]#let set the contact
         self.GetFName = self.tree.item(self.tree.selection())['values'][1]#get the name
         self.GetLName = self.tree.item(self.tree.selection())['values'][2]
+        self.telefone = self.tree.item(self.tree.selection())['values'][7]
+
 
         self.new = Tk()
         self.new.title("Add-Second Tel.-Nr")
@@ -318,6 +326,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         """Add another Adress to Contact"""
         FirstName = self.GetFName
         LastName = self.GetLName
+        tel = self.telefone
 
         plz = self.postcode.get()
         housenr = self.housenumber.get()
@@ -333,7 +342,7 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         elif not housenr.strip().isnumeric():
             messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
         else: 
-            self.get_name_id(FirstName, LastName)
+            self.get_name_id(FirstName, LastName, tel)
             self.add_adress_(str(plz), str(street), str(city), str(housenr))
             self.new.destroy()
 
@@ -345,6 +354,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
         self.tree.item(self.tree.selection())['values'][0]#let the record select
         self.Get_FName = self.tree.item(self.tree.selection())['values'][1]#get the name
         self.Get_LName = self.tree.item(self.tree.selection())['values'][2]
+        self.telefone = self.tree.item(self.tree.selection())['values'][7]
+
 
         self.window = Tk()
         self.window.title("Add-Second Tel.-Nr")
@@ -372,13 +383,14 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
     def adding_tel(self):
         Fname = self.Get_FName
         Lname = self.Get_LName
+        tel = self.telefone
         phone = self.get_phone.get()
         if phone == '':
             messagebox.showwarning("Warning", "Feld darf nicht leer sein")  # raise messagebox if entry is empty
         elif not phone.strip().isnumeric():
             messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
         else:
-            self.get_name_id(Fname, Lname)
+            self.get_name_id(Fname, Lname, tel)
             self.add_phone(str(phone))
             self.window.destroy()
 
@@ -466,8 +478,8 @@ class MainWinUpdate(QuerySearchBy, Updating, AddSecondRecord):
             messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
             self.edit_wind.destroy()
         else: 
-            self.get_name_id(self.F_Name, self.L_Name) 
-            self.get_id(self.F_Name, self.L_Name)
+            self.get_name_id(self.F_Name, self.L_Name, self.telefone) 
+            self.get_id(self.F_Name, self.L_Name, self.telefone)
             self.update_FName(str(self.new_name.get()), self.My_ID)
             self.update_LName(str(self.lname.get()), self.My_ID)
             self.update_PostCode(str(self.plz_.get()), self.name_id, str(self.PLZ))

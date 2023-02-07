@@ -139,6 +139,7 @@ class MainWin(Insert, Checking):
         wind.wind.mainloop()
 
     def home_(self):
+        """Switch to the home site"""
         self.win.withdraw() #close actual window
         self.win.destroy()
         from main_gui import Win

@@ -480,8 +480,6 @@ class MainWinUpdate(Checking, QuerySearchBy, Updating, AddSecondRecord):
         elif not self.hNR.get().strip().isnumeric() or not self.phone_.get().strip().isnumeric():
             messagebox.showwarning("Warning", "Bitte Datentyp beachten!")
             self.edit_wind.destroy()
-        elif self.check_for_same_tel(self.phone_.get()):
-            messagebox.showerror("Error", "Telefonnummer ist bereits vorhanden")
         else: 
             self.get_name_id(self.F_Name, self.L_Name, self.telefone) 
             self.get_id(self.F_Name, self.L_Name, self.telefone)

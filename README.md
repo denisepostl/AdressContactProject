@@ -13,6 +13,10 @@ Ein Benutzer kann
     - Kontaktinformationen löschen (Der ganze Kontakt wird gelöscht. Vorher wird der Kontakt noch einmal ausgegeben und gefragt ob das der richtige Kontakt ist.)
 
     - Bild (z.B.: Profilbild) vom lokalen Rechner zu einem Kontakt hinzufügen (durch betätigen eines Buttons kann er ein Bild auswählen, welches dann in einem neuen   Ordner abgespeichert wird, damit es später bei der Abfrage eines Kontakts angezeigt werden kann)
+    
+Prinzipiell kann ein Kontakt beliebig viele Adressen und Telefonnummern haben. In diesem Projekt wurde das so angenommen. Damit die Ausgabe etwas schöner ist,
+wäre es sinnvoll wenn man animmt das ein Benutzer einen Kontakt zwei Tel.-Nr. und zwei Adressen zur Verfügung stellen kann. Das dafür verwendetete Datenmodell und
+die Änderung befinden sich in folgendem Repository: [AdressContact](https://github.com/denisepostl/NEWAdressContactProject.git)
 
 ### User-Stories
 Die User-Stories befinden sich unter: [doc](https://github.com/denisepostl/AdressContactProject/blob/main/doc/UserStory.md)

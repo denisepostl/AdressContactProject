@@ -1,6 +1,6 @@
 # User story Kontakt hinzufügen
 Als Benutzer möchte ich einen neuen Kontakt in das System hinzufügen können. Ein Bild von einem Kontakt möchte ich auch hinzufügen.
-Als Entwickler brauche ich folgende Inputs: Vorname, Nachname, Tel. und Adresse. Und Bild.
+Als Entwickler brauche ich folgende Inputs: Vorname, Nachname, Tel. und Adresse. Und Bild. Ich möchte auch noch eine zweite Telefonnummer hinzufügen können und einen Nebenwohnsitz.
 
 **Actors**  <br>
 Benutzer
@@ -26,8 +26,8 @@ Bei der Ausgabe sollen alle Daten in einer Zeile ausgegeben werden.
 Ich muss daher auf die Foreign Keys der jeweiligen Tabellen achten (Für das Verbinden der Tabellen werde ich joins verwenden).
 
 **Errors**  <br>
-Wenn der Benutzer einen falschen Datentyp verwendet wird ein Error erscheinen. - Ich werde Exceptions verwenden. 
-Wenn der Benutzer den gleichen Vor-u. Nachnamen eingibt, der in der Datenbank vorhanden ist, werde ich nachfragen ob das gewünscht ist.
+Wenn der Benutzer einen falschen Datentyp verwendet wird ein Error erscheinen. - Ich werde Exceptions (Messageboxen) verwenden. 
+Wenn der Benutzer den gleichen Vor-u. Nachnamen eingibt, der in der Datenbank vorhanden ist, werde ich ihn darauf hinweisen - der Kontakt wird aber hinzugefügt, da dies durchaus möglich ist.
 
 ----------------------------------------------------------------------------------------
 
@@ -51,12 +51,11 @@ Nach der Reihe werden dann die einzelnen Datensätze in den Tabellen der Datenba
 Kontakt wurde gelöscht.
 
 **Output**  <br>
-Ich frage ob der Benutzer wirklich den Kontakt löschen möchte - wenn Ja gebe ich folgendes aus (vielleicht in einem neuen kleinen Fenster das aufscheint): 
-"Der Kontakt wurde erfolgreich gelöscht."
+Ich frage ob der Benutzer wirklich den Kontakt löschen möchte - wenn Ja gebe ich eventuell folgendes aus (vielleicht in einem neuen kleinen Fenster das aufscheint): 
+"Der Kontakt wurde erfolgreich gelöscht." Oder ich benutze einen Treeview, der dann leer ist. (weil nach Abfrage des Datensatzes sollte dieser nicht mehr vorhanden sein)
 
 **Errors**  <br>
 Wenn kein Kontakt mit diesem Namen gefunden wurde gibt es eine Exception: "Es wurde kein Kontakt mit diesem Namen gefunden."
-Wenn falsche Datentypen für die Abfrage des zu löschenden Kontakts verwendet wurden wird es auch eine Exception geben: "Bitte Datentyp beachten"
 
 ----------------------------------------------------------------------------------------
 
@@ -88,19 +87,20 @@ Und der aktualisierte Kontakt soll mit den neuen Datensätzen ausgegeben werden.
 
 **Errors**  <br>
 Wenn kein Kontakt unter diesem Namen gefunden wurde, gibt es eine Exception: "Es wurde kein Kontakt unter diesem Namen gefunden."
-Wenn falsche Datentypen für den Vornamen und Nachnamen eingegeben wurde, wird es auch eine Exception geben: "Bitte beachten Sie den Datentyp"
+Wenn der User eine zweite Adresse oder eine zweite Tel.-Nr. aktualisieren möchte und es ist kein zweiter Datensatz vorhanden gibt es eine Warnung.
+Wenn der User ein Photo, Kontakt, Kategorie aktualisieren möchte und keinen Kontakt ausgewählt hat gibt es ebenfalls eine Warnung. (Wenn der Treeview nicht geselected wird)
 
 ----------------------------------------------------------------------------------------
 
 # User story Kontaktabfrage
-Als Benutzer möchte ich einen bestimmten Kontakt abfragen können oder alle.
+Als Benutzer möchte ich einen bestimmten Kontakt abfragen können oder alle. Vielleicht auch anhand von einer Kategorie.
 Als Entwickler muss ich wissen welchen Kontakt der Benutzer abfragen will und ob er nur einen oder alle Kontakte sehen möchte.
 
 **Actors**  <br>
 Benutzer
 
 **Input**  <br>
-Ich werde eine Auswahl mit 2 Buttons benötigen: "Alle Kontakte abfragen" | "Einen speziellen Kontakt abfragen"
+Ich werde eine Auswahl mit 2 Buttons benötigen: "Alle Kontakte abfragen" | "Einen speziellen Kontakt abfragen" (oder ich mach Entrys für die spezielle Suche nach Namen/Telefonnummer)
 
 Wenn ein bestimmter Kontakt abgefragt werden soll benötige ich vom Benutzer:
     - Eingabe von Vorname, Nachname (Typ: VARCHAR)
@@ -121,8 +121,8 @@ Die Kontaktdaten werden ausgegeben. Entweder nur die spezifischen von einem Kont
 Das gespeicherte Kontaktbild wird daneben ausgegeben.
 
 **Errors**  <br>
-Wenn kein Kontakt unter einem bestimmten Namen gefunden wurde gibt es eine Exception: "Es wurde kein Kontakt unter diesem Namen gefunden".
-Wenn falsche Datentypen für die Abfrage verwendet wurden wird es auch eine Exception geben: "Bitte Datentyp beachten"
+Wenn kein Kontakt unter einem bestimmten Namen, Kategorie gefunden wurde gibt es eine Exception: "Es wurde kein Kontakt unter diesem Namen gefunden".
+Wenn überhaupt keine Kontakte vorhanden sind dann gibt es auch eine Warnung.
 
 ----------------------------------------------------------------------------------------
 

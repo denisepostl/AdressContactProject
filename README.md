@@ -27,7 +27,7 @@ Die dokumentierten Testfälle befinden sich unter: [doc](https://github.com/deni
 
 ### Feature
 
-    - Kontakt gehört zur Familie/Freunde (Eigene Tabelle: Roles notwendig, die zur Contact-Tabelle referenziert)
+    - Kontakt gehört zur Familie/Freunde (Eigene Tabelle: Kategorie notwendig, die zur Contact-Tabelle referenziert)
 
 ### Verwendung von Python, SQLite und TKinter
 

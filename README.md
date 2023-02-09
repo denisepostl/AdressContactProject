@@ -41,7 +41,7 @@ Wegen der möglicherweise führenden Nullen die bei Telefonnummer, PLZ u. Hausnu
 
 ### Datenmodell für das Feature: Kategorie (Stand: 20.01.2023)
 
-![Datenmodell](https://github.com/denisepostl/AdressContactProject/blob/main/img/DatamodellExtension.png)
+![Datenmodell](https://github.com/denisepostl/NEWAdressContactProject/blob/main/img/datamodel.png)
 
 ### Query SqLite
 
